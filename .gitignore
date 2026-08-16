@@ -1,4 +1,4 @@
-# Conventional deny-list. The repo now lives at ~/.dotfiles (external) and holds
+# Conventional deny-list. The repo now lives at ~/Documents/device-onboarding and holds
 # only what we put here: the macos/ and linux/ tiers, shared lib/, setup.sh, and
 # repo meta. No unmanaged ~/.config junk shares this root anymore, so the old
 # allowlist gymnastics (ignore *, then ! every managed dir) are gone — everything
