@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Freeze third-party network apps while the Mac sleeps; thaw them on wake.
+# Freeze the Claude Code CLI while the Mac sleeps ON BATTERY; thaw on wake.
 # (Generalizes the original Claude-only freeze — see git history of
 # claude-sleep-freeze.sh.)
 #
@@ -102,6 +102,16 @@ install_hook "$HOME/.sleep" <<'EOF'
 # listed and are unsignalable from this user-level hook anyway.
 LOG="$HOME/.local/state/sleepwatcher.log"
 TS="$(date '+%F %T')"
+
+# On AC there is no battery to save, and lid-closed AC work is meant to keep
+# running (see ac-stay-awake.sh, which normally prevents AC sleep entirely).
+# Defensive: this path is unreachable while SleepDisabled=1.
+case "$(pmset -g batt 2>/dev/null | head -1)" in
+    *"'AC Power'"*)
+        echo "$TS .sleep skipped: on AC power" >> "$LOG"
+        exit 0
+        ;;
+esac
 
 # Exact-name CLI targets (proven case; see SCOPE LIMIT before adding more)
 # shellcheck disable=SC2043

@@ -4694,6 +4694,34 @@
       "norm_label": ".setup.sh script"
     },
     {
+      "label": "ac-stay-awake.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/ac-stay-awake.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_ac_stay_awake",
+      "community": 239,
+      "norm_label": "ac-stay-awake.sh"
+    },
+    {
+      "label": "ac-stay-awake.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/ac-stay-awake.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_ac_stay_awake_sh__entry",
+      "community": 239,
+      "norm_label": "ac-stay-awake.sh script"
+    },
+    {
       "label": "betterdisplay-rgb.sh",
       "file_type": "code",
       "source_file": "macos/setup/tweak/betterdisplay-rgb.sh",
@@ -4720,48 +4748,6 @@
       "id": "macos_setup_tweak_betterdisplay_rgb_sh__entry",
       "community": 172,
       "norm_label": "betterdisplay-rgb.sh script"
-    },
-    {
-      "label": "claude-sleep-freeze.sh",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "_origin": "ast",
-      "id": "macos_setup_tweak_claude_sleep_freeze",
-      "community": 237,
-      "norm_label": "claude-sleep-freeze.sh"
-    },
-    {
-      "label": "claude-sleep-freeze.sh script",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "_origin": "ast",
-      "id": "macos_setup_tweak_claude_sleep_freeze_sh__entry",
-      "community": 237,
-      "norm_label": "claude-sleep-freeze.sh script"
-    },
-    {
-      "label": "install_hook()",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
-      "source_location": "L39",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "id": "macos_setup_tweak_claude_sleep_freeze_install_hook",
-      "community": 237,
-      "norm_label": "install_hook()"
     },
     {
       "label": "dock.sh",
@@ -4958,6 +4944,48 @@
       "id": "macos_setup_tweak_screenshot_shortcuts_sh__entry",
       "community": 179,
       "norm_label": "screenshot-shortcuts.sh script"
+    },
+    {
+      "label": "sleep-freeze.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_sleep_freeze",
+      "community": 237,
+      "norm_label": "sleep-freeze.sh"
+    },
+    {
+      "label": "sleep-freeze.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_sleep_freeze_sh__entry",
+      "community": 237,
+      "norm_label": "sleep-freeze.sh script"
+    },
+    {
+      "label": "install_hook()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L74",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_sleep_freeze_install_hook",
+      "community": 237,
+      "norm_label": "install_hook()"
     },
     {
       "label": "ssh-keypick.sh",
@@ -7317,7 +7345,7 @@
       "label": "graphify",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L83",
+      "source_location": "L84",
       "_origin": "ast",
       "id": "claude_graphify",
       "community": 2,
@@ -9717,42 +9745,21 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/betterdisplay-rgb.sh",
+      "source_file": "macos/setup/tweak/ac-stay-awake.sh",
       "source_location": "L1",
       "weight": 1.0,
-      "source": "macos_setup_tweak_betterdisplay_rgb",
-      "target": "macos_setup_tweak_betterdisplay_rgb_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_claude_sleep_freeze",
-      "target": "macos_setup_tweak_claude_sleep_freeze_install_hook",
+      "source": "macos_setup_tweak_ac_stay_awake",
+      "target": "macos_setup_tweak_ac_stay_awake_sh__entry",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
+      "source_file": "macos/setup/tweak/betterdisplay-rgb.sh",
       "source_location": "L1",
       "weight": 1.0,
-      "source": "macos_setup_tweak_claude_sleep_freeze",
-      "target": "macos_setup_tweak_claude_sleep_freeze_sh__entry",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/claude-sleep-freeze.sh",
-      "source_location": "L61",
-      "weight": 1.0,
-      "context": "call",
-      "source": "macos_setup_tweak_claude_sleep_freeze_sh__entry",
-      "target": "macos_setup_tweak_claude_sleep_freeze_install_hook",
+      "source": "macos_setup_tweak_betterdisplay_rgb",
+      "target": "macos_setup_tweak_betterdisplay_rgb_sh__entry",
       "confidence_score": 1.0
     },
     {
@@ -9823,6 +9830,37 @@
       "weight": 1.0,
       "source": "macos_setup_tweak_screenshot_shortcuts",
       "target": "macos_setup_tweak_screenshot_shortcuts_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_sleep_freeze",
+      "target": "macos_setup_tweak_sleep_freeze_install_hook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_sleep_freeze",
+      "target": "macos_setup_tweak_sleep_freeze_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/sleep-freeze.sh",
+      "source_location": "L96",
+      "weight": 1.0,
+      "context": "call",
+      "source": "macos_setup_tweak_sleep_freeze_sh__entry",
+      "target": "macos_setup_tweak_sleep_freeze_install_hook",
       "confidence_score": 1.0
     },
     {
@@ -11132,7 +11170,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
-      "source_location": "L83",
+      "source_location": "L84",
       "weight": 1.0,
       "source": "claude_md_claude_claude",
       "target": "claude_graphify",
@@ -11680,5 +11718,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "427f6bdfccb12929c1d03089b613747eaa5261d9"
+  "built_at_commit": "1082a0a90f0b536d0bc8e7fde4b20979a9c5c7de"
 }
