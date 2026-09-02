@@ -35,6 +35,13 @@ set -e
 # drop-in — it prints the command for adrian to run, since that requires
 # a password.
 #
+# Lid closed on AC: because the Mac no longer sleeps, macOS's lock-on-sleep
+# never fires — the session would sit UNLOCKED behind a closed lid. The
+# reconciler therefore runs `pmset displaysleepnow` on the lid-close
+# transition, which powers the panel down and (with this Mac's screen lock
+# set to "immediate") locks the session. Skipped when an external display is
+# attached, i.e. real clamshell-desktop use.
+#
 # Accepted trade-off (adrian, 2026-09-02): the Mac never sleeps while
 # plugged in, including left closed and plugged in for days. Internal
 # display is off in clamshell so this costs thermals/wear on a fanless
@@ -57,11 +64,15 @@ mkdir -p "$BIN_DIR" "$STATE_DIR" "$AGENT_DIR"
 cat > "$RECONCILER" <<'EOF'
 #!/bin/sh
 # Managed by device-onboarding macos/setup/tweak/ac-stay-awake.sh — do not
-# edit in place. Reconciles pmset's SleepDisabled flag with the current
-# power source: AC -> 1 (no sleep, lid-closed work continues), battery -> 0
-# (normal sleep + the claude freeze). Writes only on mismatch.
+# edit in place. Two jobs, both idempotent:
+#   1. Reconcile pmset's SleepDisabled flag with the power source:
+#      AC -> 1 (no sleep, lid-closed work continues), battery -> 0 (normal
+#      sleep + the claude freeze). Writes only on mismatch.
+#   2. On the lid-close transition while on AC, turn the display off, which
+#      locks the session.
 LOG="$HOME/.local/state/ac-stay-awake.log"
 
+# --- 1. sleep flag --------------------------------------------------------
 case "$(pmset -g batt 2>/dev/null | head -1)" in
     *"'AC Power'"*) WANT=1 ;;
     *)              WANT=0 ;;   # battery, or unknown -> fail safe to sleeping
@@ -69,18 +80,46 @@ esac
 
 HAVE="$(pmset -g 2>/dev/null | awk '/SleepDisabled/{print $2; exit}')"
 [ -n "$HAVE" ] || HAVE=0
-[ "$HAVE" = "$WANT" ] && exit 0
 
-if sudo -n /usr/bin/pmset disablesleep "$WANT" 2>/dev/null; then
-    echo "$(date '+%F %T') SleepDisabled $HAVE -> $WANT ($([ "$WANT" = 1 ] && echo AC || echo battery))" >> "$LOG"
-else
-    # Grant missing/revoked. Log once per hour, never error-spam, and never
-    # fail the agent — the flag simply stays where macOS put it.
-    STAMP="$HOME/.local/state/.ac-stay-awake-nogrant"
-    if [ ! -f "$STAMP" ] || [ -n "$(find "$STAMP" -mmin +60 2>/dev/null)" ]; then
-        echo "$(date '+%F %T') cannot set SleepDisabled=$WANT: sudoers grant missing" >> "$LOG"
-        : > "$STAMP"
+if [ "$HAVE" != "$WANT" ]; then
+    if sudo -n /usr/bin/pmset disablesleep "$WANT" 2>/dev/null; then
+        echo "$(date '+%F %T') SleepDisabled $HAVE -> $WANT ($([ "$WANT" = 1 ] && echo AC || echo battery))" >> "$LOG"
+    else
+        # Grant missing/revoked. Log at most hourly, never error-spam, never
+        # fail the agent — the flag simply stays where macOS put it.
+        STAMP="$HOME/.local/state/.ac-stay-awake-nogrant"
+        if [ ! -f "$STAMP" ] || [ -n "$(find "$STAMP" -mmin +60 2>/dev/null)" ]; then
+            echo "$(date '+%F %T') cannot set SleepDisabled=$WANT: sudoers grant missing" >> "$LOG"
+            : > "$STAMP"
+        fi
     fi
+fi
+
+# --- 2. lid closed on AC: display off + lock ------------------------------
+# With sleep disabled, closing the lid no longer sleeps the Mac, so macOS's
+# normal lock-on-sleep never fires and the session would sit UNLOCKED behind
+# a closed lid. `pmset displaysleepnow` powers the panel down, and because
+# this Mac's screen lock is "immediate" (verify: `sysadminctl -screenLock
+# status`; the tweak warns if it is not) display-off locks the session.
+# Fires once per lid-close transition, not every poll.
+LIDSTAMP="$HOME/.local/state/.ac-stay-awake-lid"
+LID="$(ioreg -r -k AppleClamshellState 2>/dev/null | awk -F'= ' '/AppleClamshellState/{print $2; exit}')"
+
+if [ "$LID" = "Yes" ] && [ "$WANT" = 1 ]; then
+    if [ ! -f "$LIDSTAMP" ]; then
+        : > "$LIDSTAMP"
+        # Skip in true clamshell mode (external display attached): the user
+        # is working on that screen, so blanking and locking it is wrong.
+        EXT="$(system_profiler SPDisplaysDataType 2>/dev/null | grep -c 'Connection Type: [^I]')"
+        if [ "${EXT:-0}" -eq 0 ]; then
+            pmset displaysleepnow 2>/dev/null &&
+                echo "$(date '+%F %T') lid closed on AC: display off, session locked" >> "$LOG"
+        else
+            echo "$(date '+%F %T') lid closed on AC: external display present, left awake" >> "$LOG"
+        fi
+    fi
+elif [ "$LID" != "Yes" ]; then
+    rm -f "$LIDSTAMP"
 fi
 EOF
 chmod 755 "$RECONCILER"
@@ -120,6 +159,16 @@ EOF
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
 echo "🟢 Loaded $LABEL (reconciles every 30s)."
+
+# The lock guarantee depends on the screen lock being immediate. Do not try
+# to set it silently (it needs a password); verify loudly instead.
+if sysadminctl -screenLock status 2>&1 | grep -q 'immediate'; then
+    echo "🟢 Screen lock is immediate — display-off will lock the session."
+else
+    echo "🔴 Screen lock is NOT immediate. Lid-closed-on-AC would turn the"
+    echo "   display off WITHOUT locking. Fix in System Settings > Lock Screen"
+    echo "   (\"Require password ... immediately\") before relying on this."
+fi
 
 if sudo -n /usr/bin/pmset disablesleep 0 2>/dev/null; then
     echo "🟢 sudoers grant present."
