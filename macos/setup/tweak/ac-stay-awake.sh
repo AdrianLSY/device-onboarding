@@ -31,9 +31,12 @@ set -e
 #
 # Privilege: `pmset disablesleep` needs root, so the reconciler calls it
 # through a NOPASSWD sudoers drop-in scoped to exactly two literal
-# commands (no wildcards, no shell). This script does NOT install that
-# drop-in — it prints the command for adrian to run, since that requires
-# a password.
+# commands (no wildcards, no shell). This script installs that drop-in
+# itself (prompting for a password, per the repo's sudo-using tweak
+# convention), skipping when the grant is already in place. The file is
+# validated standalone with `visudo -c -f` BEFORE installation and the
+# whole set re-validated after — a malformed /etc/sudoers.d entry can
+# break sudo system-wide, so a failed check removes it again.
 #
 # Lid closed on AC: because the Mac no longer sleeps, macOS's lock-on-sleep
 # never fires — the session would sit UNLOCKED behind a closed lid. The
@@ -170,19 +173,30 @@ else
     echo "   (\"Require password ... immediately\") before relying on this."
 fi
 
+SUDOERS_DEST=/etc/sudoers.d/ac-stay-awake
+
 if sudo -n /usr/bin/pmset disablesleep 0 2>/dev/null; then
-    echo "🟢 sudoers grant present."
-    "$RECONCILER"
-    echo "   SleepDisabled now: $(pmset -g | awk '/SleepDisabled/{print $2}')"
+    echo "⏭️  sudoers grant already present."
 else
-    cat <<EOF
-
-⚠️  One manual step left — the sudoers grant needs your password:
-
-    sudo install -m 0440 -o root -g wheel "$SUDOERS_STAGE" /etc/sudoers.d/ac-stay-awake
-    sudo visudo -c
-
-Until then the agent runs but cannot change the flag (logged hourly to
-$STATE_DIR/ac-stay-awake.log), and sleep behavior stays exactly as it is.
-EOF
+    # Validate the drop-in STANDALONE before installing it. A malformed file
+    # in /etc/sudoers.d can break sudo system-wide, so never install first
+    # and check afterwards. `visudo -c -f` works unprivileged.
+    if ! visudo -c -f "$SUDOERS_STAGE" >/dev/null 2>&1; then
+        echo "🔴 Refusing to install: $SUDOERS_STAGE failed sudoers validation." >&2
+        exit 1
+    fi
+    echo "🔑 Installing sudoers grant — your password is required:"
+    sudo install -m 0440 -o root -g wheel "$SUDOERS_STAGE" "$SUDOERS_DEST"
+    if sudo visudo -c >/dev/null 2>&1; then
+        echo "🟢 sudoers grant installed and the full sudoers set validates."
+    else
+        # Leaving a bad drop-in in place would be worse than not having it.
+        sudo rm -f "$SUDOERS_DEST"
+        echo "🔴 Post-install validation failed; drop-in removed. sudo is intact." >&2
+        exit 1
+    fi
 fi
+
+"$RECONCILER"
+echo "   Power source: $(pmset -g batt | head -1 | sed -E "s/.*from '([^']*)'.*/\\1/")"
+echo "   SleepDisabled now: $(pmset -g | awk '/SleepDisabled/{print $2}')"
