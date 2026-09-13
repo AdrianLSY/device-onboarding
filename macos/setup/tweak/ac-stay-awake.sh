@@ -84,6 +84,13 @@ esac
 HAVE="$(pmset -g 2>/dev/null | awk '/SleepDisabled/{print $2; exit}')"
 [ -n "$HAVE" ] || HAVE=0
 
+LID="$(ioreg -r -k AppleClamshellState 2>/dev/null | awk -F'= ' '/AppleClamshellState/{print $2; exit}')"
+
+# Remember the previous power source so we can detect the AC -> battery edge.
+PREV_FILE="$HOME/.local/state/.ac-stay-awake-prev"
+PREV="$(cat "$PREV_FILE" 2>/dev/null)"
+printf '%s' "$WANT" > "$PREV_FILE"
+
 if [ "$HAVE" != "$WANT" ]; then
     if sudo -n /usr/bin/pmset disablesleep "$WANT" 2>/dev/null; then
         echo "$(date '+%F %T') SleepDisabled $HAVE -> $WANT ($([ "$WANT" = 1 ] && echo AC || echo battery))" >> "$LOG"
@@ -106,7 +113,6 @@ fi
 # status`; the tweak warns if it is not) display-off locks the session.
 # Fires once per lid-close transition, not every poll.
 LIDSTAMP="$HOME/.local/state/.ac-stay-awake-lid"
-LID="$(ioreg -r -k AppleClamshellState 2>/dev/null | awk -F'= ' '/AppleClamshellState/{print $2; exit}')"
 
 if [ "$LID" = "Yes" ] && [ "$WANT" = 1 ]; then
     if [ ! -f "$LIDSTAMP" ]; then
@@ -123,6 +129,19 @@ if [ "$LID" = "Yes" ] && [ "$WANT" = 1 ]; then
     fi
 elif [ "$LID" != "Yes" ]; then
     rm -f "$LIDSTAMP"
+fi
+# --- 3. unplugged with the lid already closed: force sleep ----------------
+# Clamshell sleep fires on the lid-close EVENT. If the lid was already shut
+# while we held SleepDisabled=1 on AC, clearing the flag on unplug does NOT
+# retroactively trigger it, so the Mac keeps running on battery until an idle
+# sleep — which any `caffeinate`-style PreventUserIdleSystemSleep assertion
+# will block indefinitely. Observed 2026-09-14: awake ~2h45m on battery, lid
+# shut, because a Raycast `caffeinate -u -dmi` had been holding idle sleep off
+# for 37 h. Fire only on the AC -> battery edge, never on a steady state, so
+# this can never fight a deliberately awake machine.
+if [ "$PREV" = "1" ] && [ "$WANT" = "0" ] && [ "$LID" = "Yes" ]; then
+    echo "$(date '+%F %T') unplugged with lid closed: forcing sleep" >> "$LOG"
+    pmset sleepnow >/dev/null 2>&1
 fi
 EOF
 chmod 755 "$RECONCILER"
