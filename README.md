@@ -95,6 +95,20 @@ backups, no package reinstalls, and a clean `git status` in the repo.
   be created without elevation. Then clone to `~/.dotfiles` and run
   `./setup.sh` **from Git Bash**. The preflight verifies these before any change.
 
+### BetterDisplay Pro color mode (macOS)
+
+The bootstrap installs BetterDisplay, but its Pro license and display settings
+live in the app's user profile. In the BetterDisplay menu, expand the controls
+for each external display, select **8-bit RGB Full Range** under **Color Mode**,
+then enable **Configuration Protection → Color Mode**. Keep BetterDisplay set to
+start at login so its Pro
+protection can restore the selected mode after sleep or reconnect. These app
+settings replace the former 15-second RGB LaunchAgent.
+
+The selected mode must be available for the display's current resolution and
+refresh rate. BetterDisplay's [CLI guide](https://github.com/waydabber/BetterDisplay/wiki/Integration-features,-CLI)
+documents how to inspect the available connection modes when troubleshooting.
+
 ## Adding things
 
 - **Package:** create `<tier>/setup/<pkgmgr>/<pkg>.sh` (macOS `brew`; Linux

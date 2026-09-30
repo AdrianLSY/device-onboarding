@@ -46,23 +46,15 @@ default-root-container-orientation = 'auto'
 # Also see: https://adrianlsy.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
+# Focus follows the mouse: the window under the cursor gets focus.
+# Crosses monitors. Only reacts to actual pointer movement, so focus does not
+# change when the window under a stationary cursor does.
+focus-follows-mouse.enabled = true
+
 # Possible values: (qwerty|dvorak|colemak)
 # See https://adrianlsy.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
 preset = 'qwerty'
-
-# Hover-to-raise (fork-specific).
-# See: https://adrianlsy.github.io/AeroSpace/guide#auto-raise
-[auto-raise]
-enabled                 = true
-poll-millis             = 8
-ignore-space-changed    = false
-invert-disable-key      = false
-invert-ignore-apps      = false
-ignore-apps             = []
-ignore-titles           = []
-stay-focused-bundle-ids = []
-disable-key             = 'control'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
