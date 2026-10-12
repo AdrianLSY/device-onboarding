@@ -4,15 +4,16 @@
 # tier's `git` wrapper (macos/zsh/rc.d/git-multi-account.zsh in an interactive
 # zsh, linux/fish/conf.d/git-multi-account.fish in fish): Claude Code, scripts,
 # launchd or systemd jobs, editors. Without this nothing offers GitHub a key
-# there, every clone and push fails with "Permission denied (publickey)", and a
-# personal repo the wrapper never stamped commits as the work identity.
+# there, every clone and push fails with "Permission denied (publickey)", a
+# personal repo the wrapper never stamped commits as the work identity, and an
+# HTTPS push authenticates as whichever account gh has active.
 #
 # SOURCEABLE library, like lib/link.sh: it defines functions and constants only.
 # Each tier's setup/tweak/git-multi-account.sh sources it and calls
 #     git_multi_account <zsh|fish> <wrapper>
 # under `set -e`, so a failed step stops the tweak.
 #
-# Two pieces; once both are in place, a second run changes nothing:
+# Three pieces; once all are in place, a second run changes nothing:
 #   1. ~/.ssh/config gets a `Host github.com ssh.github.com` stanza that defaults
 #      to the work account's key. It sits OUTSIDE ssh-keypick's managed block
 #      (macOS), so `ssh-keypick install` keeps it. An existing github.com Host or
@@ -30,13 +31,20 @@
 #      account. The includes sit after the global [user] settings, and git
 #      reads an included file at the include's position, so its values win.
 #      (`hasconfig:` needs git 2.36 or later.)
+#   3. The global git config gets two credential sections for GitHub over
+#      HTTPS, so a push authenticates as the account that owns the repo rather
+#      than the one gh has active, which the wrapper switches on every clone.
+#      Like the ssh stanza, the work account is the default and the personal
+#      account's own URLs switch to it. Each section's helper asks gh for that
+#      account's token by name (`gh auth token --user`). See
+#      _gma_https_credentials for why they must come after gh's own section.
 #
-# Each file is backed up before it is first changed. At clone time the
-# interactive wrapper still stamps each repo's own core.sshCommand, identity and
-# signing config, which win over both pieces. Each value is read from the
-# wrapper's per-account helpers (__git_ssh_key_for_account,
-# __git_email_for_account, __git_signingkey_for_account), the one place it is
-# set.
+# Each file is backed up once per run, before it is first changed. At clone
+# time the interactive wrapper still stamps each repo's own core.sshCommand,
+# identity and signing config, which win over the first two pieces. Each key,
+# email and signing key is read from the wrapper's per-account helpers
+# (__git_ssh_key_for_account, __git_email_for_account,
+# __git_signingkey_for_account), the one place it is set.
 
 # Backups reuse lib/link.sh's _link_backup_path (non-colliding <file>.bak.<timestamp>).
 # shellcheck source=lib/link.sh
@@ -62,6 +70,17 @@ GMA_PERSONAL_URL_GLOBS=(
 _gma_include_key() {
     printf '%s\n' "includeIf.hasconfig:remote.*.url:$1.path"
 }
+
+# The credential sections' URLs. git matches a section's path against the
+# request's at a slash boundary and case-sensitively. The default's trailing
+# slash matches the same URLs as gh's [credential "https://github.com"] but
+# keeps it a separate section.
+GMA_CRED_DEFAULT_URL='https://github.com/'
+GMA_CRED_PERSONAL_URL="https://github.com/$GMA_PERSONAL_ACCOUNT"
+# Keys of those two sections, and keys elsewhere that would override them if
+# they came later in the file.
+GMA_CRED_OURS_RE="^credential\\.https://github\\.com/($GMA_PERSONAL_ACCOUNT)?\\."
+GMA_CRED_FOREIGN_RE='^credential\.(https://github\.com\.)?(helper|username)$'
 
 # _gma_wrapper_call <zsh|fish> <wrapper> <helper> <account>
 # Echo what the wrapper's per-account <helper> prints for <account>. Neither
@@ -99,11 +118,18 @@ _gma_expand_tilde() {
     esac
 }
 
-# Copy <file> to a non-colliding backup before changing it.
+# Copy <file> to a non-colliding backup before changing it, once per run: the
+# global git config can be changed by two pieces, and the backup worth keeping
+# is the one from before the first.
+_GMA_BACKED_UP=()
 _gma_backup() {
-    local bak
+    local bak f
+    for f in ${_GMA_BACKED_UP[@]+"${_GMA_BACKED_UP[@]}"}; do
+        [ "$f" = "$1" ] && return 0
+    done
     bak="$(_link_backup_path "$1")"
     cp -p "$1" "$bak"
+    _GMA_BACKED_UP+=("$1")
     echo "git-multi-account: backed up $1 -> $bak"
 }
 
@@ -268,9 +294,83 @@ EOF
     fi
 }
 
+# _gma_cred_helper <gh> <account>
+# A credential helper that answers `get` with <account>'s token from gh, whatever
+# account gh has active, and answers nothing when gh holds no token for it.
+_gma_cred_helper() {
+    printf '%s\n' "!f() { [ \"\$1\" = get ] || return 0; t=\$('$1' auth token --hostname github.com --user $2 2>/dev/null) || return 0; echo username=$2; echo \"password=\$t\"; }; f"
+}
+
+# ── 3. global git config: GitHub over HTTPS as the account that owns the repo ──
+# git collects every credential section that matches the URL, in file order, and
+# an empty helper clears the list, so the last match decides. Ours therefore
+# have to come after gh's [credential "https://github.com"] section and after
+# any URL-less [credential]. `gh auth setup-git` rewrites its section in place,
+# but on a machine without one it appends a new section, after ours. Each of our
+# sections also names its username, so gh's helper then answers only for that
+# account, and a push fails rather than authenticating as the wrong one. The
+# next run moves ours back to the end.
+_gma_https_credentials() {
+    local gh global tmp want have order first_ours last_foreign account
+    gh="$(command -v gh || true)"
+    if [ -z "$gh" ]; then
+        echo "git-multi-account: gh is not installed, so GitHub over HTTPS keeps git's own credential helpers"
+        return 0
+    fi
+    global="$(_gma_global_gitconfig)"
+
+    # The two sections as git writes them, with a note under the first header.
+    tmp="$(mktemp)"
+    git config --file "$tmp" --add "credential.$GMA_CRED_DEFAULT_URL.helper" ''
+    git config --file "$tmp" --add "credential.$GMA_CRED_DEFAULT_URL.helper" "$(_gma_cred_helper "$gh" "$GMA_WORK_ACCOUNT")"
+    git config --file "$tmp" "credential.$GMA_CRED_DEFAULT_URL.username" "$GMA_WORK_ACCOUNT"
+    git config --file "$tmp" --add "credential.$GMA_CRED_PERSONAL_URL.helper" ''
+    git config --file "$tmp" --add "credential.$GMA_CRED_PERSONAL_URL.helper" "$(_gma_cred_helper "$gh" "$GMA_PERSONAL_ACCOUNT")"
+    git config --file "$tmp" "credential.$GMA_CRED_PERSONAL_URL.username" "$GMA_PERSONAL_ACCOUNT"
+    want="$(git config --file "$tmp" --get-regexp "$GMA_CRED_OURS_RE")"
+    have="$(git config --global --get-regexp "$GMA_CRED_OURS_RE" 2>/dev/null || true)"
+
+    # In file order: the line of our first key and of the last key that could override it.
+    order="$(git config --global --list --name-only 2>/dev/null || true)"
+    first_ours="$(printf '%s\n' "$order" | grep -n -E "$GMA_CRED_OURS_RE" | head -1 | cut -d: -f1)"
+    last_foreign="$(printf '%s\n' "$order" | grep -n -E "$GMA_CRED_FOREIGN_RE" | tail -1 | cut -d: -f1)"
+
+    if [ "$have" = "$want" ] && { [ -z "$last_foreign" ] || [ "$first_ours" -gt "$last_foreign" ]; }; then
+        echo "git-multi-account: the global git config already sends GitHub over HTTPS as the repo's account; left alone"
+    else
+        if [ -f "$global" ]; then
+            _gma_backup "$global"
+        fi
+        git config --global --remove-section "credential.$GMA_CRED_DEFAULT_URL" 2>/dev/null || true
+        git config --global --remove-section "credential.$GMA_CRED_PERSONAL_URL" 2>/dev/null || true
+        if [ -s "$global" ] && [ -n "$(tail -c1 "$global")" ]; then
+            echo >>"$global"
+        fi
+        # Appended as text rather than with `git config`, which would add to an
+        # existing section and cannot write the note.
+        awk -v h="[credential \"$GMA_CRED_DEFAULT_URL\"]" -v w="$GMA_WORK_ACCOUNT" -v p="$GMA_PERSONAL_ACCOUNT" '
+            { print }
+            $0 == h {
+                print "\t# Written by device-onboarding'"'"'s git-multi-account tweak: GitHub"
+                print "\t# over HTTPS as the account that owns the repo, not the one gh has"
+                print "\t# active. " w " by default, " p " for its own repos below. The"
+                print "\t# trailing slash keeps this apart from gh'"'"'s section, which must"
+                print "\t# come first."
+            }
+        ' "$tmp" >>"$global"
+        echo "git-multi-account: added the GitHub HTTPS credential sections to $global"
+    fi
+    rm -f "$tmp"
+
+    for account in "$GMA_WORK_ACCOUNT" "$GMA_PERSONAL_ACCOUNT"; do
+        "$gh" auth token --hostname github.com --user "$account" >/dev/null 2>&1 ||
+            echo "git-multi-account: gh holds no github.com token for $account yet; once \`gh auth login\` adds it, HTTPS works for its repos"
+    done
+}
+
 # git_multi_account <zsh|fish> <wrapper>
 # Read both keys, and the personal email and signing key, from <wrapper> with
-# <shell>, then write the two pieces above.
+# <shell>, then write the three pieces above.
 git_multi_account() {
     local shell wrapper work_key personal_key personal_email personal_signingkey
     shell="$1"
@@ -289,4 +389,5 @@ git_multi_account() {
     _gma_git_config "$personal_key" "$personal_email" "$personal_signingkey"
     _gma_warn_if_missing "$personal_key"
     _gma_warn_if_missing "$personal_signingkey"
+    _gma_https_credentials
 }

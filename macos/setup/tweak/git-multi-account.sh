@@ -12,7 +12,8 @@ set -e
 # keypick managed block so `ssh-keypick install` keeps it, and includeIfs in
 # ~/.gitconfig that give the personal account's repos, cloned over SSH or HTTPS,
 # the personal key, email and commit signing. It reads them from the zsh
-# wrapper's per-account helpers.
+# wrapper's per-account helpers. Credential sections, also in ~/.gitconfig, make
+# an HTTPS push authenticate as the account that owns the repo, through gh.
 
 TIER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 # shellcheck source=lib/git-multi-account.sh

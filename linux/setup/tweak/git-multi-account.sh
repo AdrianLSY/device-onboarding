@@ -11,12 +11,13 @@ set -e
 # github.com stanza in ~/.ssh/config defaulting to the work key, and includeIfs
 # in ~/.gitconfig that give the personal account's repos, cloned over SSH or
 # HTTPS, the personal key, email and commit signing. It reads them from the fish
-# wrapper's per-account helpers.
+# wrapper's per-account helpers. Credential sections, also in ~/.gitconfig, make
+# an HTTPS push authenticate as the account that owns the repo, through gh.
 #
 # pacman/github-cli.sh runs before the tweaks and sets the global identity and
 # signing (the work account's) with `git config --global`. This adds only the
-# includeIfs to the same file, after backing it up, so neither overwrites the
-# other's keys. The includes come after github-cli.sh's settings, so for the
+# includeIfs and the credential sections to the same file, after backing it up,
+# so neither overwrites the other's keys. The includes come after github-cli.sh's settings, so for the
 # personal account's repos their values win.
 
 TIER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
