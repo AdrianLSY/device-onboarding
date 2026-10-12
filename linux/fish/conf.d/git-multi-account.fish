@@ -17,6 +17,16 @@
 #   gpg.format                   = ssh
 #   commit.gpgsign / tag.gpgsign = true
 #   gpg.ssh.allowedSignersFile   = ~/.ssh/allowed_signers
+#
+# Only fish loads this wrapper (every fish that reads its config, interactive
+# or not). Git run from anything else (Claude Code, bash scripts, systemd
+# units, editors) takes its GitHub key from config that
+# linux/setup/tweak/git-multi-account.sh writes: a `Host github.com` stanza in
+# ~/.ssh/config defaulting to the Adrian-LSY key, and an includeIf in
+# ~/.gitconfig that switches AdrianLSY/* remotes to the personal key. The
+# wrapper still stamps identity and signing at clone time, and the per-repo
+# core.sshCommand it writes wins over both. The tweak reads its keys from
+# __git_ssh_key_for_account below, so keys are changed here only.
 
 # ───────────────────────── per-account helpers ─────────────────────────
 
