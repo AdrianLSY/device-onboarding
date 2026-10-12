@@ -735,6 +735,970 @@
   },
   "nodes": [
     {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package",
+      "community": 189,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package_name",
+      "community": 189,
+      "norm_label": "name"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package_private",
+      "community": 189,
+      "norm_label": "private"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package_description",
+      "community": 189,
+      "norm_label": "description"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package_dependencies",
+      "community": 189,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "mcp-remote",
+      "file_type": "code",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "lib_mcp_bridge_package_dependencies_mcp_remote",
+      "community": 189,
+      "norm_label": "mcp-remote"
+    },
+    {
+      "label": "check.mjs",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_mcp_check",
+      "community": 152,
+      "norm_label": "check.mjs"
+    },
+    {
+      "label": "CLIENT",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "lib_mcp_check_client",
+      "community": 152,
+      "norm_label": "client"
+    },
+    {
+      "label": "EXIT",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "lib_mcp_check_exit",
+      "community": 152,
+      "norm_label": "exit"
+    },
+    {
+      "label": "done()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "lib_mcp_check_done",
+      "community": 152,
+      "norm_label": "done()"
+    },
+    {
+      "label": "envJson()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "lib_mcp_check_envjson",
+      "community": 152,
+      "norm_label": "envjson()"
+    },
+    {
+      "label": "timeoutMs()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "lib_mcp_check_timeoutms",
+      "community": 152,
+      "norm_label": "timeoutms()"
+    },
+    {
+      "label": "checkStdio()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L63",
+      "_origin": "ast",
+      "id": "lib_mcp_check_checkstdio",
+      "community": 152,
+      "norm_label": "checkstdio()"
+    },
+    {
+      "label": "post()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "lib_mcp_check_post",
+      "community": 152,
+      "norm_label": "post()"
+    },
+    {
+      "label": "networkFailure()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L218",
+      "_origin": "ast",
+      "id": "lib_mcp_check_networkfailure",
+      "community": 152,
+      "norm_label": "networkfailure()"
+    },
+    {
+      "label": "checkHttp()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L222",
+      "_origin": "ast",
+      "id": "lib_mcp_check_checkhttp",
+      "community": 152,
+      "norm_label": "checkhttp()"
+    },
+    {
+      "label": "LEVELS",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L273",
+      "_origin": "ast",
+      "id": "lib_mcp_check_levels",
+      "community": 152,
+      "norm_label": "levels"
+    },
+    {
+      "label": "checkToken()",
+      "file_type": "code",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L275",
+      "_origin": "ast",
+      "id": "lib_mcp_check_checktoken",
+      "community": 152,
+      "norm_label": "checktoken()"
+    },
+    {
+      "label": "common.sh",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common",
+      "community": 174,
+      "norm_label": "common.sh"
+    },
+    {
+      "label": "common.sh script",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_sh__entry",
+      "community": 174,
+      "norm_label": "common.sh script"
+    },
+    {
+      "label": "native()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L24",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_native",
+      "community": 174,
+      "norm_label": "native()"
+    },
+    {
+      "label": "desktop_running()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L63",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_desktop_running",
+      "community": 174,
+      "norm_label": "desktop_running()"
+    },
+    {
+      "label": "inside_desktop()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L84",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_inside_desktop",
+      "community": 174,
+      "norm_label": "inside_desktop()"
+    },
+    {
+      "label": "desktop_ready()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L98",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_desktop_ready",
+      "community": 174,
+      "norm_label": "desktop_ready()"
+    },
+    {
+      "label": "mcp_register()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L117",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_mcp_register",
+      "community": 174,
+      "norm_label": "mcp_register()"
+    },
+    {
+      "label": "remove_skill()",
+      "file_type": "code",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L135",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "lib_mcp_common_remove_skill",
+      "community": 174,
+      "norm_label": "remove_skill()"
+    },
+    {
+      "label": "register.mjs",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_mcp_register",
+      "community": 131,
+      "norm_label": "register.mjs"
+    },
+    {
+      "label": "die()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "lib_mcp_register_die",
+      "community": 131,
+      "norm_label": "die()"
+    },
+    {
+      "label": "parseEntry()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L59",
+      "_origin": "ast",
+      "id": "lib_mcp_register_parseentry",
+      "community": 131,
+      "norm_label": "parseentry()"
+    },
+    {
+      "label": "canonical()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L72",
+      "_origin": "ast",
+      "id": "lib_mcp_register_canonical",
+      "community": 131,
+      "norm_label": "canonical()"
+    },
+    {
+      "label": "same()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "lib_mcp_register_same",
+      "community": 131,
+      "norm_label": "same()"
+    },
+    {
+      "label": "readDesktop()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "lib_mcp_register_readdesktop",
+      "community": 131,
+      "norm_label": "readdesktop()"
+    },
+    {
+      "label": "timestamp()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L104",
+      "_origin": "ast",
+      "id": "lib_mcp_register_timestamp",
+      "community": 131,
+      "norm_label": "timestamp()"
+    },
+    {
+      "label": "backupDesktop()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "lib_mcp_register_backupdesktop",
+      "community": 131,
+      "norm_label": "backupdesktop()"
+    },
+    {
+      "label": "writeDesktop()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "lib_mcp_register_writedesktop",
+      "community": 131,
+      "norm_label": "writedesktop()"
+    },
+    {
+      "label": "claudeConfigPath()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L132",
+      "_origin": "ast",
+      "id": "lib_mcp_register_claudeconfigpath",
+      "community": 131,
+      "norm_label": "claudeconfigpath()"
+    },
+    {
+      "label": "readCodeEntry()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L137",
+      "_origin": "ast",
+      "id": "lib_mcp_register_readcodeentry",
+      "community": 131,
+      "norm_label": "readcodeentry()"
+    },
+    {
+      "label": "claude()",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L152",
+      "_origin": "ast",
+      "id": "lib_mcp_register_claude",
+      "community": 131,
+      "norm_label": "claude()"
+    },
+    {
+      "label": "desktopEntry",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L194",
+      "_origin": "ast",
+      "id": "lib_mcp_register_desktopentry",
+      "community": 131,
+      "norm_label": "desktopentry"
+    },
+    {
+      "label": "codeEntry",
+      "file_type": "code",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L195",
+      "_origin": "ast",
+      "id": "lib_mcp_register_codeentry",
+      "community": 131,
+      "norm_label": "codeentry"
+    },
+    {
+      "label": "kicad.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/kicad.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_kicad",
+      "community": 398,
+      "norm_label": "kicad.sh"
+    },
+    {
+      "label": "kicad.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/kicad.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_kicad_sh__entry",
+      "community": 398,
+      "norm_label": "kicad.sh script"
+    },
+    {
+      "label": "node.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/node.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_node",
+      "community": 400,
+      "norm_label": "node.sh"
+    },
+    {
+      "label": "node.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/node.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_node_sh__entry",
+      "community": 400,
+      "norm_label": "node.sh script"
+    },
+    {
+      "label": "kicad-mcp.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_kicad_mcp",
+      "community": 215,
+      "norm_label": "kicad-mcp.sh"
+    },
+    {
+      "label": "kicad-mcp.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_kicad_mcp_sh__entry",
+      "community": 215,
+      "norm_label": "kicad-mcp.sh script"
+    },
+    {
+      "label": "PATH",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L114",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_kicad_mcp_path",
+      "community": 215,
+      "norm_label": "path"
+    },
+    {
+      "label": "build_env_json()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L125",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_kicad_mcp_build_env_json",
+      "community": 215,
+      "norm_label": "build_env_json()"
+    },
+    {
+      "label": "entry_json()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L185",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_kicad_mcp_entry_json",
+      "community": 215,
+      "norm_label": "entry_json()"
+    },
+    {
+      "label": "onshape-mcp.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_onshape_mcp",
+      "community": 428,
+      "norm_label": "onshape-mcp.sh"
+    },
+    {
+      "label": "onshape-mcp.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_onshape_mcp_sh__entry",
+      "community": 428,
+      "norm_label": "onshape-mcp.sh script"
+    },
+    {
+      "label": "part-db-mcp.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp",
+      "community": 190,
+      "norm_label": "part-db-mcp.sh"
+    },
+    {
+      "label": "part-db-mcp.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp_sh__entry",
+      "community": 190,
+      "norm_label": "part-db-mcp.sh script"
+    },
+    {
+      "label": "PATH",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L63",
+      "metadata": {
+        "language": "bash",
+        "kind": "code"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp_path",
+      "community": 190,
+      "norm_label": "path"
+    },
+    {
+      "label": "check_token()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L91",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp_check_token",
+      "community": 190,
+      "norm_label": "check_token()"
+    },
+    {
+      "label": "keep_readonly()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L120",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp_keep_readonly",
+      "community": 190,
+      "norm_label": "keep_readonly()"
+    },
+    {
+      "label": "entry_json()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L202",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_part_db_mcp_entry_json",
+      "community": 190,
+      "norm_label": "entry_json()"
+    },
+    {
+      "label": "kicad-mcp.sh",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_kicad_mcp",
+      "community": 429,
+      "norm_label": "kicad-mcp.sh"
+    },
+    {
+      "label": "kicad-mcp.sh script",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_kicad_mcp_sh__entry",
+      "community": 429,
+      "norm_label": "kicad-mcp.sh script"
+    },
+    {
+      "label": "onshape-mcp.sh",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_onshape_mcp",
+      "community": 430,
+      "norm_label": "onshape-mcp.sh"
+    },
+    {
+      "label": "onshape-mcp.sh script",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_onshape_mcp_sh__entry",
+      "community": 430,
+      "norm_label": "onshape-mcp.sh script"
+    },
+    {
+      "label": "part-db-mcp.sh",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_part_db_mcp",
+      "community": 431,
+      "norm_label": "part-db-mcp.sh"
+    },
+    {
+      "label": "part-db-mcp.sh script",
+      "file_type": "code",
+      "source_file": "windows/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_tweak_part_db_mcp_sh__entry",
+      "community": 431,
+      "norm_label": "part-db-mcp.sh script"
+    },
+    {
+      "label": "KiCad.KiCad.sh",
+      "file_type": "code",
+      "source_file": "windows/setup/winget/KiCad.KiCad.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_winget_kicad_kicad",
+      "community": 432,
+      "norm_label": "kicad.kicad.sh"
+    },
+    {
+      "label": "KiCad.KiCad.sh script",
+      "file_type": "code",
+      "source_file": "windows/setup/winget/KiCad.KiCad.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_winget_kicad_kicad_sh__entry",
+      "community": 432,
+      "norm_label": "kicad.kicad.sh script"
+    },
+    {
+      "label": "OpenJS.NodeJS.LTS.sh",
+      "file_type": "code",
+      "source_file": "windows/setup/winget/OpenJS.NodeJS.LTS.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_winget_openjs_nodejs_lts",
+      "community": 433,
+      "norm_label": "openjs.nodejs.lts.sh"
+    },
+    {
+      "label": "OpenJS.NodeJS.LTS.sh script",
+      "file_type": "code",
+      "source_file": "windows/setup/winget/OpenJS.NodeJS.LTS.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "windows_setup_winget_openjs_nodejs_lts_sh__entry",
+      "community": 433,
+      "norm_label": "openjs.nodejs.lts.sh script"
+    },
+    {
+      "label": "git-multi-account.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "git-multi-account.sh",
+      "id": "macos_setup_tweak_git_multi_account"
+    },
+    {
+      "label": "git-multi-account.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "git-multi-account.sh script",
+      "id": "macos_setup_tweak_git_multi_account_sh__entry"
+    },
+    {
+      "label": "key_for()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L45",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "key_for()",
+      "id": "macos_setup_tweak_git_multi_account_key_for"
+    },
+    {
+      "label": "expand_tilde()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L58",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "expand_tilde()",
+      "id": "macos_setup_tweak_git_multi_account_expand_tilde"
+    },
+    {
+      "label": "backup()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L66",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "backup()",
+      "id": "macos_setup_tweak_git_multi_account_backup"
+    },
+    {
+      "label": "warn_if_missing()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L73",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "warn_if_missing()",
+      "id": "macos_setup_tweak_git_multi_account_warn_if_missing"
+    },
+    {
+      "label": "has_github_stanza()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L85",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "has_github_stanza()",
+      "id": "macos_setup_tweak_git_multi_account_has_github_stanza"
+    },
+    {
+      "label": "include_present()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L163",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 266,
+      "norm_label": "include_present()",
+      "id": "macos_setup_tweak_git_multi_account_include_present"
+    },
+    {
+      "label": "ssh-keypick.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "ssh-keypick.sh",
+      "id": "macos_setup_tweak_ssh_keypick"
+    },
+    {
+      "label": "ssh-keypick.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "ssh-keypick.sh script",
+      "id": "macos_setup_tweak_ssh_keypick_sh__entry"
+    },
+    {
+      "label": "has_private_keys()",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L54",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_function"
+      },
+      "_origin": "ast",
+      "community": 4,
+      "norm_label": "has_private_keys()",
+      "id": "macos_setup_tweak_ssh_keypick_has_private_keys"
+    },
+    {
       "label": "hitl-loop.template.sh",
       "file_type": "code",
       "source_file": ".agents/skills/diagnosing-bugs/scripts/hitl-loop.template.sh",
@@ -1665,7 +2629,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "clipboard-daemon.sh",
       "id": "linux_rofi_clipboard_clipboard_daemon"
@@ -1680,7 +2644,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "clipboard-daemon.sh script",
       "id": "linux_rofi_clipboard_clipboard_daemon_sh__entry"
@@ -1695,7 +2659,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "vacuum_daemon()",
       "id": "linux_rofi_clipboard_clipboard_daemon_vacuum_daemon"
@@ -1710,7 +2674,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "insert_clipboard()",
       "id": "linux_rofi_clipboard_clipboard_daemon_insert_clipboard"
@@ -1725,7 +2689,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "cleanup()",
       "id": "linux_rofi_clipboard_clipboard_daemon_cleanup"
@@ -1740,7 +2704,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "clipboard.sh",
       "id": "linux_rofi_clipboard_clipboard"
@@ -1755,7 +2719,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "clipboard.sh script",
       "id": "linux_rofi_clipboard_clipboard_sh__entry"
@@ -1770,7 +2734,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "get_preview_list()",
       "id": "linux_rofi_clipboard_clipboard_get_preview_list"
@@ -1785,7 +2749,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "get_content()",
       "id": "linux_rofi_clipboard_clipboard_get_content"
@@ -1950,7 +2914,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 17,
+      "community": 73,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": ".setup.sh script",
       "id": "linux_setup_setup_sh__entry"
@@ -3735,7 +4699,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 98,
+      "community": 286,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "sbctl.sh",
       "id": "linux_setup_pacman_sbctl"
@@ -3750,7 +4714,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 98,
+      "community": 286,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "sbctl.sh script",
       "id": "linux_setup_pacman_sbctl_sh__entry"
@@ -4215,7 +5179,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 290,
+      "community": 208,
       "community_name": "Keyd",
       "norm_label": "keyd.sh",
       "id": "linux_setup_tweak_keyd"
@@ -4230,7 +5194,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 290,
+      "community": 208,
       "community_name": "Keyd",
       "norm_label": "keyd.sh script",
       "id": "linux_setup_tweak_keyd_sh__entry"
@@ -4275,7 +5239,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "secure-boot.sh",
       "id": "linux_setup_tweak_secure_boot"
@@ -4305,7 +5269,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "sign_file()",
       "id": "linux_setup_tweak_secure_boot_sign_file"
@@ -4350,7 +5314,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 309,
+      "community": 267,
       "community_name": "Systemd Boot",
       "norm_label": "systemd-boot.sh",
       "id": "linux_setup_tweak_systemd_boot"
@@ -4365,7 +5329,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 309,
+      "community": 267,
       "community_name": "Systemd Boot",
       "norm_label": "systemd-boot.sh script",
       "id": "linux_setup_tweak_systemd_boot_sh__entry"
@@ -5443,7 +6407,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "gitleaks.sh",
       "id": "macos_setup_brew_gitleaks"
@@ -5458,7 +6422,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "gitleaks.sh script",
       "id": "macos_setup_brew_gitleaks_sh__entry"
@@ -5833,7 +6797,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "pre-commit.sh",
       "id": "macos_setup_brew_pre_commit"
@@ -5848,7 +6812,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "pre-commit.sh script",
       "id": "macos_setup_brew_pre_commit_sh__entry"
@@ -6664,51 +7628,6 @@
       "id": "macos_setup_tweak_screenshot_shortcuts_sh__entry"
     },
     {
-      "label": "ssh-keypick.sh",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "ssh-keypick.sh",
-      "id": "macos_setup_tweak_ssh_keypick"
-    },
-    {
-      "label": "ssh-keypick.sh script",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "ssh-keypick.sh script",
-      "id": "macos_setup_tweak_ssh_keypick_sh__entry"
-    },
-    {
-      "label": "has_private_keys()",
-      "file_type": "code",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L48",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_function"
-      },
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "has_private_keys()",
-      "id": "macos_setup_tweak_ssh_keypick_has_private_keys"
-    },
-    {
       "label": "update-schedule.sh",
       "file_type": "code",
       "source_file": "macos/setup/tweak/update-schedule.sh",
@@ -6803,7 +7722,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 16,
+      "community": 102,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "setup.sh",
       "id": "setup"
@@ -7103,7 +8022,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 398,
+      "community": 192,
       "community_name": "Cloudflare cloudflared sh script",
       "norm_label": "cloudflare.cloudflared.sh",
       "id": "windows_setup_winget_cloudflare_cloudflared"
@@ -7118,7 +8037,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 398,
+      "community": 192,
       "community_name": "Cloudflare cloudflared sh script",
       "norm_label": "cloudflare.cloudflared.sh script",
       "id": "windows_setup_winget_cloudflare_cloudflared_sh__entry"
@@ -7673,7 +8592,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 192,
+      "community": 290,
       "community_name": ".Setup 3",
       "norm_label": "spotify.spotify.sh",
       "id": "windows_setup_winget_spotify_spotify"
@@ -7688,7 +8607,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 192,
+      "community": 290,
       "community_name": ".Setup 3",
       "norm_label": "spotify.spotify.sh script",
       "id": "windows_setup_winget_spotify_spotify_sh__entry"
@@ -8003,7 +8922,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 400,
+      "community": 192,
       "community_name": "direnv direnv sh script",
       "norm_label": "direnv.direnv.sh",
       "id": "windows_setup_winget_direnv_direnv"
@@ -8018,7 +8937,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 400,
+      "community": 192,
       "community_name": "direnv direnv sh script",
       "norm_label": "direnv.direnv.sh script",
       "id": "windows_setup_winget_direnv_direnv_sh__entry"
@@ -8334,7 +9253,7 @@
       "source_file": ".agents/skills/codebase-design/DEEPENING.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "deepening.md",
       "id": "agents_skills_codebase_design_deepening"
@@ -8345,7 +9264,7 @@
       "source_file": ".agents/skills/codebase-design/DEEPENING.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 276,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "deepening",
       "id": "agents_skills_codebase_design_deepening_deepening"
@@ -8411,7 +9330,7 @@
       "source_file": ".agents/skills/codebase-design/DEEPENING.md",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 105,
+      "community": 276,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "seam discipline",
       "id": "agents_skills_codebase_design_deepening_seam_discipline"
@@ -8422,7 +9341,7 @@
       "source_file": ".agents/skills/codebase-design/DEEPENING.md",
       "source_location": "L32",
       "_origin": "ast",
-      "community": 105,
+      "community": 276,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "testing strategy: replace, don't layer",
       "id": "agents_skills_codebase_design_deepening_testing_strategy_replace_don_t_layer"
@@ -8433,7 +9352,7 @@
       "source_file": ".agents/skills/codebase-design/DESIGN-IT-TWICE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "design-it-twice.md",
       "id": "agents_skills_codebase_design_design_it_twice"
@@ -8501,7 +9420,7 @@
       "source_file": ".agents/skills/codebase-design/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "skill.md",
       "id": "agents_skills_codebase_design_skill"
@@ -9628,7 +10547,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "query.md",
       "id": "agents_skills_graphify_references_query"
@@ -9639,7 +10558,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "graphify reference: query, path, explain",
       "id": "agents_skills_graphify_references_query_graphify_reference_query_path_explain"
@@ -9650,7 +10569,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L23",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "step 0 \u2014 constrained query expansion (required before traversal)",
       "id": "agents_skills_graphify_references_query_step_0_constrained_query_expansion_required_before_traversal"
@@ -9661,7 +10580,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L61",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "step 1 \u2014 traversal",
       "id": "agents_skills_graphify_references_query_step_1_traversal"
@@ -9672,7 +10591,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L186",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "for /graphify path",
       "id": "agents_skills_graphify_references_query_for_graphify_path"
@@ -9683,7 +10602,7 @@
       "source_file": ".agents/skills/graphify/references/query.md",
       "source_location": "L254",
       "_origin": "ast",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "for /graphify explain",
       "id": "agents_skills_graphify_references_query_for_graphify_explain"
@@ -11871,7 +12790,7 @@
       "source_file": ".agents/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 208,
+      "community": 141,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "learning-record-format.md",
       "id": "agents_skills_teach_learning_record_format"
@@ -12194,7 +13113,7 @@
       "source_file": ".agents/skills/to-questionnaire/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "skill.md",
       "id": "agents_skills_to_questionnaire_skill"
@@ -12205,7 +13124,7 @@
       "source_file": ".agents/skills/to-questionnaire/SKILL.md",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "document structure",
       "id": "agents_skills_to_questionnaire_skill_document_structure"
@@ -13926,7 +14845,7 @@
       "source_file": ".claude/skills/codebase-design/DEEPENING.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "deepening.md",
       "id": "claude_skills_codebase_design_deepening"
@@ -13937,7 +14856,7 @@
       "source_file": ".claude/skills/codebase-design/DEEPENING.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 283,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "deepening",
       "id": "claude_skills_codebase_design_deepening_deepening"
@@ -14003,7 +14922,7 @@
       "source_file": ".claude/skills/codebase-design/DEEPENING.md",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 105,
+      "community": 283,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "seam discipline",
       "id": "claude_skills_codebase_design_deepening_seam_discipline"
@@ -14014,7 +14933,7 @@
       "source_file": ".claude/skills/codebase-design/DEEPENING.md",
       "source_location": "L32",
       "_origin": "ast",
-      "community": 105,
+      "community": 283,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "testing strategy: replace, don't layer",
       "id": "claude_skills_codebase_design_deepening_testing_strategy_replace_don_t_layer"
@@ -14025,7 +14944,7 @@
       "source_file": ".claude/skills/codebase-design/DESIGN-IT-TWICE.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "design-it-twice.md",
       "id": "claude_skills_codebase_design_design_it_twice"
@@ -14093,7 +15012,7 @@
       "source_file": ".claude/skills/codebase-design/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 105,
+      "community": 296,
       "community_name": "Codebase Design Skill Docs",
       "norm_label": "skill.md",
       "id": "claude_skills_codebase_design_skill"
@@ -17419,7 +18338,7 @@
       "source_file": ".claude/skills/teach/GLOSSARY-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "glossary-format.md",
       "id": "claude_skills_teach_glossary_format"
@@ -17430,7 +18349,7 @@
       "source_file": ".claude/skills/teach/GLOSSARY-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "glossary.md format",
       "id": "claude_skills_teach_glossary_format_glossary_md_format"
@@ -17441,7 +18360,7 @@
       "source_file": ".claude/skills/teach/GLOSSARY-FORMAT.md",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "structure",
       "id": "claude_skills_teach_glossary_format_structure"
@@ -17452,7 +18371,7 @@
       "source_file": ".claude/skills/teach/GLOSSARY-FORMAT.md",
       "source_location": "L27",
       "_origin": "ast",
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "rules",
       "id": "claude_skills_teach_glossary_format_rules"
@@ -17463,7 +18382,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 208,
+      "community": 141,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "learning-record-format.md",
       "id": "claude_skills_teach_learning_record_format"
@@ -17474,7 +18393,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "learning record format",
       "id": "claude_skills_teach_learning_record_format_learning_record_format"
@@ -17485,7 +18404,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L7",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "template",
       "id": "claude_skills_teach_learning_record_format_template"
@@ -17496,7 +18415,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "optional sections",
       "id": "claude_skills_teach_learning_record_format_optional_sections"
@@ -17507,7 +18426,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "numbering",
       "id": "claude_skills_teach_learning_record_format_numbering"
@@ -17518,7 +18437,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "when to write a learning record",
       "id": "claude_skills_teach_learning_record_format_when_to_write_a_learning_record"
@@ -17529,7 +18448,7 @@
       "source_file": ".claude/skills/teach/LEARNING-RECORD-FORMAT.md",
       "source_location": "L38",
       "_origin": "ast",
-      "community": 208,
+      "community": 229,
       "community_name": "Claude Skills Teach Learning Record",
       "norm_label": "what does _not_ qualify",
       "id": "claude_skills_teach_learning_record_format_what_does_not_qualify"
@@ -17553,7 +18472,7 @@
       "source_file": ".claude/skills/teach/MISSION-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 190,
+      "community": 142,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "mission-format.md",
       "id": "claude_skills_teach_mission_format"
@@ -17564,7 +18483,7 @@
       "source_file": ".claude/skills/teach/MISSION-FORMAT.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 190,
+      "community": 142,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "mission.md format",
       "id": "claude_skills_teach_mission_format_mission_md_format"
@@ -17575,7 +18494,7 @@
       "source_file": ".claude/skills/teach/MISSION-FORMAT.md",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 190,
+      "community": 142,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "template",
       "id": "claude_skills_teach_mission_format_template"
@@ -17586,7 +18505,7 @@
       "source_file": ".claude/skills/teach/MISSION-FORMAT.md",
       "source_location": "L25",
       "_origin": "ast",
-      "community": 190,
+      "community": 142,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "rules",
       "id": "claude_skills_teach_mission_format_rules"
@@ -17786,7 +18705,7 @@
       "source_file": ".claude/skills/to-questionnaire/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "skill.md",
       "id": "claude_skills_to_questionnaire_skill"
@@ -17797,7 +18716,7 @@
       "source_file": ".claude/skills/to-questionnaire/SKILL.md",
       "source_location": "L18",
       "_origin": "ast",
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "document structure",
       "id": "claude_skills_to_questionnaire_skill_document_structure"
@@ -19202,7 +20121,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L22",
       "_origin": "ast",
-      "community": 44,
+      "community": 309,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "what gets automated",
       "id": "secure_boot_what_gets_automated"
@@ -19213,7 +20132,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L24",
       "_origin": "ast",
-      "community": 44,
+      "community": 309,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "\u2705 fully automated steps",
       "id": "secure_boot_fully_automated_steps"
@@ -19224,7 +20143,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 44,
+      "community": 309,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "\u26a0\ufe0f manual steps required",
       "id": "secure_boot_manual_steps_required"
@@ -19268,7 +20187,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L115",
       "_origin": "ast",
-      "community": 44,
+      "community": 313,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "dual-boot with windows",
       "id": "secure_boot_dual_boot_with_windows"
@@ -19279,7 +20198,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L117",
       "_origin": "ast",
-      "community": 44,
+      "community": 313,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "why `--microsoft` flag?",
       "id": "secure_boot_why_microsoft_flag"
@@ -19290,7 +20209,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L129",
       "_origin": "ast",
-      "community": 44,
+      "community": 313,
       "community_name": "Secure Boot Setup Automation",
       "norm_label": "without microsoft keys",
       "id": "secure_boot_without_microsoft_keys"
@@ -19488,7 +20407,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L295",
       "_origin": "ast",
-      "community": 313,
+      "community": 44,
       "community_name": "Secure Boot 6",
       "norm_label": "maintenance",
       "id": "secure_boot_maintenance"
@@ -19499,7 +20418,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L297",
       "_origin": "ast",
-      "community": 313,
+      "community": 44,
       "community_name": "Secure Boot 6",
       "norm_label": "after kernel updates",
       "id": "secure_boot_after_kernel_updates"
@@ -19510,7 +20429,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L309",
       "_origin": "ast",
-      "community": 313,
+      "community": 44,
       "community_name": "Secure Boot 6",
       "norm_label": "after bootloader updates",
       "id": "secure_boot_after_bootloader_updates"
@@ -19521,7 +20440,7 @@
       "source_file": "SECURE_BOOT.md",
       "source_location": "L315",
       "_origin": "ast",
-      "community": 313,
+      "community": 44,
       "community_name": "Secure Boot 6",
       "norm_label": "after installing new bootable oses",
       "id": "secure_boot_after_installing_new_bootable_oses"
@@ -19653,7 +20572,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 101,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "machine bootstrap overview",
       "id": "readme_bootstrap_overview"
@@ -19667,7 +20586,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 101,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "macos linux windows tier layout",
       "id": "readme_os_tier_layout"
@@ -19695,7 +20614,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 101,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "platform bootstrap prerequisites",
       "id": "readme_platform_prerequisites"
@@ -19739,7 +20658,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Selecting the OS at runtime replaces branch-per-machine config.",
-      "community": 16,
+      "community": 101,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "single branch for all machines",
       "id": "readme_single_branch"
@@ -19781,7 +20700,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "sbctl signing utility",
       "id": "secure_boot_sbctl"
@@ -19851,7 +20770,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "signed bootloaders and kernels",
       "id": "secure_boot_signed_components"
@@ -19865,7 +20784,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "pacman automatic signing hook",
       "id": "secure_boot_pacman_signing_hook"
@@ -19922,7 +20841,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 98,
+      "community": 240,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "idempotent signing and partial-state repair",
       "id": "secure_boot_idempotent_signing"
@@ -22223,7 +23142,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Tests should exercise observable behavior through the same interface used by callers.",
-      "community": 67,
+      "community": 146,
       "community_name": "Claude Diagnosing Bugs Diagnosing Bugs",
       "norm_label": "claude codebase design: interface as test surface",
       "id": "claude_skills_codebase_design_skill_test_surface"
@@ -22267,7 +23186,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 146,
       "community_name": "Claude Diagnosing Bugs Diagnosing Bugs",
       "norm_label": "claude codebase design: accept dependencies",
       "id": "claude_skills_codebase_design_skill_dependency_injection"
@@ -22281,7 +23200,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 67,
+      "community": 146,
       "community_name": "Claude Diagnosing Bugs Diagnosing Bugs",
       "norm_label": "claude codebase design: return results",
       "id": "claude_skills_codebase_design_skill_result_return"
@@ -22469,7 +23388,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Replace shallow-unit tests with outcome tests at the deepened module interface.",
-      "community": 67,
+      "community": 146,
       "community_name": "Claude Diagnosing Bugs Diagnosing Bugs",
       "norm_label": "claude codebase design: replace-not-layer tests",
       "id": "claude_skills_codebase_design_deepening_replace_not_layer"
@@ -24063,7 +24982,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Use the built graph immediately for natural-language questions; extraction is unnecessary for queries.",
-      "community": 34,
+      "community": 57,
       "community_name": "Graphify skill pipeline",
       "norm_label": "existing-graph query fast path",
       "id": "_agents_skills_graphify_skill_existing_graph_fast_path"
@@ -24390,7 +25309,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 157,
       "community_name": "Graphify skill pipeline",
       "norm_label": "graphify agents.md integration",
       "id": "_agents_skills_graphify_references_hooks_agents_integration"
@@ -24405,7 +25324,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Use only tokens from actual node labels to avoid false matches or invented search terms.",
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "graph vocabulary query expansion",
       "id": "_agents_skills_graphify_references_query_vocab_expansion"
@@ -24419,7 +25338,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "breadth-first graph query",
       "id": "_agents_skills_graphify_references_query_bfs_query"
@@ -24433,7 +25352,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 174,
+      "community": 57,
       "community_name": "Query",
       "norm_label": "depth-first graph query",
       "id": "_agents_skills_graphify_references_query_dfs_query"
@@ -24618,7 +25537,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 157,
       "community_name": "Graphify skill pipeline",
       "norm_label": "graphify claude code skill pipeline",
       "id": "_claude_skills_graphify_skill_graphify_claude"
@@ -24633,7 +25552,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Writable agents are required to persist semantic chunk JSON.",
-      "community": 34,
+      "community": 157,
       "community_name": "Graphify skill pipeline",
       "norm_label": "general-purpose extraction subagents",
       "id": "_claude_skills_graphify_skill_general_purpose_subagents"
@@ -24647,7 +25566,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 157,
       "community_name": "Graphify skill pipeline",
       "norm_label": "graphify claude.md integration",
       "id": "_claude_skills_graphify_skill_claude_md_integration"
@@ -24773,7 +25692,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 34,
+      "community": 157,
       "community_name": "Graphify skill pipeline",
       "norm_label": "graphify native claude.md setup",
       "id": "_claude_skills_graphify_references_hooks_claude_md_setup"
@@ -34369,7 +35288,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 167,
+      "community": 47,
       "community_name": "Mocking",
       "norm_label": "external api database time and filesystem boundaries",
       "id": "claude_skills_tdd_mocking_external_boundaries"
@@ -34624,7 +35543,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 142,
+      "community": 141,
       "community_name": "Agent Teach Concrete learning mission",
       "norm_label": "agent teach: mission shift caused by learning",
       "id": "agents_skills_teach_learning_record_format_mission_shift"
@@ -34723,7 +35642,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 142,
+      "community": 141,
       "community_name": "Agent Teach Concrete learning mission",
       "norm_label": "agent teach: mission revision when the goal changes",
       "id": "agents_skills_teach_mission_format_mission_revision"
@@ -34976,7 +35895,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "claude teach: canonical teaching-workspace glossary",
       "id": "claude_skills_teach_glossary_format_glossary"
@@ -34991,7 +35910,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The glossary records compressed knowledge rather than introducing new vocabulary.",
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "claude teach: terms promoted after demonstrated understanding",
       "id": "claude_skills_teach_glossary_format_understood_terms"
@@ -35005,7 +35924,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "claude teach: preferred terms and avoided aliases",
       "id": "claude_skills_teach_glossary_format_preferred_aliases"
@@ -35019,7 +35938,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "claude teach: explicit resolution of ambiguous terms",
       "id": "claude_skills_teach_glossary_format_ambiguity_resolution"
@@ -35033,7 +35952,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 189,
+      "community": 183,
       "community_name": "Glossary Format 2",
       "norm_label": "claude teach: definitions revised as understanding deepens",
       "id": "claude_skills_teach_glossary_format_definition_revision"
@@ -35117,7 +36036,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 190,
+      "community": 229,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "claude teach: concrete learning mission",
       "id": "claude_skills_teach_mission_format_mission"
@@ -35131,7 +36050,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 190,
+      "community": 229,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "claude teach: underlying real-world reason to learn",
       "id": "claude_skills_teach_mission_format_underlying_why"
@@ -35145,7 +36064,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 190,
+      "community": 229,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "claude teach: observable success criteria",
       "id": "claude_skills_teach_mission_format_observable_success"
@@ -35159,7 +36078,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 190,
+      "community": 142,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "claude teach: time budget commitments and preferences",
       "id": "claude_skills_teach_mission_format_constraints"
@@ -35174,7 +36093,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Separate unrelated learning aims into distinct workspaces.",
-      "community": 190,
+      "community": 229,
       "community_name": "Claude Teach Concrete learning mission",
       "norm_label": "claude teach: one mission per teaching workspace",
       "id": "claude_skills_teach_mission_format_single_mission"
@@ -35540,7 +36459,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "agent to questionnaire: to questionnaire explicit invocation interface",
       "id": "agents_skills_to_questionnaire_agents_openai_questionnaire_interface"
@@ -35653,7 +36572,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 89,
+      "community": 254,
       "community_name": "Skill 4 2",
       "norm_label": "claude to questionnaire: to questionnaire explicit invocation interface",
       "id": "claude_skills_to_questionnaire_agents_openai_questionnaire_interface"
@@ -41697,7 +42616,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 83,
       "community_name": "CachyOS Fish startup configuration",
       "norm_label": "fish 4.3 global theme migration",
       "id": "linux_fish_conf_d_fish_frozen_theme_fish43_theme_migration"
@@ -41711,7 +42630,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 83,
       "community_name": "CachyOS Fish startup configuration",
       "norm_label": "global fish syntax and pager colors",
       "id": "linux_fish_conf_d_fish_frozen_theme_global_theme_colors"
@@ -42763,7 +43682,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "hyprland root configuration",
       "id": "linux_hypr_hyprland_hyprland"
@@ -42777,7 +43696,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "alt main modifier",
       "id": "linux_hypr_hyprland_main_mod"
@@ -42791,7 +43710,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "hyprland animation policy",
       "id": "linux_hypr_config_animations_animations"
@@ -42805,7 +43724,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "workspace and border animations disabled",
       "id": "linux_hypr_config_animations_workspace_disabled"
@@ -42819,7 +43738,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "notification layer slide animation",
       "id": "linux_hypr_config_animations_layer_slide"
@@ -42931,7 +43850,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 266,
+      "community": 153,
       "community_name": "Rofi Clipboard Daemon",
       "norm_label": "clipboard manager daemon",
       "id": "linux_hypr_config_autostart_clipboard"
@@ -42973,7 +43892,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "hyprland neutral color palette",
       "id": "linux_hypr_config_colors_colors"
@@ -42987,7 +43906,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "rgba color variables",
       "id": "linux_hypr_config_colors_rgba"
@@ -43001,7 +43920,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "hyprland window decorations",
       "id": "linux_hypr_config_decorations_decorations"
@@ -43015,7 +43934,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "opaque unrounded windows",
       "id": "linux_hypr_config_decorations_opacity"
@@ -43029,7 +43948,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "three-pass xray blur",
       "id": "linux_hypr_config_decorations_blur"
@@ -43043,7 +43962,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 267,
+      "community": 95,
       "community_name": "Hyprland Colors and Decorations",
       "norm_label": "disabled shadows",
       "id": "linux_hypr_config_decorations_shadow"
@@ -43239,7 +44158,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "hyprland input configuration",
       "id": "linux_hypr_config_input_input"
@@ -43253,7 +44172,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "us mac keyboard variant",
       "id": "linux_hypr_config_input_keyboard"
@@ -43267,7 +44186,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "follow-mouse and float focus policy",
       "id": "linux_hypr_config_input_focus"
@@ -43421,7 +44340,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "hyprland monitor configuration",
       "id": "linux_hypr_config_monitor_monitor_config"
@@ -43440,7 +44359,7 @@
         "position": "auto",
         "scale": 1
       },
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "catch-all preferred-mode monitor",
       "id": "linux_hypr_config_monitor_catch_all_monitor"
@@ -43455,7 +44374,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Scaling overrides are examples only and are currently disabled.",
-      "community": 152,
+      "community": 95,
       "community_name": "Hyprland Input Monitor Animations",
       "norm_label": "commented optional xwayland scaling",
       "id": "linux_hypr_config_monitor_optional_xwayland_scaling"
@@ -43653,7 +44572,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "hyprland window and workspace rules",
       "id": "linux_hypr_config_windowrules_window_rules"
@@ -43668,7 +44587,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Window animations are disabled globally while notification layers have their own animations.",
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "window animation policy",
       "id": "linux_hypr_config_windowrules_window_animation_policy"
@@ -43682,7 +44601,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "floating utility and dialog windows",
       "id": "linux_hypr_config_windowrules_floating_windows"
@@ -43696,7 +44615,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "per-application opacity",
       "id": "linux_hypr_config_windowrules_opacity"
@@ -43710,7 +44629,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "picture-in-picture geometry",
       "id": "linux_hypr_config_windowrules_pip_geometry"
@@ -43724,7 +44643,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "media floating-window geometry",
       "id": "linux_hypr_config_windowrules_media_float_geometry"
@@ -43738,7 +44657,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "kitty slide-right animation",
       "id": "linux_hypr_config_windowrules_kitty_slide"
@@ -43752,7 +44671,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "firefox blur exception",
       "id": "linux_hypr_config_windowrules_firefox_no_blur"
@@ -43766,7 +44685,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "floating window decorations",
       "id": "linux_hypr_config_windowrules_floating_decorations"
@@ -43780,7 +44699,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "tiling window decorations",
       "id": "linux_hypr_config_windowrules_tiling_decorations"
@@ -43794,7 +44713,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "single-window smart gaps",
       "id": "linux_hypr_config_windowrules_smart_gaps"
@@ -43822,7 +44741,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 131,
+      "community": 43,
       "community_name": "Hyprland Window Rules Detail",
       "norm_label": "notification layer animations",
       "id": "linux_hypr_config_windowrules_notification_layers"
@@ -44675,7 +45594,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 286,
+      "community": 5,
       "community_name": "Qt6 qtct configuration",
       "norm_label": "qt6 qtct configuration",
       "id": "linux_qt6ct_qt6ct_qtct_config"
@@ -44694,7 +45613,7 @@
         "palette": "darker",
         "icon_theme": "breeze-dark"
       },
-      "community": 286,
+      "community": 5,
       "community_name": "Qt6 qtct configuration",
       "norm_label": "qt6 fusion darker theme",
       "id": "linux_qt6ct_qt6ct_fusion_dark"
@@ -44712,7 +45631,7 @@
         "fixed": "Monospace 11",
         "general": "Sans Serif 11"
       },
-      "community": 286,
+      "community": 5,
       "community_name": "Qt6 qtct configuration",
       "norm_label": "qt6 general and fixed fonts",
       "id": "linux_qt6ct_qt6ct_fonts"
@@ -44731,7 +45650,7 @@
         "menus_have_icons": true,
         "dialog_buttons_have_icons": true
       },
-      "community": 286,
+      "community": 5,
       "community_name": "Qt6 qtct configuration",
       "norm_label": "qt6 interaction settings",
       "id": "linux_qt6ct_qt6ct_interface"
@@ -44748,7 +45667,7 @@
       "settings": {
         "force_raster_widgets": true
       },
-      "community": 286,
+      "community": 5,
       "community_name": "Qt6 qtct configuration",
       "norm_label": "qt6 raster-widget fallback",
       "id": "linux_qt6ct_qt6ct_raster_widgets"
@@ -44768,7 +45687,7 @@
         "foreground": "#FFFFFF",
         "secondary_foreground": "#666666"
       },
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "clipboard rofi style",
       "id": "linux_rofi_clipboard_style_rofi_style"
@@ -44782,7 +45701,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "clipboard black-and-white palette",
       "id": "linux_rofi_clipboard_style_shared_palette"
@@ -44796,7 +45715,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "clipboard selected-item emphasis",
       "id": "linux_rofi_clipboard_style_selected_text"
@@ -44954,7 +45873,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 215,
+      "community": 55,
       "community_name": "clipboard sh",
       "norm_label": "rofi clipboard: rofi prompt and entry input bar",
       "id": "linux_rofi_clipboard_style_input_bar"
@@ -46267,7 +47186,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 74,
       "community_name": "Zsh Tweak and Backup Naming",
       "norm_label": "macos zsh login profile",
       "id": "macos_zsh_zprofile_zprofile"
@@ -46281,7 +47200,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 74,
       "community_name": "Zsh Tweak and Backup Naming",
       "norm_label": "homebrew zsh shell environment",
       "id": "macos_zsh_zprofile_brew_shellenv"
@@ -46309,7 +47228,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "macos interactive zsh configuration",
       "id": "macos_zsh_zshrc_zshrc"
@@ -46323,7 +47242,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "zinit plugin loader",
       "id": "macos_zsh_zshrc_zinit_loader"
@@ -46351,7 +47270,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "deferred zsh suggestions and syntax plugins",
       "id": "macos_zsh_zshrc_async_plugins"
@@ -46365,7 +47284,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "shared and deduplicated zsh history",
       "id": "macos_zsh_zshrc_history"
@@ -46379,7 +47298,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "cached zsh completion initialization",
       "id": "macos_zsh_zshrc_completion"
@@ -46393,7 +47312,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "zoxide replaces cd command",
       "id": "macos_zsh_zshrc_zoxide_cd"
@@ -46422,7 +47341,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The compiled artifact is written under ZDOTDIR; when ZDOTDIR is the repo-symlinked config directory this creates runtime state in the working tree.",
-      "community": 30,
+      "community": 58,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "compile .zshrc to .zshrc.zwc",
       "id": "macos_zsh_zshrc_self_compile"
@@ -46436,7 +47355,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "optional ~/.local/bin/env sourcing",
       "id": "macos_zsh_zshrc_local_bin_env"
@@ -47012,7 +47931,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "update homebrew packages and zinit plugins",
       "id": "macos_zsh_rc_d_update_update"
@@ -47026,7 +47945,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "brew update, upgrade, cleanup",
       "id": "macos_zsh_rc_d_update_brew_maintenance"
@@ -47040,7 +47959,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "zinit update --all",
       "id": "macos_zsh_rc_d_update_zinit_plugin_update"
@@ -50289,7 +51208,7 @@
         "kind": "formula"
       },
       "_origin": "derived",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "macos homebrew formula gitleaks",
       "id": "provisioned_macos_brew_gitleaks"
@@ -50510,7 +51429,7 @@
         "kind": "formula"
       },
       "_origin": "derived",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "macos homebrew formula pre-commit",
       "id": "provisioned_macos_brew_pre_commit"
@@ -51394,7 +52313,7 @@
         "kind": "package"
       },
       "_origin": "derived",
-      "community": 98,
+      "community": 286,
       "community_name": "Signed bootloaders and kernels",
       "norm_label": "linux pacman package sbctl",
       "id": "provisioned_linux_pacman_sbctl"
@@ -52159,7 +53078,7 @@
         "kind": "package"
       },
       "_origin": "derived",
-      "community": 398,
+      "community": 192,
       "community_name": "Cloudflare cloudflared sh script",
       "norm_label": "windows winget package cloudflare.cloudflared",
       "id": "provisioned_windows_winget_cloudflare_cloudflared"
@@ -52482,7 +53401,7 @@
         "kind": "package"
       },
       "_origin": "derived",
-      "community": 192,
+      "community": 290,
       "community_name": ".Setup 3",
       "norm_label": "windows winget package spotify.spotify",
       "id": "provisioned_windows_winget_spotify_spotify"
@@ -52669,7 +53588,7 @@
         "kind": "package"
       },
       "_origin": "derived",
-      "community": 400,
+      "community": 192,
       "community_name": "direnv direnv sh script",
       "norm_label": "windows winget package direnv.direnv",
       "id": "provisioned_windows_winget_direnv_direnv"
@@ -52885,7 +53804,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "sequential brew update, upgrade, cleanup, and zinit update",
       "id": "macos_setup_tweak_update_schedule_brew_zinit_chain"
@@ -52902,100 +53821,6 @@
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "boot out prior agent and bootstrap generated plist",
       "id": "macos_setup_tweak_update_schedule_launchctl_reload"
-    },
-    {
-      "label": "Stable ~/.config/bin/ssh-keypick helper path",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L17",
-      "metadata": {
-        "kind": "runtime_path",
-        "runtime_path": "~/.config/bin/ssh-keypick"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "stable ~/.config/bin/ssh-keypick helper path",
-      "id": "macos_setup_tweak_ssh_keypick_canonical_path"
-    },
-    {
-      "label": "In-tree helper with canonical-path fallback",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L21",
-      "metadata": {
-        "kind": "concept"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "in-tree helper with canonical-path fallback",
-      "id": "macos_setup_tweak_ssh_keypick_helper_source_fallback"
-    },
-    {
-      "label": "Convenience ~/.local/bin/ssh-keypick symlink",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L31",
-      "metadata": {
-        "kind": "runtime_file",
-        "runtime_path": "~/.local/bin/ssh-keypick"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "convenience ~/.local/bin/ssh-keypick symlink",
-      "id": "macos_setup_tweak_ssh_keypick_path_symlink"
-    },
-    {
-      "label": "Create ~/.ssh with 0700 permissions",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L41",
-      "metadata": {
-        "kind": "runtime_directory",
-        "runtime_path": "~/.ssh"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "create ~/.ssh with 0700 permissions",
-      "id": "macos_setup_tweak_ssh_keypick_ssh_directory_permissions"
-    },
-    {
-      "label": "Only install SSH Match block when private key exists",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L45",
-      "metadata": {
-        "kind": "concept"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "only install ssh match block when private key exists",
-      "id": "macos_setup_tweak_ssh_keypick_private_key_gate"
-    },
-    {
-      "label": "Defer Match block until SSH private key is added",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L64",
-      "metadata": {
-        "kind": "concept"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "defer match block until ssh private key is added",
-      "id": "macos_setup_tweak_ssh_keypick_deferred_install"
-    },
-    {
-      "label": "Run helper install with stable KEYPICK_BIN",
-      "file_type": "concept",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "metadata": {
-        "kind": "concept"
-      },
-      "community": 1,
-      "community_name": "macOS SSH Key Picker",
-      "norm_label": "run helper install with stable keypick_bin",
-      "id": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch"
     },
     {
       "label": "Brew module environment does not propagate to tweak module",
@@ -53201,7 +54026,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 73,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux module order: pacman, yay, flatpak, app, asdf, tweak",
       "id": "linux_setup_setup_module_order"
@@ -53215,7 +54040,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 173,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux module tee and child exit status",
       "id": "linux_setup_setup_module_pipestatus"
@@ -53229,7 +54054,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 17,
+      "community": 105,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux aggregate module failure status",
       "id": "linux_setup_setup_module_failure_summary"
@@ -53316,7 +54141,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner captures the child status from PIPESTATUS[0], deletes a successful log, and retains a failed log.",
-      "community": 17,
+      "community": 105,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux pacman tee log and child exit status",
       "id": "linux_setup_pacman_setup_tee_pipestatus"
@@ -53331,7 +54156,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner continues through package scripts and returns nonzero if any failed.",
-      "community": 17,
+      "community": 105,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux pacman aggregate install failures",
       "id": "linux_setup_pacman_setup_aggregate_failure"
@@ -53464,7 +54289,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner captures the child status from PIPESTATUS[0], deletes a successful log, and retains a failed log.",
-      "community": 17,
+      "community": 105,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux flatpak tee log and child exit status",
       "id": "linux_setup_flatpak_setup_tee_pipestatus"
@@ -53479,7 +54304,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner continues through package scripts and returns nonzero if any failed.",
-      "community": 17,
+      "community": 105,
       "community_name": "Linux Tier and yay Runners",
       "norm_label": "linux flatpak aggregate install failures",
       "id": "linux_setup_flatpak_setup_aggregate_failure"
@@ -53567,7 +54392,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner captures the child status from PIPESTATUS[0], deletes a successful log, and retains a failed log.",
-      "community": 15,
+      "community": 105,
       "community_name": "setup sh script",
       "norm_label": "linux generic app tee log and child exit status",
       "id": "linux_setup_app_setup_tee_pipestatus"
@@ -53582,7 +54407,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner continues through package scripts and returns nonzero if any failed.",
-      "community": 15,
+      "community": 105,
       "community_name": "setup sh script",
       "norm_label": "linux generic app aggregate install failures",
       "id": "linux_setup_app_setup_aggregate_failure"
@@ -53641,7 +54466,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner captures the child status from PIPESTATUS[0], deletes a successful log, and retains a failed log.",
-      "community": 73,
+      "community": 105,
       "community_name": "asdf Runner and Golang",
       "norm_label": "linux asdf tee log and child exit status",
       "id": "linux_setup_asdf_setup_tee_pipestatus"
@@ -53656,7 +54481,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The runner continues through package scripts and returns nonzero if any failed.",
-      "community": 73,
+      "community": 105,
       "community_name": "asdf Runner and Golang",
       "norm_label": "linux asdf aggregate install failures",
       "id": "linux_setup_asdf_setup_aggregate_failure"
@@ -53858,7 +54683,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 83,
       "community_name": "CachyOS Fish startup configuration",
       "norm_label": "fish web-config tool writes frozen theme file",
       "id": "linux_fish_conf_d_fish_frozen_theme_fish_config_web_tool"
@@ -53872,7 +54697,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 61,
+      "community": 83,
       "community_name": "CachyOS Fish startup configuration",
       "norm_label": "fish theme variables migrated to global scope",
       "id": "linux_fish_conf_d_fish_frozen_theme_global_theme_scope"
@@ -58699,7 +59524,7 @@
         "runtime_path": "/etc/keyd/default.conf",
         "mode": "0644"
       },
-      "community": 290,
+      "community": 208,
       "community_name": "Keyd",
       "norm_label": "install bundled keyd config as /etc/keyd/default.conf",
       "id": "tweak_sem_linux_keyd_config"
@@ -58712,7 +59537,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 290,
+      "community": 208,
       "community_name": "Keyd",
       "norm_label": "enable and start keyd",
       "id": "tweak_sem_linux_keyd_enable"
@@ -58725,7 +59550,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 290,
+      "community": 208,
       "community_name": "Keyd",
       "norm_label": "restart keyd",
       "id": "tweak_sem_linux_keyd_restart"
@@ -58805,7 +59630,7 @@
       "metadata": {
         "kind": "guard"
       },
-      "community": 309,
+      "community": 267,
       "community_name": "Systemd Boot",
       "norm_label": "skip successfully when loader.conf is absent",
       "id": "tweak_sem_linux_systemd_boot_guard"
@@ -58819,7 +59644,7 @@
         "kind": "conditional_action",
         "runtime_path": "/boot/loader/loader.conf"
       },
-      "community": 309,
+      "community": 267,
       "community_name": "Systemd Boot",
       "norm_label": "set loader timeout to zero when file exists",
       "id": "tweak_sem_linux_systemd_boot_timeout"
@@ -59691,7 +60516,7 @@
       "author": null,
       "contributor": null,
       "_origin": "ast",
-      "community": 58,
+      "community": 103,
       "community_name": "CLAUDE md",
       "norm_label": "bootstrap flow",
       "id": "claude_bootstrap_flow"
@@ -59736,7 +60561,7 @@
       "author": null,
       "contributor": null,
       "_origin": "ast",
-      "community": 83,
+      "community": 58,
       "community_name": "Conventional Git deny list",
       "norm_label": "runtime-state hazard (important)",
       "id": "claude_runtime_state_hazard_important"
@@ -59870,7 +60695,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Filename minus .sh must equal the identifier the manager lists by (leaf name for brew/pacman/yay, full dotted id for winget) so the skip-check recognises an installed package instead of reinstalling it every run.",
-      "community": 58,
+      "community": 103,
       "community_name": "CLAUDE md",
       "norm_label": "package script identity convention",
       "id": "claude_package_script_identity"
@@ -59885,7 +60710,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Whole-dir ~/.config/<app> symlinks mean anything an app writes (e.g. zsh's .zshrc.zwc) lands in the repo tree, so runtime paths must be gitignored or redirected to ~/.local/state/<app>/.",
-      "community": 83,
+      "community": 58,
       "community_name": "Conventional Git deny list",
       "norm_label": "runtime state excluded from git",
       "id": "claude_runtime_state_exclusion"
@@ -59943,7 +60768,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The conventional deny-list .gitignore no longer gates tracking by directory, so the gitleaks pre-commit hook is the primary content-level secret defense; the brew module installs pre-commit/gitleaks and the pre-commit tweak installs the hook in the self-resolved repo root, failing loudly if pre-commit is missing.",
-      "community": 49,
+      "community": 58,
       "community_name": "Gitleaks Pre-commit Hook",
       "norm_label": "gitleaks pre-commit secret hook",
       "id": "claude_gitleaks_secret_hook"
@@ -60190,7 +61015,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 74,
       "community_name": "Zsh Tweak and Backup Naming",
       "norm_label": "zdotdir points to ~/.config/zsh",
       "id": "macos_setup_tweak_zsh_zdotdir_redirect"
@@ -60220,7 +61045,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Compiled *.zwc artifacts are regenerable, so plain removal is acceptable (the only thing the tweak deletes).",
-      "community": 30,
+      "community": 58,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "remove regenerable ~/.zshrc.zwc",
       "id": "macos_setup_tweak_zsh_compiled_zshrc_cleanup"
@@ -60249,7 +61074,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 70,
+      "community": 74,
       "community_name": "Zsh Tweak and Backup Naming",
       "norm_label": "generated ~/.zshenv",
       "id": "macos_setup_tweak_zsh_generated_home_zshenv"
@@ -60263,7 +61088,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 30,
+      "community": 74,
       "community_name": "Zsh Prompt and Update Chain",
       "norm_label": "install zinit into ~/.local/share/zinit if missing",
       "id": "macos_setup_tweak_zsh_zinit_bootstrap"
@@ -60330,6 +61155,901 @@
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_mcp_bridge_package",
+      "target": "lib_mcp_bridge_package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "lib_mcp_bridge_package",
+      "target": "lib_mcp_bridge_package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_mcp_bridge_package",
+      "target": "lib_mcp_bridge_package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "lib_mcp_bridge_package",
+      "target": "lib_mcp_bridge_package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/bridge/package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "lib_mcp_bridge_package_dependencies",
+      "target": "lib_mcp_bridge_package_dependencies_mcp_remote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L222",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_checkhttp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_checkstdio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L275",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_checktoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_envjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_exit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L273",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_levels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L218",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_networkfailure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "lib_mcp_check",
+      "target": "lib_mcp_check_timeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L225",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkhttp",
+      "target": "lib_mcp_check_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkstdio",
+      "target": "lib_mcp_check_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L278",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checktoken",
+      "target": "lib_mcp_check_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "lib_mcp_check_envjson",
+      "target": "lib_mcp_check_done",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkstdio",
+      "target": "lib_mcp_check_envjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L227",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkhttp",
+      "target": "lib_mcp_check_timeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkstdio",
+      "target": "lib_mcp_check_timeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L283",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checktoken",
+      "target": "lib_mcp_check_timeoutms",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L230",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkhttp",
+      "target": "lib_mcp_check_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L265",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checkhttp",
+      "target": "lib_mcp_check_networkfailure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/check.mjs",
+      "source_location": "L295",
+      "weight": 1.0,
+      "source": "lib_mcp_check_checktoken",
+      "target": "lib_mcp_check_networkfailure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_desktop_ready",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_desktop_running",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_inside_desktop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L117",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_mcp_register",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_native",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_remove_skill",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_mcp_common",
+      "target": "lib_mcp_common_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L99",
+      "weight": 1.0,
+      "context": "call",
+      "source": "lib_mcp_common_desktop_ready",
+      "target": "lib_mcp_common_desktop_running",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/common.sh",
+      "source_location": "L101",
+      "weight": 1.0,
+      "context": "call",
+      "source": "lib_mcp_common_desktop_ready",
+      "target": "lib_mcp_common_inside_desktop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_backupdesktop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_canonical",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_claude",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_claudeconfigpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_codeentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_desktopentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_die",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_parseentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_readcodeentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_readdesktop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_same",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_timestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "lib_mcp_register",
+      "target": "lib_mcp_register_writedesktop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "lib_mcp_register_parseentry",
+      "target": "lib_mcp_register_die",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "lib_mcp_register_readcodeentry",
+      "target": "lib_mcp_register_die",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "lib_mcp_register_same",
+      "target": "lib_mcp_register_canonical",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "lib_mcp_register_backupdesktop",
+      "target": "lib_mcp_register_timestamp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/mcp/register.mjs",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "lib_mcp_register_readcodeentry",
+      "target": "lib_mcp_register_claudeconfigpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/brew/kicad.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_brew_kicad",
+      "target": "macos_setup_brew_kicad_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/brew/node.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_brew_node",
+      "target": "macos_setup_brew_node_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_kicad_mcp",
+      "target": "macos_setup_tweak_kicad_mcp_build_env_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_kicad_mcp",
+      "target": "macos_setup_tweak_kicad_mcp_entry_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_kicad_mcp",
+      "target": "macos_setup_tweak_kicad_mcp_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_kicad_mcp",
+      "target": "macos_setup_tweak_kicad_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_onshape_mcp",
+      "target": "macos_setup_tweak_onshape_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_part_db_mcp",
+      "target": "macos_setup_tweak_part_db_mcp_check_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L202",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_part_db_mcp",
+      "target": "macos_setup_tweak_part_db_mcp_entry_json",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_part_db_mcp",
+      "target": "macos_setup_tweak_part_db_mcp_keep_readonly",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_part_db_mcp",
+      "target": "macos_setup_tweak_part_db_mcp_path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_part_db_mcp",
+      "target": "macos_setup_tweak_part_db_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/part-db-mcp.sh",
+      "source_location": "L157",
+      "weight": 1.0,
+      "context": "call",
+      "source": "macos_setup_tweak_part_db_mcp_sh__entry",
+      "target": "macos_setup_tweak_part_db_mcp_keep_readonly",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "windows/setup/tweak/kicad-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "windows_setup_tweak_kicad_mcp",
+      "target": "windows_setup_tweak_kicad_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "windows/setup/tweak/onshape-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "windows_setup_tweak_onshape_mcp",
+      "target": "windows_setup_tweak_onshape_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "windows/setup/tweak/part-db-mcp.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "windows_setup_tweak_part_db_mcp",
+      "target": "windows_setup_tweak_part_db_mcp_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "windows/setup/winget/KiCad.KiCad.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "windows_setup_winget_kicad_kicad",
+      "target": "windows_setup_winget_kicad_kicad_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "windows/setup/winget/OpenJS.NodeJS.LTS.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "windows_setup_winget_openjs_nodejs_lts",
+      "target": "windows_setup_winget_openjs_nodejs_lts_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_backup"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_expand_tilde"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_has_github_stanza"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L163",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_include_present"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_key_for"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_sh__entry"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L73",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account",
+      "target": "macos_setup_tweak_git_multi_account_warn_if_missing"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L120",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account_sh__entry",
+      "target": "macos_setup_tweak_git_multi_account_backup"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L113",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account_sh__entry",
+      "target": "macos_setup_tweak_git_multi_account_has_github_stanza"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L171",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account_sh__entry",
+      "target": "macos_setup_tweak_git_multi_account_include_present"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/git-multi-account.sh",
+      "source_location": "L137",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_git_multi_account_sh__entry",
+      "target": "macos_setup_tweak_git_multi_account_warn_if_missing"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_ssh_keypick",
+      "target": "macos_setup_tweak_ssh_keypick_has_private_keys"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_ssh_keypick",
+      "target": "macos_setup_tweak_ssh_keypick_sh__entry"
+    },
+    {
+      "relation": "dispatches",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/setup/tweak/.setup.sh",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "for file in \"$DIR\"/*.sh; runs on each bootstrap; filename=ssh-keypick.sh",
+      "source": "macos_setup_tweak_setup_sh__entry",
+      "target": "macos_setup_tweak_ssh_keypick_sh__entry"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/ssh-keypick.sh",
+      "source_location": "L64",
+      "weight": 1.0,
+      "context": "call",
+      "confidence_score": 1.0,
+      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
+      "target": "macos_setup_tweak_ssh_keypick_has_private_keys"
+    },
     {
       "relation": "defines",
       "confidence": "EXTRACTED",
@@ -70080,17 +71800,6 @@
       "source_file": "macos/setup/tweak/.setup.sh",
       "source_location": "L22",
       "weight": 1.0,
-      "context": "for file in \"$DIR\"/*.sh; runs on each bootstrap; filename=ssh-keypick.sh",
-      "source": "macos_setup_tweak_setup_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_sh__entry"
-    },
-    {
-      "relation": "dispatches",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/.setup.sh",
-      "source_location": "L22",
-      "weight": 1.0,
       "context": "for file in \"$DIR\"/*.sh; runs on each bootstrap; filename=update-schedule.sh",
       "source": "macos_setup_tweak_setup_sh__entry",
       "target": "macos_setup_tweak_update_schedule_sh__entry"
@@ -70335,127 +72044,6 @@
       "weight": 1.0,
       "source": "macos_setup_tweak_screenshot_shortcuts_sh__entry",
       "target": "tweak_sem_macos_screenshot_shortcuts_save_region"
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L48",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick",
-      "target": "macos_setup_tweak_ssh_keypick_has_private_keys"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick",
-      "target": "macos_setup_tweak_ssh_keypick_sh__entry"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_bin_ssh_keypick_ssh_keypick"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_canonical_path"
-    },
-    {
-      "relation": "reports",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L64",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_deferred_install"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L58",
-      "weight": 1.0,
-      "context": "call",
-      "confidence_score": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_has_private_keys"
-    },
-    {
-      "relation": "resolves",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_helper_source_fallback"
-    },
-    {
-      "relation": "dispatches",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch"
-    },
-    {
-      "relation": "creates",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_path_symlink"
-    },
-    {
-      "relation": "enforces",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_private_key_gate"
-    },
-    {
-      "relation": "configures",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L42",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "target": "macos_setup_tweak_ssh_keypick_ssh_directory_permissions"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_private_key_gate",
-      "target": "macos_setup_tweak_ssh_keypick_has_private_keys"
     },
     {
       "relation": "contains",
@@ -109883,16 +111471,6 @@
       "target": "macos_zsh_rc_d_git_multi_account_git"
     },
     {
-      "relation": "avoids_interfering_with",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "macos_bin_ssh_keypick_exclusions",
-      "target": "macos_zsh_rc_d_git_multi_account_git"
-    },
-    {
       "relation": "implements",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -111978,16 +113556,6 @@
       "target": "macos_bin_ssh_keypick_warn"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L23",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_helper_source_fallback",
-      "target": "macos_bin_ssh_keypick_ssh_keypick"
-    },
-    {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -112518,26 +114086,6 @@
       "target": "macos_bin_ssh_keypick_managed_block"
     },
     {
-      "relation": "dispatches",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch",
-      "target": "macos_bin_ssh_keypick_cmd_install"
-    },
-    {
-      "relation": "configures",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch",
-      "target": "macos_bin_ssh_keypick_match_exec"
-    },
-    {
       "relation": "conceptually_related_to",
       "confidence": "INFERRED",
       "confidence_score": 0.95,
@@ -112546,16 +114094,6 @@
       "weight": 1.0,
       "source": "macos_bin_ssh_keypick_seeded_exclusions",
       "target": "macos_bin_ssh_keypick_exclusions"
-    },
-    {
-      "relation": "configures",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch",
-      "target": "macos_bin_ssh_keypick_seeded_exclusions"
     },
     {
       "relation": "references",
@@ -113688,46 +115226,6 @@
       "weight": 1.0,
       "source": "macos_setup_tweak_update_schedule_failure_retry_gate",
       "target": "macos_setup_tweak_update_schedule_last_attempt"
-    },
-    {
-      "relation": "passes_as_keypick_bin",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch",
-      "target": "macos_setup_tweak_ssh_keypick_canonical_path"
-    },
-    {
-      "relation": "points_to",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L35",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_path_symlink",
-      "target": "macos_setup_tweak_ssh_keypick_canonical_path"
-    },
-    {
-      "relation": "depends_on",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L64",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_deferred_install",
-      "target": "macos_setup_tweak_ssh_keypick_private_key_gate"
-    },
-    {
-      "relation": "enables",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "macos/setup/tweak/ssh-keypick.sh",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "macos_setup_tweak_ssh_keypick_private_key_gate",
-      "target": "macos_setup_tweak_ssh_keypick_keypick_install_dispatch"
     },
     {
       "relation": "references",
@@ -119119,5 +120617,5 @@
       "source_file": "macos/setup/tweak/zsh.sh"
     }
   ],
-  "built_at_commit": "21c360a76874768b5b649ae2c5bf9274caabf788"
+  "built_at_commit": "ec682ed795d38a39f19869929708154d2a13f75a"
 }
