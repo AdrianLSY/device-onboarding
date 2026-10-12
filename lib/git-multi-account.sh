@@ -17,13 +17,17 @@
 #      to the work account's key. It sits OUTSIDE ssh-keypick's managed block
 #      (macOS), so `ssh-keypick install` keeps it. An existing github.com Host or
 #      Match host stanza is the user's and is never rewritten.
-#   2. The global git config gets an includeIf on remotes of the personal
-#      account. The included ~/.config/git/github-personal.gitconfig sets
-#      core.sshCommand to `ssh -i <personal key>`; -i is offered ahead of the
-#      IdentityFile above, so GitHub sees the personal account for those repos.
-#      It also sets the personal user.email, user.signingkey, gpg.format ssh and
-#      commit.gpgsign, so their commits are authored and signed as that
-#      account. The include sits after the global [user] settings, and git
+#   2. The global git config gets an includeIf for each URL form a clone of the
+#      personal account can have: the scp-like git@github.com: form the wrapper
+#      clones with, and the https:// and ssh:// URLs that `gh repo clone` and
+#      other tools write. All three include
+#      ~/.config/git/github-personal.gitconfig, which sets core.sshCommand to
+#      `ssh -i <personal key>`; -i is offered ahead of the IdentityFile above,
+#      so GitHub sees the personal account for those repos. git runs ssh only
+#      for an ssh transport, so for an https remote the setting does nothing.
+#      The file also sets the personal user.email, user.signingkey, gpg.format
+#      ssh and commit.gpgsign, so their commits are authored and signed as that
+#      account. The includes sit after the global [user] settings, and git
 #      reads an included file at the include's position, so its values win.
 #      (`hasconfig:` needs git 2.36 or later.)
 #
@@ -46,7 +50,18 @@ GMA_KEYPICK_END="# <<< keypick managed block <<<"
 
 # shellcheck disable=SC2088  # git expands the ~ itself; keep it literal
 GMA_PERSONAL_GITCONFIG_REF='~/.config/git/github-personal.gitconfig'
-GMA_INCLUDE_KEY="includeIf.hasconfig:remote.*.url:git@github.com:$GMA_PERSONAL_ACCOUNT/**.path"
+# The personal account's remote URLs, as hasconfig: globs. They match
+# case-sensitively, `*` stops at a slash and `/**` spans any number of them.
+GMA_PERSONAL_URL_GLOBS=(
+    "git@github.com:$GMA_PERSONAL_ACCOUNT/**"
+    "https://github.com/$GMA_PERSONAL_ACCOUNT/**"
+    "ssh://git@github.com/$GMA_PERSONAL_ACCOUNT/**"
+)
+
+# _gma_include_key <url glob>
+_gma_include_key() {
+    printf '%s\n' "includeIf.hasconfig:remote.*.url:$1.path"
+}
 
 # _gma_wrapper_call <zsh|fish> <wrapper> <helper> <account>
 # Echo what the wrapper's per-account <helper> prints for <account>. Neither
@@ -174,20 +189,22 @@ _gma_global_gitconfig() {
     fi
 }
 
-# The include counts as present whether it names the file as ~/… or by full path.
+# _gma_include_present <url glob> <file>
+# True if the global config includes <file> for remotes matching <url glob>,
+# whether it names the file as ~/… or by full path.
 _gma_include_present() {
     local path
     while IFS= read -r path; do
-        [ "$(_gma_expand_tilde "$path")" = "$1" ] && return 0
-    done < <(git config --global --get-all "$GMA_INCLUDE_KEY" 2>/dev/null)
+        [ "$(_gma_expand_tilde "$path")" = "$2" ] && return 0
+    done < <(git config --global --get-all "$(_gma_include_key "$1")" 2>/dev/null)
     return 1
 }
 
 # ── 2. global git config: the personal account's key, identity and signing ──
 # _gma_git_config <personal key> <personal email> <personal signing key>
 _gma_git_config() {
-    local personal_gitconfig global i
-    local -a settings stale
+    local personal_gitconfig global glob i
+    local -a settings stale missing
     personal_gitconfig="$(_gma_expand_tilde "$GMA_PERSONAL_GITCONFIG_REF")"
     # <key> <value> pairs for the included file.
     settings=(
@@ -214,12 +231,14 @@ _gma_git_config() {
             mkdir -p "$(dirname "$personal_gitconfig")"
             cat >"$personal_gitconfig" <<EOF
 # Included by the global git config for repos whose remote is the personal
-# $GMA_PERSONAL_ACCOUNT GitHub account, so they authenticate, commit and sign as that
-# account. The global config defaults to the work account ($GMA_WORK_ACCOUNT), and
-# -i puts the personal key ahead of the work key that ~/.ssh/config offers. A
-# repo the git wrapper stamped at clone time has its own copy of these settings,
-# which wins. Written by device-onboarding's git-multi-account tweak from the
-# values in the tier's git wrapper.
+# $GMA_PERSONAL_ACCOUNT GitHub account (git@github.com:, https:// or ssh://), so they
+# commit and sign as that account and, over ssh, authenticate as it. The global
+# config defaults to the work account ($GMA_WORK_ACCOUNT), and -i puts the personal
+# key ahead of the work key that ~/.ssh/config offers; git never runs ssh for an
+# https:// remote, so there core.sshCommand does nothing. A repo the git wrapper
+# stamped at clone time has its own copy of these settings, which wins. Written
+# by device-onboarding's git-multi-account tweak from the values in the tier's
+# git wrapper.
 EOF
         fi
         for i in "${stale[@]}"; do
@@ -228,15 +247,24 @@ EOF
         done
     fi
 
+    # Each URL form is checked on its own, so a config with only some of the
+    # includes gets just the rest, behind a single backup.
     global="$(_gma_global_gitconfig)"
-    if _gma_include_present "$personal_gitconfig"; then
-        echo "git-multi-account: the global git config already includes $GMA_PERSONAL_GITCONFIG_REF; left alone"
+    missing=()
+    for glob in "${GMA_PERSONAL_URL_GLOBS[@]}"; do
+        _gma_include_present "$glob" "$personal_gitconfig" || missing+=("$glob")
+    done
+
+    if [ ${#missing[@]} -eq 0 ]; then
+        echo "git-multi-account: the global git config already includes $GMA_PERSONAL_GITCONFIG_REF for every $GMA_PERSONAL_ACCOUNT URL form; left alone"
     else
         if [ -f "$global" ]; then
             _gma_backup "$global"
         fi
-        git config --global --add "$GMA_INCLUDE_KEY" "$GMA_PERSONAL_GITCONFIG_REF"
-        echo "git-multi-account: added the $GMA_PERSONAL_ACCOUNT includeIf to $global"
+        for glob in "${missing[@]}"; do
+            git config --global --add "$(_gma_include_key "$glob")" "$GMA_PERSONAL_GITCONFIG_REF"
+            echo "git-multi-account: added the includeIf for $glob remotes to $global"
+        done
     fi
 }
 

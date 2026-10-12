@@ -5,7 +5,7 @@ sudo pacman -S --noconfirm github-cli
 
 # Global identity and signing: the work account (Adrian-LSY). Repos whose remote
 # is the personal AdrianLSY account get the personal email and signing key from
-# the includeIf that tweak/git-multi-account.sh adds after these lines. The
+# the includeIfs that tweak/git-multi-account.sh adds after these lines. The
 # values match the fish git wrapper's (fish/conf.d/git-multi-account.fish).
 git config --global user.email "adrian@rooftop.my"
 git config --global user.name "Adrian Low"
