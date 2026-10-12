@@ -17,6 +17,15 @@
 #   gpg.format                   = ssh
 #   commit.gpgsign / tag.gpgsign = true
 #   gpg.ssh.allowedSignersFile   = ~/.ssh/allowed_signers
+#
+# Only an interactive zsh loads this wrapper. Git run anywhere else (Claude
+# Code, scripts, launchd, editors) takes its GitHub key from config that
+# macos/setup/tweak/git-multi-account.sh writes: a `Host github.com` stanza in
+# ~/.ssh/config defaulting to the Adrian-LSY key, and an includeIf in
+# ~/.gitconfig that switches AdrianLSY/* remotes to the personal key. The
+# wrapper still stamps identity and signing at clone time, and the per-repo
+# core.sshCommand it writes wins over both. The tweak reads its keys from
+# __git_ssh_key_for_account below, so keys are changed here only.
 
 # ───────────────────────── per-account helpers ─────────────────────────
 

@@ -10,6 +10,12 @@ set -e
 # host, and excludes hosts you've already pinned an IdentityFile for (and
 # github.com) so it never disturbs the per-repo git account selection in
 # rc.d/git-multi-account.zsh.
+#
+# Excluding github.com means keypick offers it no key at all, and that wrapper
+# only runs in an interactive zsh. The sibling git-multi-account.sh tweak covers
+# git run anywhere else: a github.com Host stanza outside the managed block
+# (which `install` preserves) plus a git includeIf for personal repos. The
+# wrapper still stamps identity and signing onto each repo at clone time.
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$DIR/../.." && pwd)"
