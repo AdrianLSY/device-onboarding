@@ -1,0 +1,8 @@
+{
+  "name": "rooftop-mcp-bridge",
+  "private": true,
+  "description": "mcp-remote, pinned, for Claude Desktop to reach Part-DB. Installed by setup/tweak/part-db-mcp.sh with npm ci.",
+  "dependencies": {
+    "mcp-remote": "0.14.3"
+  }
+}
