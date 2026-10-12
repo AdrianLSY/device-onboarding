@@ -10,8 +10,8 @@ set -e
 # lib/git-multi-account.sh does the work, shared with the Linux tier: a
 # github.com stanza in ~/.ssh/config defaulting to the work key, outside the
 # keypick managed block so `ssh-keypick install` keeps it, and an includeIf in
-# ~/.gitconfig that gives the personal account's repos the personal key. It
-# reads both keys from the zsh wrapper's __git_ssh_key_for_account.
+# ~/.gitconfig that gives the personal account's repos the personal key, email
+# and commit signing. It reads them from the zsh wrapper's per-account helpers.
 
 TIER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 # shellcheck source=lib/git-multi-account.sh

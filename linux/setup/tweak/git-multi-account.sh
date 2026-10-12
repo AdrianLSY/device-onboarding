@@ -9,12 +9,15 @@ set -e
 #
 # lib/git-multi-account.sh does the work, shared with the macOS tier: a
 # github.com stanza in ~/.ssh/config defaulting to the work key, and an includeIf
-# in ~/.gitconfig that gives the personal account's repos the personal key. It
-# reads both keys from the fish wrapper's __git_ssh_key_for_account.
+# in ~/.gitconfig that gives the personal account's repos the personal key,
+# email and commit signing. It reads them from the fish wrapper's per-account
+# helpers.
 #
 # pacman/github-cli.sh runs before the tweaks and sets the global identity and
-# signing with `git config --global`. This adds only the includeIf to the same
-# file, after backing it up, so neither overwrites the other's keys.
+# signing (the work account's) with `git config --global`. This adds only the
+# includeIf to the same file, after backing it up, so neither overwrites the
+# other's keys. The include comes after github-cli.sh's settings, so for the
+# personal account's repos its values win.
 
 TIER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 # shellcheck source=lib/git-multi-account.sh

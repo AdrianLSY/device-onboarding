@@ -1,10 +1,11 @@
 # shellcheck shell=bash
-# lib/git-multi-account.sh: GitHub SSH for git that runs outside the shell that
-# loads the tier's `git` wrapper (macos/zsh/rc.d/git-multi-account.zsh in an
-# interactive zsh, linux/fish/conf.d/git-multi-account.fish in fish): Claude
-# Code, scripts, launchd or systemd jobs, editors. Without this nothing offers
-# GitHub a key there, and every clone and push fails with "Permission denied
-# (publickey)".
+# lib/git-multi-account.sh: GitHub SSH, and the personal account's commit
+# identity and signing, for git that runs outside the shell that loads the
+# tier's `git` wrapper (macos/zsh/rc.d/git-multi-account.zsh in an interactive
+# zsh, linux/fish/conf.d/git-multi-account.fish in fish): Claude Code, scripts,
+# launchd or systemd jobs, editors. Without this nothing offers GitHub a key
+# there, every clone and push fails with "Permission denied (publickey)", and a
+# personal repo the wrapper never stamped commits as the work identity.
 #
 # SOURCEABLE library, like lib/link.sh: it defines functions and constants only.
 # Each tier's setup/tweak/git-multi-account.sh sources it and calls
@@ -20,12 +21,18 @@
 #      account. The included ~/.config/git/github-personal.gitconfig sets
 #      core.sshCommand to `ssh -i <personal key>`; -i is offered ahead of the
 #      IdentityFile above, so GitHub sees the personal account for those repos.
+#      It also sets the personal user.email, user.signingkey, gpg.format ssh and
+#      commit.gpgsign, so their commits are authored and signed as that
+#      account. The include sits after the global [user] settings, and git
+#      reads an included file at the include's position, so its values win.
 #      (`hasconfig:` needs git 2.36 or later.)
 #
 # Each file is backed up before it is first changed. At clone time the
 # interactive wrapper still stamps each repo's own core.sshCommand, identity and
-# signing config, which win over both pieces. Each account's key is read from
-# the wrapper's __git_ssh_key_for_account, the one place it is set.
+# signing config, which win over both pieces. Each value is read from the
+# wrapper's per-account helpers (__git_ssh_key_for_account,
+# __git_email_for_account, __git_signingkey_for_account), the one place it is
+# set.
 
 # Backups reuse lib/link.sh's _link_backup_path (non-colliding <file>.bak.<timestamp>).
 # shellcheck source=lib/link.sh
@@ -41,31 +48,32 @@ GMA_KEYPICK_END="# <<< keypick managed block <<<"
 GMA_PERSONAL_GITCONFIG_REF='~/.config/git/github-personal.gitconfig'
 GMA_INCLUDE_KEY="includeIf.hasconfig:remote.*.url:git@github.com:$GMA_PERSONAL_ACCOUNT/**.path"
 
-# _gma_wrapper_key <zsh|fish> <wrapper> <account>
-# Echo the account's private key path as the wrapper defines it. Neither shell
-# reads its rc files here (zsh -f, fish --no-config), so only the wrapper's
-# function definitions load.
-_gma_wrapper_key() {
+# _gma_wrapper_call <zsh|fish> <wrapper> <helper> <account>
+# Echo what the wrapper's per-account <helper> prints for <account>. Neither
+# shell reads its rc files here (zsh -f, fish --no-config), so only the
+# wrapper's function definitions load.
+_gma_wrapper_call() {
     # shellcheck disable=SC2016  # the inner shell expands $1 and $argv
     case "$1" in
-        zsh)  zsh -fc 'source "$1" && __git_ssh_key_for_account "$2"' zsh "$2" "$3" ;;
-        fish) fish --no-config -c 'source $argv[1]; and __git_ssh_key_for_account $argv[2]' "$2" "$3" ;;
-        *)    echo "git-multi-account: no key reader for shell '$1'" >&2; return 1 ;;
+        zsh)  zsh -fc 'source "$1" && "$2" "$3"' zsh "$2" "$3" "$4" ;;
+        fish) fish --no-config -c 'source $argv[1]; and $argv[2] $argv[3]' "$2" "$3" "$4" ;;
+        *)    echo "git-multi-account: no wrapper reader for shell '$1'" >&2; return 1 ;;
     esac
 }
 
-# _gma_key_for <zsh|fish> <wrapper> <account>
-# Echo the account's key, ~-abbreviated. Fails if the wrapper names none.
-_gma_key_for() {
-    local key
-    key="$(_gma_wrapper_key "$1" "$2" "$3")"
-    if [ -z "$key" ]; then
-        echo "git-multi-account: no key for $3 in $2" >&2
+# _gma_value_for <zsh|fish> <wrapper> <helper> <account>
+# Echo the helper's value for the account, with a leading $HOME abbreviated to
+# ~. Fails if the wrapper prints nothing.
+_gma_value_for() {
+    local value
+    value="$(_gma_wrapper_call "$1" "$2" "$3" "$4")"
+    if [ -z "$value" ]; then
+        echo "git-multi-account: $3 prints nothing for $4 in $2" >&2
         return 1
     fi
-    case "$key" in
-        "$HOME"/*) printf '%s\n' "~${key#"$HOME"}" ;;
-        *)         printf '%s\n' "$key" ;;
+    case "$value" in
+        "$HOME"/*) printf '%s\n' "~${value#"$HOME"}" ;;
+        *)         printf '%s\n' "$value" ;;
     esac
 }
 
@@ -175,14 +183,29 @@ _gma_include_present() {
     return 1
 }
 
-# ── 2. global git config: personal key for the personal account's remotes ──
-# _gma_git_config <personal key>
+# ── 2. global git config: the personal account's key, identity and signing ──
+# _gma_git_config <personal key> <personal email> <personal signing key>
 _gma_git_config() {
-    local personal_gitconfig ssh_command global
+    local personal_gitconfig global i
+    local -a settings stale
     personal_gitconfig="$(_gma_expand_tilde "$GMA_PERSONAL_GITCONFIG_REF")"
-    ssh_command="ssh -i $1 -o IdentitiesOnly=yes"
+    # <key> <value> pairs for the included file.
+    settings=(
+        core.sshCommand "ssh -i $1 -o IdentitiesOnly=yes"
+        user.email      "$2"
+        user.signingkey "$3"
+        gpg.format      ssh
+        commit.gpgsign  true
+    )
 
-    if [ "$(git config --file "$personal_gitconfig" --get core.sshCommand 2>/dev/null)" = "$ssh_command" ]; then
+    # The index of each key whose value is missing or different.
+    stale=()
+    for ((i = 0; i < ${#settings[@]}; i += 2)); do
+        [ "$(git config --file "$personal_gitconfig" --get "${settings[i]}" 2>/dev/null)" = "${settings[i+1]}" ] ||
+            stale+=("$i")
+    done
+
+    if [ ${#stale[@]} -eq 0 ]; then
         echo "git-multi-account: $personal_gitconfig already set; left alone"
     else
         if [ -f "$personal_gitconfig" ]; then
@@ -191,14 +214,18 @@ _gma_git_config() {
             mkdir -p "$(dirname "$personal_gitconfig")"
             cat >"$personal_gitconfig" <<EOF
 # Included by the global git config for repos whose remote is the personal
-# $GMA_PERSONAL_ACCOUNT GitHub account. ~/.ssh/config defaults github.com to the work
-# key ($GMA_WORK_ACCOUNT); -i puts the personal key ahead of it, so GitHub
-# authenticates these repos as $GMA_PERSONAL_ACCOUNT. Written by device-onboarding's
-# git-multi-account tweak.
+# $GMA_PERSONAL_ACCOUNT GitHub account, so they authenticate, commit and sign as that
+# account. The global config defaults to the work account ($GMA_WORK_ACCOUNT), and
+# -i puts the personal key ahead of the work key that ~/.ssh/config offers. A
+# repo the git wrapper stamped at clone time has its own copy of these settings,
+# which wins. Written by device-onboarding's git-multi-account tweak from the
+# values in the tier's git wrapper.
 EOF
         fi
-        git config --file "$personal_gitconfig" core.sshCommand "$ssh_command"
-        echo "git-multi-account: set core.sshCommand in $personal_gitconfig"
+        for i in "${stale[@]}"; do
+            git config --file "$personal_gitconfig" --replace-all "${settings[i]}" "${settings[i+1]}"
+            echo "git-multi-account: set ${settings[i]} in $personal_gitconfig"
+        done
     fi
 
     global="$(_gma_global_gitconfig)"
@@ -214,20 +241,24 @@ EOF
 }
 
 # git_multi_account <zsh|fish> <wrapper>
-# Read both keys from <wrapper> with <shell>, then write the two pieces above.
+# Read both keys, and the personal email and signing key, from <wrapper> with
+# <shell>, then write the two pieces above.
 git_multi_account() {
-    local shell wrapper work_key personal_key
+    local shell wrapper work_key personal_key personal_email personal_signingkey
     shell="$1"
     wrapper="$2"
     if ! command -v "$shell" >/dev/null 2>&1; then
-        echo "git-multi-account: $shell is not installed, so the keys in $wrapper cannot be read" >&2
+        echo "git-multi-account: $shell is not installed, so the values in $wrapper cannot be read" >&2
         return 1
     fi
-    work_key="$(_gma_key_for "$shell" "$wrapper" "$GMA_WORK_ACCOUNT")"
-    personal_key="$(_gma_key_for "$shell" "$wrapper" "$GMA_PERSONAL_ACCOUNT")"
+    work_key="$(_gma_value_for "$shell" "$wrapper" __git_ssh_key_for_account "$GMA_WORK_ACCOUNT")"
+    personal_key="$(_gma_value_for "$shell" "$wrapper" __git_ssh_key_for_account "$GMA_PERSONAL_ACCOUNT")"
+    personal_email="$(_gma_value_for "$shell" "$wrapper" __git_email_for_account "$GMA_PERSONAL_ACCOUNT")"
+    personal_signingkey="$(_gma_value_for "$shell" "$wrapper" __git_signingkey_for_account "$GMA_PERSONAL_ACCOUNT")"
 
     _gma_ssh_config "$shell" "$work_key"
     _gma_warn_if_missing "$work_key"
-    _gma_git_config "$personal_key"
+    _gma_git_config "$personal_key" "$personal_email" "$personal_signingkey"
     _gma_warn_if_missing "$personal_key"
+    _gma_warn_if_missing "$personal_signingkey"
 }
