@@ -753,6 +753,174 @@
   },
   "nodes": [
     {
+      "label": "bitwarden-cli.sh",
+      "file_type": "code",
+      "source_file": "linux/setup/pacman/bitwarden-cli.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_pacman_bitwarden_cli",
+      "community": 305,
+      "norm_label": "bitwarden-cli.sh"
+    },
+    {
+      "label": "bitwarden-cli.sh script",
+      "file_type": "code",
+      "source_file": "linux/setup/pacman/bitwarden-cli.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_pacman_bitwarden_cli_sh__entry",
+      "community": 305,
+      "norm_label": "bitwarden-cli.sh script"
+    },
+    {
+      "label": "bitwarden.sh",
+      "file_type": "code",
+      "source_file": "linux/setup/pacman/bitwarden.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_pacman_bitwarden",
+      "community": 298,
+      "norm_label": "bitwarden.sh"
+    },
+    {
+      "label": "bitwarden.sh script",
+      "file_type": "code",
+      "source_file": "linux/setup/pacman/bitwarden.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_pacman_bitwarden_sh__entry",
+      "community": 298,
+      "norm_label": "bitwarden.sh script"
+    },
+    {
+      "label": "bitwarden-server.sh",
+      "file_type": "code",
+      "source_file": "linux/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_tweak_bitwarden_server",
+      "community": 328,
+      "norm_label": "bitwarden-server.sh"
+    },
+    {
+      "label": "bitwarden-server.sh script",
+      "file_type": "code",
+      "source_file": "linux/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "linux_setup_tweak_bitwarden_server_sh__entry",
+      "community": 328,
+      "norm_label": "bitwarden-server.sh script"
+    },
+    {
+      "label": "bitwarden-cli.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/bitwarden-cli.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_bitwarden_cli",
+      "community": 350,
+      "norm_label": "bitwarden-cli.sh"
+    },
+    {
+      "label": "bitwarden-cli.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/bitwarden-cli.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_bitwarden_cli_sh__entry",
+      "community": 350,
+      "norm_label": "bitwarden-cli.sh script"
+    },
+    {
+      "label": "bitwarden.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/bitwarden.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_bitwarden",
+      "community": 339,
+      "norm_label": "bitwarden.sh"
+    },
+    {
+      "label": "bitwarden.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/brew/bitwarden.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_brew_bitwarden_sh__entry",
+      "community": 339,
+      "norm_label": "bitwarden.sh script"
+    },
+    {
+      "label": "bitwarden-server.sh",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_bitwarden_server",
+      "community": 373,
+      "norm_label": "bitwarden-server.sh"
+    },
+    {
+      "label": "bitwarden-server.sh script",
+      "file_type": "code",
+      "source_file": "macos/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "_origin": "ast",
+      "id": "macos_setup_tweak_bitwarden_server_sh__entry",
+      "community": 373,
+      "norm_label": "bitwarden-server.sh script"
+    },
+    {
       "label": "hitl-loop.template.sh",
       "file_type": "code",
       "source_file": ".agents/skills/diagnosing-bugs/scripts/hitl-loop.template.sh",
@@ -1557,7 +1725,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "_link_one()",
       "id": "lib_link_link_one"
@@ -4053,7 +4221,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 99,
+      "community": 4,
       "community_name": "Linux Tweak Runner",
       "norm_label": ".setup.sh",
       "id": "linux_setup_tweak_setup"
@@ -4786,7 +4954,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": ".setup.sh",
       "id": "macos_setup_setup"
@@ -4801,7 +4969,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": ".setup.sh script",
       "id": "macos_setup_setup_sh__entry"
@@ -4816,7 +4984,7 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "ensure_brew_path()",
       "id": "macos_setup_setup_ensure_brew_path"
@@ -5011,7 +5179,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 350,
+      "community": 100,
       "community_name": "bruno sh script",
       "norm_label": "bruno.sh",
       "id": "macos_setup_brew_bruno"
@@ -5026,7 +5194,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 350,
+      "community": 100,
       "community_name": "bruno sh script",
       "norm_label": "bruno.sh script",
       "id": "macos_setup_brew_bruno_sh__entry"
@@ -5791,7 +5959,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 373,
+      "community": 100,
       "community_name": "Macos Setup Brew openspec sh",
       "norm_label": "openspec.sh",
       "id": "macos_setup_brew_openspec"
@@ -5806,7 +5974,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 373,
+      "community": 100,
       "community_name": "Macos Setup Brew openspec sh",
       "norm_label": "openspec.sh script",
       "id": "macos_setup_brew_openspec_sh__entry"
@@ -6151,7 +6319,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 100,
+      "community": 278,
       "community_name": "macOS Brew Runner",
       "norm_label": "tailscale.sh",
       "id": "macos_setup_brew_tailscale"
@@ -6166,7 +6334,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 100,
+      "community": 278,
       "community_name": "macOS Brew Runner",
       "norm_label": "tailscale.sh script",
       "id": "macos_setup_brew_tailscale_sh__entry"
@@ -6181,7 +6349,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 100,
+      "community": 386,
       "community_name": "macOS Brew Runner",
       "norm_label": "thunderbird.sh",
       "id": "macos_setup_brew_thunderbird"
@@ -6196,7 +6364,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 100,
+      "community": 386,
       "community_name": "macOS Brew Runner",
       "norm_label": "thunderbird.sh script",
       "id": "macos_setup_brew_thunderbird_sh__entry"
@@ -6301,7 +6469,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 339,
+      "community": 100,
       "community_name": "macOS Ultimaker Cura Cask",
       "norm_label": "ultimaker-cura.sh",
       "id": "macos_setup_brew_ultimaker_cura"
@@ -6316,7 +6484,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 339,
+      "community": 100,
       "community_name": "macOS Ultimaker Cura Cask",
       "norm_label": "ultimaker-cura.sh script",
       "id": "macos_setup_brew_ultimaker_cura_sh__entry"
@@ -6331,7 +6499,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 387,
+      "community": 100,
       "community_name": "uv sh script",
       "norm_label": "uv.sh",
       "id": "macos_setup_brew_uv"
@@ -6346,7 +6514,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 387,
+      "community": 100,
       "community_name": "uv sh script",
       "norm_label": "uv.sh script",
       "id": "macos_setup_brew_uv_sh__entry"
@@ -6451,7 +6619,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 99,
+      "community": 4,
       "community_name": "Linux Tweak Runner",
       "norm_label": ".setup.sh",
       "id": "macos_setup_tweak_setup"
@@ -6601,7 +6769,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "graphify.sh",
       "id": "macos_setup_tweak_graphify"
@@ -6616,7 +6784,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "graphify.sh script",
       "id": "macos_setup_tweak_graphify_sh__entry"
@@ -6631,7 +6799,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "screenshot-shortcuts.sh",
       "id": "macos_setup_tweak_screenshot_shortcuts"
@@ -6646,7 +6814,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "screenshot-shortcuts.sh script",
       "id": "macos_setup_tweak_screenshot_shortcuts_sh__entry"
@@ -6661,7 +6829,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "update-schedule.sh",
       "id": "macos_setup_tweak_update_schedule"
@@ -6676,7 +6844,7 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "update-schedule.sh script",
       "id": "macos_setup_tweak_update_schedule_sh__entry"
@@ -6746,7 +6914,7 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "community": 102,
+      "community": 207,
       "community_name": "Bootstrap Preflight Checks",
       "norm_label": "setup.sh",
       "id": "setup"
@@ -10953,7 +11121,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 158,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "skill.md",
       "id": "agents_skills_setup_matt_pocock_skills_skill"
@@ -11041,7 +11209,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 218,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "domain.md",
       "id": "agents_skills_setup_matt_pocock_skills_domain"
@@ -11052,7 +11220,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 328,
+      "community": 218,
       "community_name": "Agent Domain Docs Headings",
       "norm_label": "domain docs",
       "id": "agents_skills_setup_matt_pocock_skills_domain_domain_docs"
@@ -11063,7 +11231,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 328,
+      "community": 218,
       "community_name": "Agent Domain Docs Headings",
       "norm_label": "before exploring, read these",
       "id": "agents_skills_setup_matt_pocock_skills_domain_before_exploring_read_these"
@@ -11074,7 +11242,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L13",
       "_origin": "ast",
-      "community": 328,
+      "community": 218,
       "community_name": "Agent Domain Docs Headings",
       "norm_label": "file structure",
       "id": "agents_skills_setup_matt_pocock_skills_domain_file_structure"
@@ -11085,7 +11253,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L41",
       "_origin": "ast",
-      "community": 328,
+      "community": 218,
       "community_name": "Agent Domain Docs Headings",
       "norm_label": "use the glossary's vocabulary",
       "id": "agents_skills_setup_matt_pocock_skills_domain_use_the_glossary_s_vocabulary"
@@ -11096,7 +11264,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L47",
       "_origin": "ast",
-      "community": 328,
+      "community": 218,
       "community_name": "Agent Domain Docs Headings",
       "norm_label": "flag adr conflicts",
       "id": "agents_skills_setup_matt_pocock_skills_domain_flag_adr_conflicts"
@@ -11107,7 +11275,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 251,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "issue-tracker-github.md",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_github"
@@ -11184,7 +11352,7 @@
       "source_file": ".agents/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 252,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "issue-tracker-gitlab.md",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_gitlab"
@@ -16542,7 +16710,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/SKILL.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 228,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "skill.md",
       "id": "claude_skills_setup_matt_pocock_skills_skill"
@@ -16630,7 +16798,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/domain.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 218,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "domain.md",
       "id": "claude_skills_setup_matt_pocock_skills_domain"
@@ -16699,7 +16867,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 251,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "issue-tracker-github.md",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github"
@@ -16710,7 +16878,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "issue tracker: github",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_issue_tracker_github"
@@ -16721,7 +16889,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "conventions",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_conventions"
@@ -16732,7 +16900,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L16",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "pull requests as a triage surface",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_pull_requests_as_a_triage_surface"
@@ -16743,7 +16911,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L28",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "when a skill says \"publish to the issue tracker\"",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_when_a_skill_says_publish_to_the_issue_tracker"
@@ -16754,7 +16922,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L32",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "when a skill says \"fetch the relevant ticket\"",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_when_a_skill_says_fetch_the_relevant_ticket"
@@ -16765,7 +16933,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-github.md",
       "source_location": "L36",
       "_origin": "ast",
-      "community": 298,
+      "community": 251,
       "community_name": "Claude GitHub Tracker Doc",
       "norm_label": "wayfinding operations",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_github_wayfinding_operations"
@@ -16776,7 +16944,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 36,
+      "community": 252,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "issue-tracker-gitlab.md",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab"
@@ -16787,7 +16955,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "issue tracker: gitlab",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_issue_tracker_gitlab"
@@ -16798,7 +16966,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L5",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "conventions",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_conventions"
@@ -16809,7 +16977,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L17",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "merge requests as a triage surface",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_merge_requests_as_a_triage_surface"
@@ -16820,7 +16988,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L29",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "when a skill says \"publish to the issue tracker\"",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_when_a_skill_says_publish_to_the_issue_tracker"
@@ -16831,7 +16999,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L33",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "when a skill says \"fetch the relevant ticket\"",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_when_a_skill_says_fetch_the_relevant_ticket"
@@ -16842,7 +17010,7 @@
       "source_file": ".claude/skills/setup-matt-pocock-skills/issue-tracker-gitlab.md",
       "source_location": "L37",
       "_origin": "ast",
-      "community": 305,
+      "community": 252,
       "community_name": "Claude GitLab Tracker Doc",
       "norm_label": "wayfinding operations",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_wayfinding_operations"
@@ -18991,7 +19159,7 @@
       "source_file": "README.md",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 101,
+      "community": 207,
       "community_name": "Device Onbording",
       "norm_label": "readme.md",
       "id": "readme_md"
@@ -19596,7 +19764,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 102,
+      "community": 207,
       "community_name": "Bootstrap Preflight Checks",
       "norm_label": "machine bootstrap overview",
       "id": "readme_bootstrap_overview"
@@ -19610,7 +19778,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 102,
+      "community": 207,
       "community_name": "Bootstrap Preflight Checks",
       "norm_label": "macos linux windows tier layout",
       "id": "readme_os_tier_layout"
@@ -19624,7 +19792,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 101,
+      "community": 207,
       "community_name": "Device Onbording",
       "norm_label": "safe backup-then-link behavior",
       "id": "readme_backup_then_link"
@@ -19638,7 +19806,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 102,
+      "community": 207,
       "community_name": "Bootstrap Preflight Checks",
       "norm_label": "platform bootstrap prerequisites",
       "id": "readme_platform_prerequisites"
@@ -19653,7 +19821,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The app profile replaces the former periodic RGB LaunchAgent.",
-      "community": 101,
+      "community": 207,
       "community_name": "Device Onbording",
       "norm_label": "betterdisplay manual rgb color mode",
       "id": "readme_betterdisplay_color_mode"
@@ -19667,7 +19835,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 101,
+      "community": 49,
       "community_name": "Device Onbording",
       "norm_label": "runtime state and staged secret controls",
       "id": "readme_runtime_state_and_secrets"
@@ -19682,7 +19850,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Selecting the OS at runtime replaces branch-per-machine config.",
-      "community": 102,
+      "community": 207,
       "community_name": "Bootstrap Preflight Checks",
       "norm_label": "single branch for all machines",
       "id": "readme_single_branch"
@@ -31329,7 +31497,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 158,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "agent setup matt pocock skills: setup matt pocock skills interface",
       "id": "_agents_skills_setup_matt_pocock_skills_agents_openai_interface"
@@ -31698,7 +31866,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Issues and specifications are stored under .scratch in per-feature directories.",
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: local markdown issue tracker",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_local_tracker"
@@ -31712,7 +31880,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: per-feature scratch directory",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_feature_dir"
@@ -31726,7 +31894,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: feature specification file",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_spec_file"
@@ -31741,7 +31909,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One file per ticket, never one combined ticket file.",
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: numbered issue files",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_numbered_issues"
@@ -31755,7 +31923,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: issue status line",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_triage_status"
@@ -31769,7 +31937,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: issue comments section",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_comments"
@@ -31783,7 +31951,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: wayfinding map file",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_wayfinding_map"
@@ -31797,7 +31965,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: wayfinding child ticket",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_child_ticket"
@@ -31811,7 +31979,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: blocked by line",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_blocking_line"
@@ -31826,7 +31994,7 @@
       "author": null,
       "contributor": null,
       "rationale": "First numbered open, unblocked, unclaimed child wins.",
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: unblocked ticket frontier",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_frontier"
@@ -31841,7 +32009,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Set Status: claimed before beginning work.",
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: ticket claim",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_claim"
@@ -31856,7 +32024,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Record an Answer, set resolved, and append a gist/link to the map.",
-      "community": 207,
+      "community": 110,
       "community_name": "Agent Local Issue Tracker",
       "norm_label": "agent setup matt pocock skills: ticket resolution",
       "id": "agents_skills_setup_matt_pocock_skills_issue_tracker_local_resolve"
@@ -31871,7 +32039,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Issues and specifications are stored under .scratch in per-feature directories.",
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: local markdown issue tracker",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_local_tracker"
@@ -31885,7 +32053,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: per-feature scratch directory",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_feature_dir"
@@ -31899,7 +32067,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: feature specification file",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_spec_file"
@@ -31914,7 +32082,7 @@
       "author": null,
       "contributor": null,
       "rationale": "One file per ticket, never one combined ticket file.",
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: numbered issue files",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_numbered_issues"
@@ -31928,7 +32096,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: issue status line",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_triage_status"
@@ -31942,7 +32110,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: issue comments section",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_comments"
@@ -31956,7 +32124,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: wayfinding map file",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_wayfinding_map"
@@ -31970,7 +32138,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: wayfinding child ticket",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_child_ticket"
@@ -31984,7 +32152,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: blocked by line",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_blocking_line"
@@ -31999,7 +32167,7 @@
       "author": null,
       "contributor": null,
       "rationale": "First numbered open, unblocked, unclaimed child wins.",
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: unblocked ticket frontier",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_frontier"
@@ -32014,7 +32182,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Set Status: claimed before beginning work.",
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: ticket claim",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_claim"
@@ -32029,7 +32197,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Record an Answer, set resolved, and append a gist/link to the map.",
-      "community": 208,
+      "community": 110,
       "community_name": "Claude Local Issue Tracker",
       "norm_label": "claude setup matt pocock skills: ticket resolution",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_local_resolve"
@@ -32199,7 +32367,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Prefer GitHub/GitLab when the remote identifies one; local Markdown is supported.",
-      "community": 25,
+      "community": 24,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "claude setup matt pocock skills: issue tracker selection",
       "id": "claude_skills_setup_matt_pocock_skills_skill_issue_tracker_choice"
@@ -32300,7 +32468,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 228,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "agent skills instructions block",
       "id": "claude_skills_setup_matt_pocock_skills_skill_agent_skills_block"
@@ -32371,7 +32539,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 158,
       "community_name": "Agent Setup Skills Process",
       "norm_label": "claude setup matt pocock skills: setup matt pocock skills interface",
       "id": "claude_skills_setup_matt_pocock_skills_agents_openai_skills_setup_interface"
@@ -32657,7 +32825,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab issue tracker",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_tracker"
@@ -32671,7 +32839,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "glab cli",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_cli"
@@ -32685,7 +32853,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "claude setup matt pocock skills: gitlab issue operations",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_issue_operations"
@@ -32700,7 +32868,7 @@
       "author": null,
       "contributor": null,
       "rationale": "External contributions enter triage only if the explicit flag is enabled.",
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab merge request triage surface",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_pr_triage"
@@ -32714,7 +32882,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab wayfinding map issue",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_map_issue"
@@ -32728,7 +32896,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab child issue",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_child_issue"
@@ -32743,7 +32911,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Native issue dependencies/links are the preferred UI-visible gate.",
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab native blocking relation",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_native_blocking"
@@ -32757,7 +32925,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "blocked by text fallback",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_fallback_blocking"
@@ -32772,7 +32940,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Choose an open, unassigned child with no open blocker.",
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "gitlab unblocked frontier",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_frontier"
@@ -32786,7 +32954,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "claude setup matt pocock skills: gitlab ticket claim",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_claim"
@@ -32800,7 +32968,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 25,
+      "community": 103,
       "community_name": "Claude GitHub and GitLab Trackers",
       "norm_label": "claude setup matt pocock skills: gitlab ticket resolution",
       "id": "claude_skills_setup_matt_pocock_skills_issue_tracker_gitlab_resolve"
@@ -41640,7 +41808,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 83,
+      "community": 61,
       "community_name": "Git Ignore and Attributes",
       "norm_label": "fish 4.3 global theme migration",
       "id": "linux_fish_conf_d_fish_frozen_theme_fish43_theme_migration"
@@ -41654,7 +41822,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 83,
+      "community": 61,
       "community_name": "Git Ignore and Attributes",
       "norm_label": "global fish syntax and pager colors",
       "id": "linux_fish_conf_d_fish_frozen_theme_global_theme_colors"
@@ -46224,7 +46392,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 74,
+      "community": 111,
       "community_name": "macOS Zsh rc.d Helpers",
       "norm_label": "homebrew zsh shell environment",
       "id": "macos_zsh_zprofile_brew_shellenv"
@@ -46252,7 +46420,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "macos interactive zsh configuration",
       "id": "macos_zsh_zshrc_zshrc"
@@ -46266,7 +46434,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "zinit plugin loader",
       "id": "macos_zsh_zshrc_zinit_loader"
@@ -46294,7 +46462,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "deferred zsh suggestions and syntax plugins",
       "id": "macos_zsh_zshrc_async_plugins"
@@ -46308,7 +46476,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "shared and deduplicated zsh history",
       "id": "macos_zsh_zshrc_history"
@@ -46322,7 +46490,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "cached zsh completion initialization",
       "id": "macos_zsh_zshrc_completion"
@@ -46336,7 +46504,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "zoxide replaces cd command",
       "id": "macos_zsh_zshrc_zoxide_cd"
@@ -46365,7 +46533,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The compiled artifact is written under ZDOTDIR; when ZDOTDIR is the repo-symlinked config directory this creates runtime state in the working tree.",
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "compile .zshrc to .zshrc.zwc",
       "id": "macos_zsh_zshrc_self_compile"
@@ -46379,7 +46547,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "optional ~/.local/bin/env sourcing",
       "id": "macos_zsh_zshrc_local_bin_env"
@@ -46955,7 +47123,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "update homebrew packages and zinit plugins",
       "id": "macos_zsh_rc_d_update_update"
@@ -46969,7 +47137,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "brew update, upgrade, cleanup",
       "id": "macos_zsh_rc_d_update_brew_maintenance"
@@ -46983,7 +47151,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "zinit update --all",
       "id": "macos_zsh_rc_d_update_zinit_plugin_update"
@@ -47039,7 +47207,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "windows deployment manifest",
       "id": "windows_links_links"
@@ -47053,7 +47221,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "tab-separated app to destination mapping",
       "id": "windows_links_tab_mapping"
@@ -47068,7 +47236,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Only recognized leading environment references expand; the manifest explicitly excludes eval and globbing.",
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "restricted leading environment path expansion",
       "id": "windows_links_leading_env"
@@ -47082,7 +47250,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "second-tab inline comments and blank/comment lines",
       "id": "windows_links_comment_handling"
@@ -47096,7 +47264,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "deploy_manifest backup-then-link behavior",
       "id": "windows_links_deploy_manifest_contract"
@@ -47110,7 +47278,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "manifest and windows/setup are never deployed",
       "id": "windows_links_reserved_not_deployed"
@@ -47125,7 +47293,7 @@
       "author": null,
       "contributor": null,
       "rationale": "The examples are commented out; this stub currently deploys no app config entries.",
-      "community": 16,
+      "community": 263,
       "community_name": "Top-level Bootstrap Dispatcher",
       "norm_label": "no active windows app mappings yet",
       "id": "windows_links_no_active_config"
@@ -49977,7 +50145,7 @@
         "kind": "cask"
       },
       "_origin": "derived",
-      "community": 350,
+      "community": 100,
       "community_name": "bruno sh script",
       "norm_label": "macos homebrew cask bruno",
       "id": "provisioned_macos_brew_bruno"
@@ -50436,7 +50604,7 @@
         "kind": "formula"
       },
       "_origin": "derived",
-      "community": 373,
+      "community": 100,
       "community_name": "Macos Setup Brew openspec sh",
       "norm_label": "macos homebrew formula openspec",
       "id": "provisioned_macos_brew_openspec"
@@ -50640,7 +50808,7 @@
         "kind": "cask"
       },
       "_origin": "derived",
-      "community": 100,
+      "community": 278,
       "community_name": "macOS Brew Runner",
       "norm_label": "macos homebrew cask tailscale",
       "id": "provisioned_macos_brew_tailscale"
@@ -50674,7 +50842,7 @@
         "kind": "cask"
       },
       "_origin": "derived",
-      "community": 100,
+      "community": 386,
       "community_name": "macOS Brew Runner",
       "norm_label": "macos homebrew cask thunderbird",
       "id": "provisioned_macos_brew_thunderbird"
@@ -50742,7 +50910,7 @@
         "kind": "cask"
       },
       "_origin": "derived",
-      "community": 339,
+      "community": 100,
       "community_name": "macOS Ultimaker Cura Cask",
       "norm_label": "macos homebrew cask ultimaker-cura",
       "id": "provisioned_macos_brew_ultimaker_cura"
@@ -50759,7 +50927,7 @@
         "kind": "formula"
       },
       "_origin": "derived",
-      "community": 387,
+      "community": 100,
       "community_name": "uv sh script",
       "norm_label": "macos homebrew formula uv",
       "id": "provisioned_macos_brew_uv"
@@ -52661,7 +52829,7 @@
         "kind": "generated_file",
         "runtime_path": "~/Library/Application Support/update-schedule/check.sh"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "generated hourly update check.sh",
       "id": "macos_setup_tweak_update_schedule_generated_check"
@@ -52675,7 +52843,7 @@
         "kind": "generated_file",
         "runtime_path": "~/Library/LaunchAgents/com.adrian.update.plist"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "generated com.adrian.update launchagent plist",
       "id": "macos_setup_tweak_update_schedule_generated_launchagent"
@@ -52689,7 +52857,7 @@
         "kind": "runtime_file",
         "runtime_path": "~/Library/Logs/update-schedule.log"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "update schedule stdout and stderr log",
       "id": "macos_setup_tweak_update_schedule_runtime_log"
@@ -52702,7 +52870,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "launchagent 60-second poll and runatload",
       "id": "macos_setup_tweak_update_schedule_minute_poll"
@@ -52717,7 +52885,7 @@
         "runtime_path": "~/.cache/update-schedule/pid",
         "rationale": "Avoid concurrent runs and predictable world-writable /tmp lock."
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "private stamp-directory pid lock",
       "id": "macos_setup_tweak_update_schedule_pid_lock"
@@ -52730,7 +52898,7 @@
       "metadata": {
         "kind": "generated_function"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "generated age() checks stamp modification time",
       "id": "macos_setup_tweak_update_schedule_generated_age"
@@ -52744,7 +52912,7 @@
         "kind": "runtime_file",
         "runtime_path": "~/.cache/update-schedule/last_success"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "last successful update stamp",
       "id": "macos_setup_tweak_update_schedule_last_success"
@@ -52758,7 +52926,7 @@
         "kind": "runtime_file",
         "runtime_path": "~/.cache/update-schedule/last_attempt"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "last attempted update stamp",
       "id": "macos_setup_tweak_update_schedule_last_attempt"
@@ -52771,7 +52939,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "at least 3600 seconds since last success",
       "id": "macos_setup_tweak_update_schedule_hourly_success_gate"
@@ -52784,7 +52952,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "at least 600 seconds since last attempt",
       "id": "macos_setup_tweak_update_schedule_failure_retry_gate"
@@ -52798,7 +52966,7 @@
         "kind": "concept",
         "rationale": "Headless upgrade of self-updating GUI casks may quit running apps and require sudo."
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "exclude self-updating gui casks from unattended upgrade",
       "id": "macos_setup_tweak_update_schedule_auto_updates_guard"
@@ -52811,7 +52979,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "sequential brew update, upgrade, cleanup, and zinit update",
       "id": "macos_setup_tweak_update_schedule_brew_zinit_chain"
@@ -52824,7 +52992,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "boot out prior agent and bootstrap generated plist",
       "id": "macos_setup_tweak_update_schedule_launchctl_reload"
@@ -52837,7 +53005,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "brew module environment does not propagate to tweak module",
       "id": "macos_setup_setup_sibling_process_env"
@@ -52850,7 +53018,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "run brew before tweak",
       "id": "macos_setup_setup_brew_then_tweak"
@@ -52863,7 +53031,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "read module exit from pipestatus[0], not tee",
       "id": "macos_setup_setup_pipeline_exit_capture"
@@ -52876,7 +53044,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "delete successful module logs and retain failed logs",
       "id": "macos_setup_setup_module_logs"
@@ -52889,7 +53057,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 4,
+      "community": 111,
       "community_name": "macOS Tweak Runner and Tweaks",
       "norm_label": "fail tier after processing modules if any failed",
       "id": "macos_setup_setup_aggregate_module_failure"
@@ -52980,7 +53148,7 @@
       "metadata": {
         "kind": "concept"
       },
-      "community": 111,
+      "community": 4,
       "community_name": "Scheduled Update LaunchAgent",
       "norm_label": "run tweak scripts on every bootstrap without package skip check",
       "id": "macos_setup_tweak_setup_every_run"
@@ -53690,7 +53858,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 83,
+      "community": 61,
       "community_name": "Git Ignore and Attributes",
       "norm_label": "fish web-config tool writes frozen theme file",
       "id": "linux_fish_conf_d_fish_frozen_theme_fish_config_web_tool"
@@ -53704,7 +53872,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 83,
+      "community": 61,
       "community_name": "Git Ignore and Attributes",
       "norm_label": "fish theme variables migrated to global scope",
       "id": "linux_fish_conf_d_fish_frozen_theme_global_theme_scope"
@@ -57720,7 +57888,7 @@
         "kind": "guard",
         "detail": "A symlink resolving to the same inode or literally pointing to src returns ok without backup or relink."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "keep already-correct symlink",
       "id": "core_link_correct_symlink_noop"
@@ -57734,7 +57902,7 @@
         "kind": "concept",
         "detail": "mkdir -p creates nested destination parents; failure returns 1 before backup or link."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "create destination parent directory",
       "id": "core_link_destination_parent"
@@ -57748,7 +57916,7 @@
         "kind": "concept",
         "detail": "Real file/dir, foreign link, or broken link is moved to a unique backup path; failed mv returns 1."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "move existing destination aside",
       "id": "core_link_existing_destination_backup"
@@ -57762,7 +57930,7 @@
         "kind": "concept",
         "detail": "ln -s uses src verbatim; setup.sh supplies absolute tier paths through DIR and TIER_DIR."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "create symlink to supplied source path",
       "id": "core_link_create_absolute_source_symlink"
@@ -57776,7 +57944,7 @@
         "kind": "concept",
         "detail": "_LINK_ACTION is ok or link; _LINK_BACKED records whether an existing target was moved; callers aggregate these."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "report link action and backup flag",
       "id": "core_link_action_flags"
@@ -57790,7 +57958,7 @@
         "kind": "failure_behavior",
         "detail": "If mv succeeded and ln -s fails, function returns 1 without restoring the backup."
       },
-      "community": 20,
+      "community": 208,
       "community_name": "link.sh Link and Manifest Primitives",
       "norm_label": "backup persists if new link fails",
       "id": "core_link_no_automatic_restore"
@@ -58233,7 +58401,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "install graphifyy via uv tool",
       "id": "tweak_sem_macos_graphify_install"
@@ -58246,7 +58414,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "change to the script-derived repository root",
       "id": "tweak_sem_macos_graphify_repo"
@@ -58259,7 +58427,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "select graphify on path or ~/.local/bin/graphify",
       "id": "tweak_sem_macos_graphify_launcher"
@@ -58273,7 +58441,7 @@
         "kind": "action",
         "runtime_path": ".git/hooks"
       },
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "install repository git hooks for graphify rebuild",
       "id": "tweak_sem_macos_graphify_hook"
@@ -58287,7 +58455,7 @@
         "kind": "action",
         "runtime_path": ".git/config"
       },
-      "community": 263,
+      "community": 4,
       "community_name": "Graphify Install Tweak",
       "norm_label": "register graphify union merge driver in local git config",
       "id": "tweak_sem_macos_graphify_merge"
@@ -58301,7 +58469,7 @@
         "kind": "action",
         "hotkey_id": 28
       },
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "set full-screen save shortcut to ctrl+cmd+shift+3",
       "id": "tweak_sem_macos_screenshot_shortcuts_save_full"
@@ -58315,7 +58483,7 @@
         "kind": "action",
         "hotkey_id": 29
       },
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "set full-screen copy shortcut to cmd+shift+3",
       "id": "tweak_sem_macos_screenshot_shortcuts_copy_full"
@@ -58329,7 +58497,7 @@
         "kind": "action",
         "hotkey_id": 30
       },
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "set region save shortcut to ctrl+cmd+shift+4",
       "id": "tweak_sem_macos_screenshot_shortcuts_save_region"
@@ -58343,7 +58511,7 @@
         "kind": "action",
         "hotkey_id": 31
       },
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "set region copy shortcut to cmd+shift+4",
       "id": "tweak_sem_macos_screenshot_shortcuts_copy_region"
@@ -58356,7 +58524,7 @@
       "metadata": {
         "kind": "action"
       },
-      "community": 278,
+      "community": 4,
       "community_name": "Screenshot Shortcut Tweak",
       "norm_label": "apply symbolic hotkey settings",
       "id": "tweak_sem_macos_screenshot_shortcuts_activate"
@@ -59420,7 +59588,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "zdotdir points to ~/.config/zsh",
       "id": "macos_setup_tweak_zsh_zdotdir_redirect"
@@ -59450,7 +59618,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Compiled *.zwc artifacts are regenerable, so plain removal is acceptable (the only thing the tweak deletes).",
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "remove regenerable ~/.zshrc.zwc",
       "id": "macos_setup_tweak_zsh_compiled_zshrc_cleanup"
@@ -59479,7 +59647,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "generated ~/.zshenv",
       "id": "macos_setup_tweak_zsh_generated_home_zshenv"
@@ -59493,7 +59661,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 103,
+      "community": 74,
       "community_name": "Zsh Config and Updates",
       "norm_label": "install zinit into ~/.local/share/zinit if missing",
       "id": "macos_setup_tweak_zsh_zinit_bootstrap"
@@ -59566,8 +59734,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "package.json",
-      "id": "lib_mcp_bridge_package",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package"
     },
     {
       "label": "name",
@@ -59577,8 +59745,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "name",
-      "id": "lib_mcp_bridge_package_name",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package_name"
     },
     {
       "label": "private",
@@ -59588,8 +59756,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "private",
-      "id": "lib_mcp_bridge_package_private",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package_private"
     },
     {
       "label": "description",
@@ -59599,8 +59767,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "description",
-      "id": "lib_mcp_bridge_package_description",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package_description"
     },
     {
       "label": "dependencies",
@@ -59610,8 +59778,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "dependencies",
-      "id": "lib_mcp_bridge_package_dependencies",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package_dependencies"
     },
     {
       "label": "mcp-remote",
@@ -59621,8 +59789,8 @@
       "_origin": "ast",
       "community": 189,
       "norm_label": "mcp-remote",
-      "id": "lib_mcp_bridge_package_dependencies_mcp_remote",
-      "community_name": "mcp-remote Bridge Package"
+      "community_name": "mcp-remote Bridge Package",
+      "id": "lib_mcp_bridge_package_dependencies_mcp_remote"
     },
     {
       "label": "check.mjs",
@@ -59632,8 +59800,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "check.mjs",
-      "id": "lib_mcp_check",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check"
     },
     {
       "label": "CLIENT",
@@ -59643,8 +59811,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "client",
-      "id": "lib_mcp_check_client",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_client"
     },
     {
       "label": "EXIT",
@@ -59654,8 +59822,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "exit",
-      "id": "lib_mcp_check_exit",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_exit"
     },
     {
       "label": "done()",
@@ -59665,8 +59833,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "done()",
-      "id": "lib_mcp_check_done",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_done"
     },
     {
       "label": "envJson()",
@@ -59676,8 +59844,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "envjson()",
-      "id": "lib_mcp_check_envjson",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_envjson"
     },
     {
       "label": "timeoutMs()",
@@ -59687,8 +59855,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "timeoutms()",
-      "id": "lib_mcp_check_timeoutms",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_timeoutms"
     },
     {
       "label": "checkStdio()",
@@ -59698,8 +59866,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "checkstdio()",
-      "id": "lib_mcp_check_checkstdio",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_checkstdio"
     },
     {
       "label": "post()",
@@ -59709,8 +59877,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "post()",
-      "id": "lib_mcp_check_post",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_post"
     },
     {
       "label": "networkFailure()",
@@ -59720,8 +59888,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "networkfailure()",
-      "id": "lib_mcp_check_networkfailure",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_networkfailure"
     },
     {
       "label": "checkHttp()",
@@ -59731,8 +59899,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "checkhttp()",
-      "id": "lib_mcp_check_checkhttp",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_checkhttp"
     },
     {
       "label": "LEVELS",
@@ -59742,8 +59910,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "levels",
-      "id": "lib_mcp_check_levels",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_levels"
     },
     {
       "label": "checkToken()",
@@ -59753,8 +59921,8 @@
       "_origin": "ast",
       "community": 152,
       "norm_label": "checktoken()",
-      "id": "lib_mcp_check_checktoken",
-      "community_name": "MCP Liveness and Token Checks"
+      "community_name": "MCP Liveness and Token Checks",
+      "id": "lib_mcp_check_checktoken"
     },
     {
       "label": "common.sh",
@@ -59768,8 +59936,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "common.sh",
-      "id": "lib_mcp_common",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common"
     },
     {
       "label": "common.sh script",
@@ -59783,8 +59951,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "common.sh script",
-      "id": "lib_mcp_common_sh__entry",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_sh__entry"
     },
     {
       "label": "native()",
@@ -59798,8 +59966,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "native()",
-      "id": "lib_mcp_common_native",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_native"
     },
     {
       "label": "desktop_running()",
@@ -59813,8 +59981,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "desktop_running()",
-      "id": "lib_mcp_common_desktop_running",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_desktop_running"
     },
     {
       "label": "inside_desktop()",
@@ -59828,8 +59996,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "inside_desktop()",
-      "id": "lib_mcp_common_inside_desktop",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_inside_desktop"
     },
     {
       "label": "desktop_ready()",
@@ -59843,8 +60011,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "desktop_ready()",
-      "id": "lib_mcp_common_desktop_ready",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_desktop_ready"
     },
     {
       "label": "mcp_register()",
@@ -59858,8 +60026,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "mcp_register()",
-      "id": "lib_mcp_common_mcp_register",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_mcp_register"
     },
     {
       "label": "remove_skill()",
@@ -59873,8 +60041,8 @@
       "_origin": "ast",
       "community": 174,
       "norm_label": "remove_skill()",
-      "id": "lib_mcp_common_remove_skill",
-      "community_name": "MCP Tweak Shared Helpers"
+      "community_name": "MCP Tweak Shared Helpers",
+      "id": "lib_mcp_common_remove_skill"
     },
     {
       "label": "register.mjs",
@@ -59884,8 +60052,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "register.mjs",
-      "id": "lib_mcp_register",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register"
     },
     {
       "label": "die()",
@@ -59895,8 +60063,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "die()",
-      "id": "lib_mcp_register_die",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_die"
     },
     {
       "label": "parseEntry()",
@@ -59906,8 +60074,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "parseentry()",
-      "id": "lib_mcp_register_parseentry",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_parseentry"
     },
     {
       "label": "canonical()",
@@ -59917,8 +60085,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "canonical()",
-      "id": "lib_mcp_register_canonical",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_canonical"
     },
     {
       "label": "same()",
@@ -59928,8 +60096,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "same()",
-      "id": "lib_mcp_register_same",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_same"
     },
     {
       "label": "readDesktop()",
@@ -59939,8 +60107,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "readdesktop()",
-      "id": "lib_mcp_register_readdesktop",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_readdesktop"
     },
     {
       "label": "timestamp()",
@@ -59950,8 +60118,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "timestamp()",
-      "id": "lib_mcp_register_timestamp",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_timestamp"
     },
     {
       "label": "backupDesktop()",
@@ -59961,8 +60129,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "backupdesktop()",
-      "id": "lib_mcp_register_backupdesktop",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_backupdesktop"
     },
     {
       "label": "writeDesktop()",
@@ -59972,8 +60140,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "writedesktop()",
-      "id": "lib_mcp_register_writedesktop",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_writedesktop"
     },
     {
       "label": "claudeConfigPath()",
@@ -59983,8 +60151,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "claudeconfigpath()",
-      "id": "lib_mcp_register_claudeconfigpath",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_claudeconfigpath"
     },
     {
       "label": "readCodeEntry()",
@@ -59994,8 +60162,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "readcodeentry()",
-      "id": "lib_mcp_register_readcodeentry",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_readcodeentry"
     },
     {
       "label": "claude()",
@@ -60005,8 +60173,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "claude()",
-      "id": "lib_mcp_register_claude",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_claude"
     },
     {
       "label": "desktopEntry",
@@ -60016,8 +60184,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "desktopentry",
-      "id": "lib_mcp_register_desktopentry",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_desktopentry"
     },
     {
       "label": "codeEntry",
@@ -60027,8 +60195,8 @@
       "_origin": "ast",
       "community": 131,
       "norm_label": "codeentry",
-      "id": "lib_mcp_register_codeentry",
-      "community_name": "MCP Config Registration"
+      "community_name": "MCP Config Registration",
+      "id": "lib_mcp_register_codeentry"
     },
     {
       "label": "kicad.sh",
@@ -60042,8 +60210,8 @@
       "_origin": "ast",
       "community": 398,
       "norm_label": "kicad.sh",
-      "id": "macos_setup_brew_kicad",
-      "community_name": "KiCad Brew Package"
+      "community_name": "KiCad Brew Package",
+      "id": "macos_setup_brew_kicad"
     },
     {
       "label": "kicad.sh script",
@@ -60057,8 +60225,8 @@
       "_origin": "ast",
       "community": 398,
       "norm_label": "kicad.sh script",
-      "id": "macos_setup_brew_kicad_sh__entry",
-      "community_name": "KiCad Brew Package"
+      "community_name": "KiCad Brew Package",
+      "id": "macos_setup_brew_kicad_sh__entry"
     },
     {
       "label": "node.sh",
@@ -60072,8 +60240,8 @@
       "_origin": "ast",
       "community": 400,
       "norm_label": "node.sh",
-      "id": "macos_setup_brew_node",
-      "community_name": "Node.js Brew Package"
+      "community_name": "Node.js Brew Package",
+      "id": "macos_setup_brew_node"
     },
     {
       "label": "node.sh script",
@@ -60087,8 +60255,8 @@
       "_origin": "ast",
       "community": 400,
       "norm_label": "node.sh script",
-      "id": "macos_setup_brew_node_sh__entry",
-      "community_name": "Node.js Brew Package"
+      "community_name": "Node.js Brew Package",
+      "id": "macos_setup_brew_node_sh__entry"
     },
     {
       "label": "kicad-mcp.sh",
@@ -60102,8 +60270,8 @@
       "_origin": "ast",
       "community": 215,
       "norm_label": "kicad-mcp.sh",
-      "id": "macos_setup_tweak_kicad_mcp",
-      "community_name": "KiCad MCP Tweak"
+      "community_name": "KiCad MCP Tweak",
+      "id": "macos_setup_tweak_kicad_mcp"
     },
     {
       "label": "kicad-mcp.sh script",
@@ -60117,8 +60285,8 @@
       "_origin": "ast",
       "community": 215,
       "norm_label": "kicad-mcp.sh script",
-      "id": "macos_setup_tweak_kicad_mcp_sh__entry",
-      "community_name": "KiCad MCP Tweak"
+      "community_name": "KiCad MCP Tweak",
+      "id": "macos_setup_tweak_kicad_mcp_sh__entry"
     },
     {
       "label": "PATH",
@@ -60132,8 +60300,8 @@
       "_origin": "ast",
       "community": 215,
       "norm_label": "path",
-      "id": "macos_setup_tweak_kicad_mcp_path",
-      "community_name": "KiCad MCP Tweak"
+      "community_name": "KiCad MCP Tweak",
+      "id": "macos_setup_tweak_kicad_mcp_path"
     },
     {
       "label": "build_env_json()",
@@ -60147,8 +60315,8 @@
       "_origin": "ast",
       "community": 215,
       "norm_label": "build_env_json()",
-      "id": "macos_setup_tweak_kicad_mcp_build_env_json",
-      "community_name": "KiCad MCP Tweak"
+      "community_name": "KiCad MCP Tweak",
+      "id": "macos_setup_tweak_kicad_mcp_build_env_json"
     },
     {
       "label": "entry_json()",
@@ -60162,8 +60330,8 @@
       "_origin": "ast",
       "community": 215,
       "norm_label": "entry_json()",
-      "id": "macos_setup_tweak_kicad_mcp_entry_json",
-      "community_name": "KiCad MCP Tweak"
+      "community_name": "KiCad MCP Tweak",
+      "id": "macos_setup_tweak_kicad_mcp_entry_json"
     },
     {
       "label": "onshape-mcp.sh",
@@ -60177,8 +60345,8 @@
       "_origin": "ast",
       "community": 428,
       "norm_label": "onshape-mcp.sh",
-      "id": "macos_setup_tweak_onshape_mcp",
-      "community_name": "Onshape MCP Tweak"
+      "community_name": "Onshape MCP Tweak",
+      "id": "macos_setup_tweak_onshape_mcp"
     },
     {
       "label": "onshape-mcp.sh script",
@@ -60192,8 +60360,8 @@
       "_origin": "ast",
       "community": 428,
       "norm_label": "onshape-mcp.sh script",
-      "id": "macos_setup_tweak_onshape_mcp_sh__entry",
-      "community_name": "Onshape MCP Tweak"
+      "community_name": "Onshape MCP Tweak",
+      "id": "macos_setup_tweak_onshape_mcp_sh__entry"
     },
     {
       "label": "part-db-mcp.sh",
@@ -60207,8 +60375,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "part-db-mcp.sh",
-      "id": "macos_setup_tweak_part_db_mcp",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp"
     },
     {
       "label": "part-db-mcp.sh script",
@@ -60222,8 +60390,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "part-db-mcp.sh script",
-      "id": "macos_setup_tweak_part_db_mcp_sh__entry",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp_sh__entry"
     },
     {
       "label": "PATH",
@@ -60237,8 +60405,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "path",
-      "id": "macos_setup_tweak_part_db_mcp_path",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp_path"
     },
     {
       "label": "check_token()",
@@ -60252,8 +60420,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "check_token()",
-      "id": "macos_setup_tweak_part_db_mcp_check_token",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp_check_token"
     },
     {
       "label": "keep_readonly()",
@@ -60267,8 +60435,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "keep_readonly()",
-      "id": "macos_setup_tweak_part_db_mcp_keep_readonly",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp_keep_readonly"
     },
     {
       "label": "entry_json()",
@@ -60282,8 +60450,8 @@
       "_origin": "ast",
       "community": 190,
       "norm_label": "entry_json()",
-      "id": "macos_setup_tweak_part_db_mcp_entry_json",
-      "community_name": "Part-DB MCP Tweak"
+      "community_name": "Part-DB MCP Tweak",
+      "id": "macos_setup_tweak_part_db_mcp_entry_json"
     },
     {
       "label": "ssh-keypick.sh",
@@ -60297,8 +60465,8 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "ssh-keypick.sh",
-      "id": "macos_setup_tweak_ssh_keypick",
-      "community_name": "macOS Tweak Runner and Tweaks"
+      "community_name": "macOS Tweak Runner and Tweaks",
+      "id": "macos_setup_tweak_ssh_keypick"
     },
     {
       "label": "ssh-keypick.sh script",
@@ -60312,8 +60480,8 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "ssh-keypick.sh script",
-      "id": "macos_setup_tweak_ssh_keypick_sh__entry",
-      "community_name": "macOS Tweak Runner and Tweaks"
+      "community_name": "macOS Tweak Runner and Tweaks",
+      "id": "macos_setup_tweak_ssh_keypick_sh__entry"
     },
     {
       "label": "has_private_keys()",
@@ -60327,8 +60495,8 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "has_private_keys()",
-      "id": "macos_setup_tweak_ssh_keypick_has_private_keys",
-      "community_name": "macOS Tweak Runner and Tweaks"
+      "community_name": "macOS Tweak Runner and Tweaks",
+      "id": "macos_setup_tweak_ssh_keypick_has_private_keys"
     },
     {
       "label": "kicad-mcp.sh",
@@ -60342,8 +60510,8 @@
       "_origin": "ast",
       "community": 429,
       "norm_label": "kicad-mcp.sh",
-      "id": "windows_setup_tweak_kicad_mcp",
-      "community_name": "Windows KiCad MCP Wrapper"
+      "community_name": "Windows KiCad MCP Wrapper",
+      "id": "windows_setup_tweak_kicad_mcp"
     },
     {
       "label": "kicad-mcp.sh script",
@@ -60357,8 +60525,8 @@
       "_origin": "ast",
       "community": 429,
       "norm_label": "kicad-mcp.sh script",
-      "id": "windows_setup_tweak_kicad_mcp_sh__entry",
-      "community_name": "Windows KiCad MCP Wrapper"
+      "community_name": "Windows KiCad MCP Wrapper",
+      "id": "windows_setup_tweak_kicad_mcp_sh__entry"
     },
     {
       "label": "onshape-mcp.sh",
@@ -60372,8 +60540,8 @@
       "_origin": "ast",
       "community": 430,
       "norm_label": "onshape-mcp.sh",
-      "id": "windows_setup_tweak_onshape_mcp",
-      "community_name": "Windows Onshape MCP Wrapper"
+      "community_name": "Windows Onshape MCP Wrapper",
+      "id": "windows_setup_tweak_onshape_mcp"
     },
     {
       "label": "onshape-mcp.sh script",
@@ -60387,8 +60555,8 @@
       "_origin": "ast",
       "community": 430,
       "norm_label": "onshape-mcp.sh script",
-      "id": "windows_setup_tweak_onshape_mcp_sh__entry",
-      "community_name": "Windows Onshape MCP Wrapper"
+      "community_name": "Windows Onshape MCP Wrapper",
+      "id": "windows_setup_tweak_onshape_mcp_sh__entry"
     },
     {
       "label": "part-db-mcp.sh",
@@ -60402,8 +60570,8 @@
       "_origin": "ast",
       "community": 431,
       "norm_label": "part-db-mcp.sh",
-      "id": "windows_setup_tweak_part_db_mcp",
-      "community_name": "Windows Part-DB MCP Wrapper"
+      "community_name": "Windows Part-DB MCP Wrapper",
+      "id": "windows_setup_tweak_part_db_mcp"
     },
     {
       "label": "part-db-mcp.sh script",
@@ -60417,8 +60585,8 @@
       "_origin": "ast",
       "community": 431,
       "norm_label": "part-db-mcp.sh script",
-      "id": "windows_setup_tweak_part_db_mcp_sh__entry",
-      "community_name": "Windows Part-DB MCP Wrapper"
+      "community_name": "Windows Part-DB MCP Wrapper",
+      "id": "windows_setup_tweak_part_db_mcp_sh__entry"
     },
     {
       "label": "KiCad.KiCad.sh",
@@ -60432,8 +60600,8 @@
       "_origin": "ast",
       "community": 432,
       "norm_label": "kicad.kicad.sh",
-      "id": "windows_setup_winget_kicad_kicad",
-      "community_name": "KiCad Winget Package"
+      "community_name": "KiCad Winget Package",
+      "id": "windows_setup_winget_kicad_kicad"
     },
     {
       "label": "KiCad.KiCad.sh script",
@@ -60447,8 +60615,8 @@
       "_origin": "ast",
       "community": 432,
       "norm_label": "kicad.kicad.sh script",
-      "id": "windows_setup_winget_kicad_kicad_sh__entry",
-      "community_name": "KiCad Winget Package"
+      "community_name": "KiCad Winget Package",
+      "id": "windows_setup_winget_kicad_kicad_sh__entry"
     },
     {
       "label": "OpenJS.NodeJS.LTS.sh",
@@ -60462,8 +60630,8 @@
       "_origin": "ast",
       "community": 433,
       "norm_label": "openjs.nodejs.lts.sh",
-      "id": "windows_setup_winget_openjs_nodejs_lts",
-      "community_name": "Node.js LTS Winget Package"
+      "community_name": "Node.js LTS Winget Package",
+      "id": "windows_setup_winget_openjs_nodejs_lts"
     },
     {
       "label": "OpenJS.NodeJS.LTS.sh script",
@@ -60477,8 +60645,8 @@
       "_origin": "ast",
       "community": 433,
       "norm_label": "openjs.nodejs.lts.sh script",
-      "id": "windows_setup_winget_openjs_nodejs_lts_sh__entry",
-      "community_name": "Node.js LTS Winget Package"
+      "community_name": "Node.js LTS Winget Package",
+      "id": "windows_setup_winget_openjs_nodejs_lts_sh__entry"
     },
     {
       "label": "AGENTS.md (symlink to CLAUDE.md)",
@@ -60492,8 +60660,8 @@
       "rationale": "AGENTS.md is a filesystem symlink to CLAUDE.md, so Codex and Claude Code read one identical set of agent guidance with no second copy to drift.",
       "community": 137,
       "norm_label": "agents.md (symlink to claude.md)",
-      "id": "agents_agents_md",
-      "community_name": "Dotfiles Repo Conventions"
+      "community_name": "Dotfiles Repo Conventions",
+      "id": "agents_agents_md"
     },
     {
       "label": "kicad-constraints-macos.txt (pip constraints)",
@@ -60507,8 +60675,8 @@
       "rationale": "Generated by pip freeze --local from a working build of KiCAD-MCP-Server v2.8.2 on 2026-10-07; must be regenerated on every pin bump.",
       "community": 58,
       "norm_label": "kicad-constraints-macos.txt (pip constraints)",
-      "id": "lib_mcp_kicad_constraints_macos_kicad_constraints_macos",
-      "community_name": "Claude MCP Server Tweaks"
+      "community_name": "Claude MCP Server Tweaks",
+      "id": "lib_mcp_kicad_constraints_macos_kicad_constraints_macos"
     },
     {
       "label": "KiCad 10 bundled Python 3.9",
@@ -60521,8 +60689,8 @@
       "contributor": null,
       "community": 58,
       "norm_label": "kicad 10 bundled python 3.9",
-      "id": "lib_mcp_kicad_constraints_macos_kicad_bundled_python",
-      "community_name": "Claude MCP Server Tweaks"
+      "community_name": "Claude MCP Server Tweaks",
+      "id": "lib_mcp_kicad_constraints_macos_kicad_bundled_python"
     },
     {
       "label": "kicad-python 0.8.0",
@@ -60535,8 +60703,8 @@
       "contributor": null,
       "community": 58,
       "norm_label": "kicad-python 0.8.0",
-      "id": "lib_mcp_kicad_constraints_macos_kicad_python",
-      "community_name": "Claude MCP Server Tweaks"
+      "community_name": "Claude MCP Server Tweaks",
+      "id": "lib_mcp_kicad_constraints_macos_kicad_python"
     },
     {
       "label": "kicad-skip 0.2.5",
@@ -60549,8 +60717,8 @@
       "contributor": null,
       "community": 58,
       "norm_label": "kicad-skip 0.2.5",
-      "id": "lib_mcp_kicad_constraints_macos_kicad_skip",
-      "community_name": "Claude MCP Server Tweaks"
+      "community_name": "Claude MCP Server Tweaks",
+      "id": "lib_mcp_kicad_constraints_macos_kicad_skip"
     },
     {
       "label": "git-multi-account.sh",
@@ -60562,10 +60730,10 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "git-multi-account.sh"
+      "norm_label": "git-multi-account.sh",
+      "id": "lib_git_multi_account"
     },
     {
       "label": "git-multi-account.sh script",
@@ -60577,10 +60745,10 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_sh__entry",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "git-multi-account.sh script"
+      "norm_label": "git-multi-account.sh script",
+      "id": "lib_git_multi_account_sh__entry"
     },
     {
       "label": "_gma_include_key()",
@@ -60592,10 +60760,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_include_key",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_include_key()"
+      "norm_label": "_gma_include_key()",
+      "id": "lib_git_multi_account_gma_include_key"
     },
     {
       "label": "_gma_wrapper_call()",
@@ -60607,10 +60775,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_wrapper_call",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "_gma_wrapper_call()"
+      "norm_label": "_gma_wrapper_call()",
+      "id": "lib_git_multi_account_gma_wrapper_call"
     },
     {
       "label": "_gma_value_for()",
@@ -60622,10 +60790,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_value_for",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "_gma_value_for()"
+      "norm_label": "_gma_value_for()",
+      "id": "lib_git_multi_account_gma_value_for"
     },
     {
       "label": "_gma_expand_tilde()",
@@ -60637,10 +60805,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_expand_tilde",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_expand_tilde()"
+      "norm_label": "_gma_expand_tilde()",
+      "id": "lib_git_multi_account_gma_expand_tilde"
     },
     {
       "label": "_gma_backup()",
@@ -60652,10 +60820,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_backup",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_backup()"
+      "norm_label": "_gma_backup()",
+      "id": "lib_git_multi_account_gma_backup"
     },
     {
       "label": "_gma_warn_if_missing()",
@@ -60667,10 +60835,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_warn_if_missing",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_warn_if_missing()"
+      "norm_label": "_gma_warn_if_missing()",
+      "id": "lib_git_multi_account_gma_warn_if_missing"
     },
     {
       "label": "_gma_has_github_stanza()",
@@ -60682,10 +60850,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_has_github_stanza",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_has_github_stanza()"
+      "norm_label": "_gma_has_github_stanza()",
+      "id": "lib_git_multi_account_gma_has_github_stanza"
     },
     {
       "label": "_gma_ssh_config()",
@@ -60697,10 +60865,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_ssh_config",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_ssh_config()"
+      "norm_label": "_gma_ssh_config()",
+      "id": "lib_git_multi_account_gma_ssh_config"
     },
     {
       "label": "_gma_global_gitconfig()",
@@ -60712,10 +60880,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_global_gitconfig",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_global_gitconfig()"
+      "norm_label": "_gma_global_gitconfig()",
+      "id": "lib_git_multi_account_gma_global_gitconfig"
     },
     {
       "label": "_gma_include_present()",
@@ -60727,10 +60895,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_include_present",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_include_present()"
+      "norm_label": "_gma_include_present()",
+      "id": "lib_git_multi_account_gma_include_present"
     },
     {
       "label": "_gma_git_config()",
@@ -60742,10 +60910,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_gma_git_config",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "_gma_git_config()"
+      "norm_label": "_gma_git_config()",
+      "id": "lib_git_multi_account_gma_git_config"
     },
     {
       "label": "git_multi_account()",
@@ -60757,10 +60925,10 @@
         "kind": "bash_function"
       },
       "_origin": "ast",
-      "id": "lib_git_multi_account_git_multi_account",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "git_multi_account()"
+      "norm_label": "git_multi_account()",
+      "id": "lib_git_multi_account_git_multi_account"
     },
     {
       "label": "github-cli.sh",
@@ -60772,10 +60940,10 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "id": "linux_setup_pacman_github_cli",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "github-cli.sh"
+      "norm_label": "github-cli.sh",
+      "id": "linux_setup_pacman_github_cli"
     },
     {
       "label": "github-cli.sh script",
@@ -60787,10 +60955,10 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "id": "linux_setup_pacman_github_cli_sh__entry",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "github-cli.sh script"
+      "norm_label": "github-cli.sh script",
+      "id": "linux_setup_pacman_github_cli_sh__entry"
     },
     {
       "label": "git-multi-account.sh",
@@ -60802,10 +60970,10 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "id": "linux_setup_tweak_git_multi_account",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "git-multi-account.sh"
+      "norm_label": "git-multi-account.sh",
+      "id": "linux_setup_tweak_git_multi_account"
     },
     {
       "label": "git-multi-account.sh script",
@@ -60817,10 +60985,10 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "id": "linux_setup_tweak_git_multi_account_sh__entry",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "git-multi-account.sh script"
+      "norm_label": "git-multi-account.sh script",
+      "id": "linux_setup_tweak_git_multi_account_sh__entry"
     },
     {
       "label": "git-multi-account.sh",
@@ -60832,10 +61000,10 @@
         "kind": "file"
       },
       "_origin": "ast",
-      "id": "macos_setup_tweak_git_multi_account",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "git-multi-account.sh"
+      "norm_label": "git-multi-account.sh",
+      "id": "macos_setup_tweak_git_multi_account"
     },
     {
       "label": "git-multi-account.sh script",
@@ -60847,10 +61015,10 @@
         "kind": "bash_entrypoint"
       },
       "_origin": "ast",
-      "id": "macos_setup_tweak_git_multi_account_sh__entry",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "git-multi-account.sh script"
+      "norm_label": "git-multi-account.sh script",
+      "id": "macos_setup_tweak_git_multi_account_sh__entry"
     },
     {
       "label": "CLAUDE.md (dotfiles agent guide)",
@@ -60861,10 +61029,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_claude_md",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "claude.md (dotfiles agent guide)"
+      "norm_label": "claude.md (dotfiles agent guide)",
+      "id": "claude_claude_md"
     },
     {
       "label": "OS tiers (macos/linux/windows)",
@@ -60876,10 +61044,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Content is split into disjoint per-OS tier dirs, each owning its app configs and its own setup/.",
-      "id": "claude_os_tiers",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "os tiers (macos/linux/windows)"
+      "norm_label": "os tiers (macos/linux/windows)",
+      "id": "claude_os_tiers"
     },
     {
       "label": "macos/ tier (brew, tweak)",
@@ -60890,10 +61058,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_macos_tier",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "macos/ tier (brew, tweak)"
+      "norm_label": "macos/ tier (brew, tweak)",
+      "id": "claude_macos_tier"
     },
     {
       "label": "linux/ tier (Arch/CachyOS)",
@@ -60904,10 +61072,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_linux_tier",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "linux/ tier (arch/cachyos)"
+      "norm_label": "linux/ tier (arch/cachyos)",
+      "id": "claude_linux_tier"
     },
     {
       "label": "windows/ tier (Git Bash/MSYS)",
@@ -60919,10 +61087,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Windows has no single ~/.config, so configs deploy by explicit manifest to heterogeneous targets; selected when uname -s reports MINGW/MSYS/CYGWIN (WSL gets the linux tier).",
-      "id": "claude_windows_tier",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "windows/ tier (git bash/msys)"
+      "norm_label": "windows/ tier (git bash/msys)",
+      "id": "claude_windows_tier"
     },
     {
       "label": "lib/link.sh symlink helper",
@@ -60933,10 +61101,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_lib_link_sh",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "lib/link.sh symlink helper"
+      "norm_label": "lib/link.sh symlink helper",
+      "id": "claude_lib_link_sh"
     },
     {
       "label": "lib/mcp/ shared MCP tweak code",
@@ -60947,10 +61115,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_lib_mcp",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "lib/mcp/ shared mcp tweak code"
+      "norm_label": "lib/mcp/ shared mcp tweak code",
+      "id": "claude_lib_mcp"
     },
     {
       "label": "lib/git-multi-account.sh",
@@ -60962,10 +61130,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Holds the shared logic so the macOS and Linux git-multi-account tweaks stay thin callers.",
-      "id": "claude_lib_git_multi_account_sh",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "lib/git-multi-account.sh"
+      "norm_label": "lib/git-multi-account.sh",
+      "id": "claude_lib_git_multi_account_sh"
     },
     {
       "label": "Single branch, runtime OS selection",
@@ -60977,10 +61145,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Retired the branch-per-OS model (main=macOS, cachyos-home=Linux) and its never-merge-wholesale footgun; disjoint tier dirs make one branch safe.",
-      "id": "claude_single_branch_model",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "single branch, runtime os selection"
+      "norm_label": "single branch, runtime os selection",
+      "id": "claude_single_branch_model"
     },
     {
       "label": "No shared config tier (design decision)",
@@ -60992,10 +61160,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Genuinely shared config is duplicated per tier; the sanctioned escape hatch is a single intra-repo tier-to-tier symlink, never a common/ tier.",
-      "id": "claude_no_shared_config_tier",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "no shared config tier (design decision)"
+      "norm_label": "no shared config tier (design decision)",
+      "id": "claude_no_shared_config_tier"
     },
     {
       "label": "Bootstrap cascade (setup.sh -> tier -> pkgmgr -> tweak)",
@@ -61006,10 +61174,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_bootstrap_cascade",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "bootstrap cascade (setup.sh -> tier -> pkgmgr -> tweak)"
+      "norm_label": "bootstrap cascade (setup.sh -> tier -> pkgmgr -> tweak)",
+      "id": "claude_bootstrap_cascade"
     },
     {
       "label": "setup.sh dispatcher",
@@ -61021,10 +61189,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Refuses root, picks the tier via uname -s, runs a repo-scoped mode-preserving chmod u+rwX that prunes .git so git status never shows mode flips, then deploys and runs the tier runner.",
-      "id": "claude_setup_sh",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "setup.sh dispatcher"
+      "norm_label": "setup.sh dispatcher",
+      "id": "claude_setup_sh"
     },
     {
       "label": "Windows preflight (winget + Developer Mode symlinks)",
@@ -61036,10 +61204,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Fails fast before any mutation if winget is missing or a native symlink cannot be created.",
-      "id": "claude_windows_preflight",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "windows preflight (winget + developer mode symlinks)"
+      "norm_label": "windows preflight (winget + developer mode symlinks)",
+      "id": "claude_windows_preflight"
     },
     {
       "label": "<tier>/setup/.setup.sh ORDER runner",
@@ -61050,10 +61218,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_tier_setup_runner",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "<tier>/setup/.setup.sh order runner"
+      "norm_label": "<tier>/setup/.setup.sh order runner",
+      "id": "claude_tier_setup_runner"
     },
     {
       "label": "ensure_brew_path",
@@ -61065,10 +61233,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Modules are sibling processes, so brew shellenv must be re-evaluated before each module for the tweak phase to see CLIs the brew module just installed.",
-      "id": "claude_ensure_brew_path",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "ensure_brew_path"
+      "norm_label": "ensure_brew_path",
+      "id": "claude_ensure_brew_path"
     },
     {
       "label": "Package script name = manager skip-check identifier",
@@ -61080,10 +61248,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Filename minus .sh must equal the identifier brew/pacman/yay (leaf name) or winget (full dotted id) lists, otherwise the package reinstalls every run.",
-      "id": "claude_skip_check_naming",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "package script name = manager skip-check identifier"
+      "norm_label": "package script name = manager skip-check identifier",
+      "id": "claude_skip_check_naming"
     },
     {
       "label": "Idempotent, non-destructive tweaks",
@@ -61095,10 +61263,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Tweaks run on every bootstrap with no skip-check, so they must be idempotent and back up rather than rm user files.",
-      "id": "claude_tweak_idempotency",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "idempotent, non-destructive tweaks"
+      "norm_label": "idempotent, non-destructive tweaks",
+      "id": "claude_tweak_idempotency"
     },
     {
       "label": "tee + PIPESTATUS runner log pattern",
@@ -61110,10 +61278,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Uses ${PIPESTATUS[0]} for the real exit rather than tee's, keeps logs only on failure, prints an aggregate summary.",
-      "id": "claude_runner_log_pattern",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "tee + pipestatus runner log pattern"
+      "norm_label": "tee + pipestatus runner log pattern",
+      "id": "claude_runner_log_pattern"
     },
     {
       "label": "_link_one backup-then-link primitive",
@@ -61125,10 +61293,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Non-destructive: an existing target is moved to <dst>.bak.<timestamp>, never rm -rf; a correct symlink is a no-op.",
-      "id": "claude_link_one",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "_link_one backup-then-link primitive"
+      "norm_label": "_link_one backup-then-link primitive",
+      "id": "claude_link_one"
     },
     {
       "label": "deploy_tier (macOS/Linux)",
@@ -61139,10 +61307,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_deploy_tier",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "deploy_tier (macos/linux)"
+      "norm_label": "deploy_tier (macos/linux)",
+      "id": "claude_deploy_tier"
     },
     {
       "label": "deploy_manifest (Windows)",
@@ -61153,10 +61321,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_deploy_manifest",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "deploy_manifest (windows)"
+      "norm_label": "deploy_manifest (windows)",
+      "id": "claude_deploy_manifest"
     },
     {
       "label": "_expand_dest",
@@ -61168,10 +61336,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Expands only a leading allowlisted env reference, with no eval and no globbing.",
-      "id": "claude_expand_dest",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "_expand_dest"
+      "norm_label": "_expand_dest",
+      "id": "claude_expand_dest"
     },
     {
       "label": "windows/.links deploy manifest",
@@ -61182,10 +61350,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_windows_links_manifest",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "windows/.links deploy manifest"
+      "norm_label": "windows/.links deploy manifest",
+      "id": "claude_windows_links_manifest"
     },
     {
       "label": "Runtime-state hazard (whole-dir symlinks)",
@@ -61197,10 +61365,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Whole-dir symlinks mean anything an app writes into its config dir lands in the repo working tree (e.g. .zshrc.zwc).",
-      "id": "claude_runtime_state_hazard",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "runtime-state hazard (whole-dir symlinks)"
+      "norm_label": "runtime-state hazard (whole-dir symlinks)",
+      "id": "claude_runtime_state_hazard"
     },
     {
       "label": ".gitignore conventional deny-list",
@@ -61211,10 +61379,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_gitignore_deny_list",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": ".gitignore conventional deny-list"
+      "norm_label": ".gitignore conventional deny-list",
+      "id": "claude_gitignore_deny_list"
     },
     {
       "label": "zsh.sh tweak (ZDOTDIR via ~/.zshenv)",
@@ -61225,10 +61393,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_zsh_tweak",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "zsh.sh tweak (zdotdir via ~/.zshenv)"
+      "norm_label": "zsh.sh tweak (zdotdir via ~/.zshenv)",
+      "id": "claude_zsh_tweak"
     },
     {
       "label": "_link_backup_path",
@@ -61239,10 +61407,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_link_backup_path",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": "_link_backup_path"
+      "norm_label": "_link_backup_path",
+      "id": "claude_link_backup_path"
     },
     {
       "label": "Claude MCP server tweaks",
@@ -61254,10 +61422,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Copied from Rooftop's Device-Onboarding, which owns them; kept byte-identical so a sync stays a plain copy and fixes land there first.",
-      "id": "claude_mcp_server_tweaks",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "claude mcp server tweaks"
+      "norm_label": "claude mcp server tweaks",
+      "id": "claude_mcp_server_tweaks"
     },
     {
       "label": "Rooftop-Energy-Tech/Device-Onboarding (upstream owner)",
@@ -61268,10 +61436,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_rooftop_device_onboarding",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "rooftop-energy-tech/device-onboarding (upstream owner)"
+      "norm_label": "rooftop-energy-tech/device-onboarding (upstream owner)",
+      "id": "claude_rooftop_device_onboarding"
     },
     {
       "label": "lib/mcp/common.sh",
@@ -61282,10 +61450,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_common_sh",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "lib/mcp/common.sh"
+      "norm_label": "lib/mcp/common.sh",
+      "id": "claude_common_sh"
     },
     {
       "label": "kicad-mcp.sh tweak (local KiCad MCP build)",
@@ -61296,10 +61464,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_kicad_mcp",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "kicad-mcp.sh tweak (local kicad mcp build)"
+      "norm_label": "kicad-mcp.sh tweak (local kicad mcp build)",
+      "id": "claude_kicad_mcp"
     },
     {
       "label": "mixelpixx/KiCAD-MCP-Server",
@@ -61310,10 +61478,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_kicad_mcp_server_upstream",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "mixelpixx/kicad-mcp-server"
+      "norm_label": "mixelpixx/kicad-mcp-server",
+      "id": "claude_kicad_mcp_server_upstream"
     },
     {
       "label": "lib/mcp/check.mjs (MCP liveness check)",
@@ -61324,10 +61492,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_check_mjs",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "lib/mcp/check.mjs (mcp liveness check)"
+      "norm_label": "lib/mcp/check.mjs (mcp liveness check)",
+      "id": "claude_check_mjs"
     },
     {
       "label": "part-db-mcp.sh tweak (Part-DB over tailnet)",
@@ -61338,10 +61506,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_part_db_mcp",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "part-db-mcp.sh tweak (part-db over tailnet)"
+      "norm_label": "part-db-mcp.sh tweak (part-db over tailnet)",
+      "id": "claude_part_db_mcp"
     },
     {
       "label": "onshape-mcp.sh tweak (hosted Onshape MCP)",
@@ -61352,10 +61520,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_onshape_mcp",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "onshape-mcp.sh tweak (hosted onshape mcp)"
+      "norm_label": "onshape-mcp.sh tweak (hosted onshape mcp)",
+      "id": "claude_onshape_mcp"
     },
     {
       "label": "Claude Desktop config rewrite hazard",
@@ -61367,10 +61535,10 @@
       "author": null,
       "contributor": null,
       "rationale": "A running Desktop rewrites claude_desktop_config.json from memory, dropping changes; tweaks run from inside Desktop skip it.",
-      "id": "claude_desktop_config_rewrite_hazard",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "claude desktop config rewrite hazard"
+      "norm_label": "claude desktop config rewrite hazard",
+      "id": "claude_desktop_config_rewrite_hazard"
     },
     {
       "label": "hardware-skills (kicad-design, onshape-design)",
@@ -61381,10 +61549,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_hardware_skills",
       "community": 58,
       "community_name": "Claude MCP Server Tweaks",
-      "norm_label": "hardware-skills (kicad-design, onshape-design)"
+      "norm_label": "hardware-skills (kicad-design, onshape-design)",
+      "id": "claude_hardware_skills"
     },
     {
       "label": "Multi-account git wrapper (zsh/fish)",
@@ -61395,10 +61563,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_git_multi_account_wrapper",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "multi-account git wrapper (zsh/fish)"
+      "norm_label": "multi-account git wrapper (zsh/fish)",
+      "id": "claude_git_multi_account_wrapper"
     },
     {
       "label": "Two GitHub accounts (Adrian-LSY work, AdrianLSY personal)",
@@ -61409,10 +61577,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_two_github_accounts",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "two github accounts (adrian-lsy work, adrianlsy personal)"
+      "norm_label": "two github accounts (adrian-lsy work, adrianlsy personal)",
+      "id": "claude_two_github_accounts"
     },
     {
       "label": "ghs <account> re-stamp function",
@@ -61423,10 +61591,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_ghs",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "ghs <account> re-stamp function"
+      "norm_label": "ghs <account> re-stamp function",
+      "id": "claude_ghs"
     },
     {
       "label": "git-multi-account.sh tweak",
@@ -61438,10 +61606,10 @@
       "author": null,
       "contributor": null,
       "rationale": "The wrapper only loads in its own interactive shell and ssh-keypick excludes github.com, so the tweak covers git run elsewhere (Claude Code, scripts, launchd, systemd).",
-      "id": "claude_git_multi_account_tweak",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "git-multi-account.sh tweak"
+      "norm_label": "git-multi-account.sh tweak",
+      "id": "claude_git_multi_account_tweak"
     },
     {
       "label": "ssh-keypick (excludes github.com)",
@@ -61452,10 +61620,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_ssh_keypick",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "ssh-keypick (excludes github.com)"
+      "norm_label": "ssh-keypick (excludes github.com)",
+      "id": "claude_ssh_keypick"
     },
     {
       "label": "~/.ssh/config github.com Host stanza",
@@ -61467,10 +61635,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Defaults github.com and ssh.github.com to the Adrian-LSY key; placed outside the keypick managed block so ssh-keypick install keeps it.",
-      "id": "claude_ssh_config_github_stanza",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "~/.ssh/config github.com host stanza"
+      "norm_label": "~/.ssh/config github.com host stanza",
+      "id": "claude_ssh_config_github_stanza"
     },
     {
       "label": "~/.gitconfig (global git config)",
@@ -61481,10 +61649,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_global_gitconfig",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "~/.gitconfig (global git config)"
+      "norm_label": "~/.gitconfig (global git config)",
+      "id": "claude_global_gitconfig"
     },
     {
       "label": "includeIf hasconfig:remote personal URL sections",
@@ -61496,10 +61664,10 @@
       "author": null,
       "contributor": null,
       "rationale": "One include per URL form a personal clone can have (git@, https from gh repo clone, ssh://); needs git 2.36+; globs are case-sensitive; placed after the global settings so personal values win for AdrianLSY remotes.",
-      "id": "claude_includeif_personal_remotes",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "includeif hasconfig:remote personal url sections"
+      "norm_label": "includeif hasconfig:remote personal url sections",
+      "id": "claude_includeif_personal_remotes"
     },
     {
       "label": "GMA_PERSONAL_URL_GLOBS",
@@ -61510,10 +61678,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_gma_personal_url_globs",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "gma_personal_url_globs"
+      "norm_label": "gma_personal_url_globs",
+      "id": "claude_gma_personal_url_globs"
     },
     {
       "label": "~/.config/git/github-personal.gitconfig",
@@ -61525,10 +61693,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Sets core.sshCommand with -i so the personal key is offered first, plus personal user.email, signingkey and commit signing, so an unstamped personal repo still commits as AdrianLSY; user.name stays global.",
-      "id": "claude_personal_gitconfig",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "~/.config/git/github-personal.gitconfig"
+      "norm_label": "~/.config/git/github-personal.gitconfig",
+      "id": "claude_personal_gitconfig"
     },
     {
       "label": "gh auth git-credential helper",
@@ -61540,10 +61708,10 @@
       "author": null,
       "contributor": null,
       "rationale": "For an https remote ssh settings do nothing, so pushes authenticate through gh's active account instead.",
-      "id": "claude_gh_credential_helper",
       "community": 30,
       "community_name": "Git Multi-Account Library",
-      "norm_label": "gh auth git-credential helper"
+      "norm_label": "gh auth git-credential helper",
+      "id": "claude_gh_credential_helper"
     },
     {
       "label": "Wrapper account lookup functions (__git_*_for_account)",
@@ -61555,10 +61723,10 @@
       "author": null,
       "contributor": null,
       "rationale": "The tweak reads keys, email and signing key from the tier wrapper via zsh -f / fish --no-config so the mapping lives only there.",
-      "id": "claude_wrapper_account_mapping",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "wrapper account lookup functions (__git_*_for_account)"
+      "norm_label": "wrapper account lookup functions (__git_*_for_account)",
+      "id": "claude_wrapper_account_mapping"
     },
     {
       "label": "~/.ssh/allowed_signers",
@@ -61569,10 +61737,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_allowed_signers",
       "community": 266,
       "community_name": "Multi-Account Git Setup",
-      "norm_label": "~/.ssh/allowed_signers"
+      "norm_label": "~/.ssh/allowed_signers",
+      "id": "claude_allowed_signers"
     },
     {
       "label": "ai alias (claude ultracode launch)",
@@ -61584,10 +61752,10 @@
       "author": null,
       "contributor": null,
       "rationale": "--settings '{\"ultracode\":true}' is the only CLI way to activate ultracode; --effort ultracode collapses to xhigh.",
-      "id": "claude_ai_alias",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "ai alias (claude ultracode launch)"
+      "norm_label": "ai alias (claude ultracode launch)",
+      "id": "claude_ai_alias"
     },
     {
       "label": "AeroSpace personal fork (aerospace-adrianlsy)",
@@ -61598,10 +61766,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_aerospace_fork",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "aerospace personal fork (aerospace-adrianlsy)"
+      "norm_label": "aerospace personal fork (aerospace-adrianlsy)",
+      "id": "claude_aerospace_fork"
     },
     {
       "label": "gitleaks pre-commit hook",
@@ -61613,10 +61781,10 @@
       "author": null,
       "contributor": null,
       "rationale": "With a deny-list .gitignore no longer gating tracking by directory, gitleaks is the primary content-level secret defense.",
-      "id": "claude_gitleaks_pre_commit_hook",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "gitleaks pre-commit hook"
+      "norm_label": "gitleaks pre-commit hook",
+      "id": "claude_gitleaks_pre_commit_hook"
     },
     {
       "label": ".gitattributes eol=lf pins",
@@ -61628,10 +61796,10 @@
       "author": null,
       "contributor": null,
       "rationale": "Bash parses these files on every OS; a stray CRLF breaks shebangs and leaves trailing \\r on manifest fields.",
-      "id": "claude_gitattributes_eol_lf",
       "community": 33,
       "community_name": "Bootstrap and Symlink Deploy",
-      "norm_label": ".gitattributes eol=lf pins"
+      "norm_label": ".gitattributes eol=lf pins",
+      "id": "claude_gitattributes_eol_lf"
     },
     {
       "label": "graphify usage rules",
@@ -61642,13 +61810,73 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_graphify_rules",
       "community": 137,
       "community_name": "Dotfiles Repo Conventions",
-      "norm_label": "graphify usage rules"
+      "norm_label": "graphify usage rules",
+      "id": "claude_graphify_rules"
     }
   ],
   "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "linux/setup/pacman/bitwarden-cli.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "linux_setup_pacman_bitwarden_cli",
+      "target": "linux_setup_pacman_bitwarden_cli_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "linux/setup/pacman/bitwarden.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "linux_setup_pacman_bitwarden",
+      "target": "linux_setup_pacman_bitwarden_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "linux/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "linux_setup_tweak_bitwarden_server",
+      "target": "linux_setup_tweak_bitwarden_server_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/brew/bitwarden-cli.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_brew_bitwarden_cli",
+      "target": "macos_setup_brew_bitwarden_cli_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/brew/bitwarden.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_brew_bitwarden",
+      "target": "macos_setup_brew_bitwarden_sh__entry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "macos/setup/tweak/bitwarden-server.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "macos_setup_tweak_bitwarden_server",
+      "target": "macos_setup_tweak_bitwarden_server_sh__entry",
+      "confidence_score": 1.0
+    },
     {
       "relation": "defines",
       "confidence": "EXTRACTED",
@@ -119521,9 +119749,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L274",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_git_multi_account",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_git_multi_account"
     },
     {
       "relation": "defines",
@@ -119531,9 +119759,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_backup",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_backup"
     },
     {
       "relation": "defines",
@@ -119541,9 +119769,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_expand_tilde",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_expand_tilde"
     },
     {
       "relation": "defines",
@@ -119551,9 +119779,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L205",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_git_config",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_git_config"
     },
     {
       "relation": "defines",
@@ -119561,9 +119789,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_global_gitconfig",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_global_gitconfig"
     },
     {
       "relation": "defines",
@@ -119571,9 +119799,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L118",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_has_github_stanza",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_has_github_stanza"
     },
     {
       "relation": "defines",
@@ -119581,9 +119809,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_include_key",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_include_key"
     },
     {
       "relation": "defines",
@@ -119591,9 +119819,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_include_present",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_include_present"
     },
     {
       "relation": "defines",
@@ -119601,9 +119829,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_ssh_config",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_ssh_config"
     },
     {
       "relation": "defines",
@@ -119611,9 +119839,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_value_for",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_value_for"
     },
     {
       "relation": "defines",
@@ -119621,9 +119849,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L110",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_warn_if_missing",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_warn_if_missing"
     },
     {
       "relation": "defines",
@@ -119631,9 +119859,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_gma_wrapper_call",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_wrapper_call"
     },
     {
       "relation": "contains",
@@ -119641,9 +119869,9 @@
       "source_file": "lib/git-multi-account.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account",
-      "target": "lib_git_multi_account_sh__entry",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_sh__entry"
     },
     {
       "relation": "references",
@@ -119692,9 +119920,9 @@
       "source_location": "L229",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_gma_git_config",
-      "target": "lib_git_multi_account_gma_backup",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_backup"
     },
     {
       "relation": "calls",
@@ -119703,9 +119931,9 @@
       "source_location": "L160",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_gma_ssh_config",
-      "target": "lib_git_multi_account_gma_backup",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_backup"
     },
     {
       "relation": "calls",
@@ -119714,9 +119942,9 @@
       "source_location": "L288",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_git_multi_account",
-      "target": "lib_git_multi_account_gma_warn_if_missing",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_warn_if_missing"
     },
     {
       "relation": "references",
@@ -119735,9 +119963,9 @@
       "source_location": "L152",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_gma_ssh_config",
-      "target": "lib_git_multi_account_gma_has_github_stanza",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_has_github_stanza"
     },
     {
       "relation": "references",
@@ -119756,9 +119984,9 @@
       "source_location": "L287",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_git_multi_account",
-      "target": "lib_git_multi_account_gma_ssh_config",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_ssh_config"
     },
     {
       "relation": "references",
@@ -119787,9 +120015,9 @@
       "source_location": "L255",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_gma_git_config",
-      "target": "lib_git_multi_account_gma_include_present",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_include_present"
     },
     {
       "relation": "references",
@@ -119808,9 +120036,9 @@
       "source_location": "L289",
       "weight": 1.0,
       "context": "call",
+      "confidence_score": 1.0,
       "source": "lib_git_multi_account_git_multi_account",
-      "target": "lib_git_multi_account_gma_git_config",
-      "confidence_score": 1.0
+      "target": "lib_git_multi_account_gma_git_config"
     },
     {
       "relation": "calls",
@@ -119868,9 +120096,9 @@
       "source_file": "linux/setup/pacman/github-cli.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_setup_pacman_github_cli",
-      "target": "linux_setup_pacman_github_cli_sh__entry",
-      "confidence_score": 1.0
+      "target": "linux_setup_pacman_github_cli_sh__entry"
     },
     {
       "relation": "shares_data_with",
@@ -119898,9 +120126,9 @@
       "source_file": "linux/setup/tweak/git-multi-account.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_setup_tweak_git_multi_account",
-      "target": "linux_setup_tweak_git_multi_account_sh__entry",
-      "confidence_score": 1.0
+      "target": "linux_setup_tweak_git_multi_account_sh__entry"
     },
     {
       "relation": "references",
@@ -119918,9 +120146,9 @@
       "source_file": "macos/setup/tweak/git-multi-account.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_setup_tweak_git_multi_account",
-      "target": "macos_setup_tweak_git_multi_account_sh__entry",
-      "confidence_score": 1.0
+      "target": "macos_setup_tweak_git_multi_account_sh__entry"
     },
     {
       "relation": "references",
@@ -121571,5 +121799,5 @@
       "source_file": "CLAUDE.md"
     }
   ],
-  "built_at_commit": "e7e0707ba44574919d6e323c806d42da0f0974a1"
+  "built_at_commit": "2307c0c8c9b7f0af48d6bb6524719150f18f3060"
 }
