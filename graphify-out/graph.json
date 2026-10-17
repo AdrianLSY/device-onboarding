@@ -61814,6 +61814,36 @@
       "community_name": "Dotfiles Repo Conventions",
       "norm_label": "graphify usage rules",
       "id": "claude_graphify_rules"
+    },
+    {
+      "id": "macos_setup_brew_sill",
+      "label": "sill.sh",
+      "_origin": "ast",
+      "community": 428,
+      "community_name": "sill.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "sill.sh",
+      "source_file": "macos/setup/brew/sill.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "macos_setup_brew_sill_sh__entry",
+      "label": "sill.sh script",
+      "_origin": "ast",
+      "community": 428,
+      "community_name": "sill.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "sill.sh script",
+      "source_file": "macos/setup/brew/sill.sh",
+      "source_location": "L1"
     }
   ],
   "links": [
@@ -121049,6 +121079,17 @@
       "weight": 1.0,
       "source": "claude_gh_credential_helper",
       "target": "claude_personal_gitconfig"
+    },
+    {
+      "source": "macos_setup_brew_sill",
+      "target": "macos_setup_brew_sill_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "macos/setup/brew/sill.sh",
+      "source_location": "L1",
+      "weight": 1.0
     }
   ],
   "hyperedges": [
