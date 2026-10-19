@@ -250,7 +250,9 @@ store_forget() {  # host port user -> exit 0 if a record was removed
 attempt_file()    { print -r -- "$STATE_DIR/attempts/$(target_token $1 $2 $3)" }
 untestable_file() { print -r -- "$STATE_DIR/untestable/$(target_token $1 $2 $3)" }
 
-file_mtime() { stat -f %m $1 2>/dev/null || stat -c %Y $1 2>/dev/null || print -r -- 0 }
+# GNU stat first: GNU reads `-f %m` as "filesystem status of %m and $1", which
+# prints a report for $1 to stdout before failing. BSD stat rejects -c silently.
+file_mtime() { stat -c %Y $1 2>/dev/null || stat -f %m $1 2>/dev/null || print -r -- 0 }
 
 # Echo current attempt count, honouring TTL (stale counters read as 0).
 attempt_get() {

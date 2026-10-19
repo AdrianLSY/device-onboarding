@@ -11,4 +11,7 @@ if [ ! -f "$CFG" ]; then
     exit 0
 fi
 
-sudo sed -i "/alias update='sudo pacman -Syu'/d" "$CFG"
+# Match any update alias: CachyOS changed it to
+# `alias update='sudo cachyos-rate-mirrors && sudo pacman -Syu'`, and config.fish
+# sources this file after conf.d/, so the alias would replace update.fish.
+sudo sed -i "/^alias update=/d" "$CFG"

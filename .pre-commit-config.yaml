@@ -1,7 +1,8 @@
 # Secret-scanning tripwire — backs the allowlist .gitignore (openspec: secure-config-and-merge §4).
 # Blocks any commit whose staged diff contains a secret (scans all staged content,
-# tracked or new). Uses the brew-installed gitleaks binary (setup/brew/gitleaks.sh)
-# through a local hook, so no Go build is needed.
+# tracked or new). Uses the gitleaks binary the bootstrap installs
+# (macos/setup/brew/gitleaks.sh, linux/setup/pacman/gitleaks.sh) through a local
+# hook, so no Go build is needed.
 # Activated per-clone by `pre-commit install` (setup/tweak/pre-commit.sh runs it on bootstrap).
 repos:
   - repo: local

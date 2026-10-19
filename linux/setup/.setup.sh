@@ -5,6 +5,13 @@ set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SELF="$(basename "$0")"
 
+# Modules run as SIBLING processes, so the PATH the app module sets for its
+# user-local installs never reaches the tweak module. On a fresh machine fish's
+# fish_add_path skips ~/.local/bin while it does not exist yet, so the shell
+# that ran setup.sh lacks it, and tweaks that call those installs (graphify.sh
+# runs uv) would fail. Same job as the macOS runner's ensure_brew_path.
+export PATH="$HOME/.local/bin:$PATH"
+
 echo "Starting setup for all modules..."
 
 ORDER=(

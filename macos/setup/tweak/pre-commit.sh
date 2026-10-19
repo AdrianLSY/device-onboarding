@@ -2,7 +2,9 @@
 set -e
 
 # Wire the gitleaks secret-scanning tripwire (.pre-commit-config.yaml) into this repo's
-# git hooks. The brew module runs first, so `pre-commit` is already installed by now.
+# git hooks. The package module (brew, or pacman on Linux) runs first, so `pre-commit`
+# is already installed by now. The Linux tier runs this file through
+# linux/setup/tweak/pre-commit.sh, so keep it portable.
 # Idempotent: `pre-commit install` just (re)writes .git/hooks/pre-commit.
 # The repo lives at an external path (canonically ~/.dotfiles), NOT ~/.config, so
 # resolve it from this script's own location (macos/setup/tweak/ -> repo root).

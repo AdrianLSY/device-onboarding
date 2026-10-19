@@ -16,6 +16,10 @@ set -e
 # git run anywhere else: a github.com Host stanza outside the managed block
 # (which `install` preserves) plus a git includeIf for personal repos. The
 # wrapper still stamps identity and signing onto each repo at clone time.
+#
+# The Linux tier runs this file through linux/setup/tweak/ssh-keypick.sh, so
+# keep it portable. There, linux/bin is a symlink to ../macos/bin, so the same
+# helper deploys to ~/.config/bin, and the git wrapper is the fish one.
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$DIR/../.." && pwd)"

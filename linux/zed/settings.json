@@ -3,6 +3,12 @@
   "project_panel": {
     "dock": "left"
   },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
   "git_panel": {
     "dock": "left"
   },
@@ -57,13 +63,13 @@
   },
   "agent_servers": {
     "claude-acp": {
-      // Remove any other `claude-*` keys
-      "favorite_config_option_values": {
-        "mode": [
-          "bypassPermissions"
-        ]
+      "default_config_options": {
+        "fast": false,
+        "model": "opus[1m]",
+        "mode": "bypassPermissions"
       },
       "type": "registry",
+      "default_mode": "bypassPermissions",
     },
   },
   "ui_font_size": 15,

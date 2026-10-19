@@ -19,7 +19,8 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   `setup/` (`brew`, `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `kitty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
-  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `mimeapps.list`, and its own `setup/`
+  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `mimeapps.list`, `bin/` (a symlink to
+  `../macos/bin`, so both tiers share `ssh-keypick`), and its own `setup/`
   (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
 - `windows/` — the native-Windows (Git Bash/MSYS) machine: its `setup/`
   (`winget`, `tweak`) and a `.links` deploy manifest. Selected when `uname -s`
@@ -31,7 +32,10 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   is never symlinked into `~/.config`.
 
 There is no `common/` tier: genuinely-shared config (`micro/`, and `zed/` with a
-per-tier `settings.json`) is duplicated into both tiers by design.
+per-tier `settings.json`) is duplicated into both tiers by design. Shared code is
+not duplicated: `linux/bin` links to `macos/bin`, and the Linux tweaks
+`bitwarden-server.sh`, `graphify.sh`, `pre-commit.sh` and `ssh-keypick.sh` run
+the macOS scripts of the same name.
 
 ## Bootstrap
 

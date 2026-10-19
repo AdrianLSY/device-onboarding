@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# The Linux tier runs this file through linux/setup/tweak/graphify.sh, so keep
+# it portable.
+
 # NOTE: the double-y is intentional — the PyPI package is `graphifyy`
 # (plain `graphify` does not exist on PyPI). Verified 2026-07-02.
 uv tool install graphifyy
