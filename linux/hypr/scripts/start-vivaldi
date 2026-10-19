@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Start Vivaldi and move its browser window to workspace 1 once. A window rule
+# would also catch every browser window opened later, and an exec rule can land
+# on a web app instead, since the web apps share the browser's process.
+/opt/vivaldi/vivaldi &
+
+for _ in $(seq 150); do
+    if hyprctl clients | grep -q $'^\tclass: vivaldi-stable$'; then
+        hyprctl dispatch movetoworkspacesilent '1,class:^(vivaldi-stable)$'
+        break
+    fi
+    sleep 0.2
+done
