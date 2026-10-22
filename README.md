@@ -19,9 +19,9 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `kitty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
-  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `mimeapps.list`, `bin/` (a symlink to
-  `../macos/bin`, so both tiers share `ssh-keypick`), and its own `setup/`
-  (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
+  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `mimeapps.list`, `bin/` (a
+  symlink to `../macos/bin`, so both tiers share `ssh-keypick`), and its own
+  `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
 - `windows/` — the native-Windows (Git Bash/MSYS) machine: its `setup/`
   (`winget`, `tweak`) and a `.links` deploy manifest. Selected when `uname -s`
   reports `MINGW*`/`MSYS*`/`CYGWIN*` (WSL reports `Linux` → the `linux` tier).
