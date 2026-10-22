@@ -26,6 +26,10 @@ STAMP="$HOME/.cache/update-schedule"
 LOCK="$STAMP/pid"
 BREW=/opt/homebrew/bin/brew
 ZSH=/bin/zsh
+# Source zinit itself (zsh -f) instead of going through .zshrc: ~/.config/zsh
+# links into a repo that may live under ~/Documents, which TCC hides from
+# launchd jobs, so `zsh -i` would silently start without zinit.
+ZINIT=$HOME/.local/share/zinit/zinit.git/zinit.zsh
 WINDOW=3600   # last_success must be older than 1h to trigger
 RETRY=600     # last_attempt must be older than 10min to retry after failure
 
@@ -62,7 +66,7 @@ touch "$STAMP/last_attempt"
 "$BREW" update \
   && "$BREW" upgrade \
   && "$BREW" cleanup \
-  && "$ZSH" -ic 'zinit update --all' \
+  && "$ZSH" -fc 'source "$1" && zinit update --all' zsh "$ZINIT" \
   && touch "$STAMP/last_success" \
   && echo "[$(ts)] update-schedule: success"
 CHECKEOF
