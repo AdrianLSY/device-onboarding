@@ -13,6 +13,11 @@ application/x-extension-xhtml=vivaldi-stable.desktop
 application/x-extension-xht=vivaldi-stable.desktop
 x-scheme-handler/webcal=vivaldi-stable.desktop
 x-scheme-handler/codex=chatgpt.desktop
+x-scheme-handler/cider=cider.desktop
+x-scheme-handler/itms=cider.desktop
+x-scheme-handler/itmss=cider.desktop
+x-scheme-handler/music=cider.desktop
+x-scheme-handler/itunes=cider.desktop
 
 [Added Associations]
 x-scheme-handler/http=vivaldi-stable.desktop;
