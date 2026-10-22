@@ -15,8 +15,8 @@ deploys by an explicit manifest to per-app targets (see below).
 Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
 
 - `macos/` — the macOS machine: `zsh/`, `zed/`, `ghostty/`, `aerospace/`,
-  `linearmouse/`, `vivaldi/`, `bin/`, `micro/`, `starship.toml`, and its own
-  `setup/` (`brew`, `tweak`).
+  `vivaldi/`, `bin/`, `micro/`, `starship.toml`, and its own `setup/` (`brew`,
+  `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `kitty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
   `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `mimeapps.list`, `bin/` (a symlink to
