@@ -53,7 +53,10 @@ if [ "$(cat "$DROPIN" 2>/dev/null)" != "$DROPIN_CONTENT" ]; then
     fi
     printf '%s\n' "$DROPIN_CONTENT" | sudo tee "$DROPIN" >/dev/null
     sudo chmod 644 "$DROPIN"
-    if ! sudo sshd -t; then
+    # macOS makes the host keys the first time Remote Login starts sshd, and
+    # `sshd -t` exits with "no hostkeys available" without them. Make any that
+    # are missing now, as launchd's wrapper would; existing keys are kept.
+    if ! sudo ssh-keygen -A || ! sudo sshd -t; then
         sudo rm -f "$DROPIN"
         if [ -n "$BACKUP" ]; then
             sudo mv "$BACKUP" "$DROPIN"
