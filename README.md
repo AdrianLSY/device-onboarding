@@ -113,6 +113,94 @@ The selected mode must be available for the display's current resolution and
 refresh rate. BetterDisplay's [CLI guide](https://github.com/waydabber/BetterDisplay/wiki/Integration-features,-CLI)
 documents how to inspect the available connection modes when troubleshooting.
 
+### Power, locking and charging (macOS)
+
+`macos/setup/tweak/power-policy.sh` installs the `com.adrian.power-policy`
+LaunchAgent. It keeps the Mac running with network access according to this
+policy, including with the lid closed:
+
+| External monitor | Physical charger | Raycast Coffee | Lid closed |
+| --- | --- | --- | --- |
+| Connected | Either | Either | Stay awake; preserve the active session and external monitor |
+| None | Either | On | Stay awake; lock and turn displays off on lid close |
+| None | Either | Off | Lock and sleep |
+
+Raycast Coffee remains the manual override. The controller recognizes a live
+`/usr/bin/caffeinate` process belonging to the logged-in user; another app that
+starts the same command also counts as an override. A connected external monitor
+takes priority over lid-close locking, with Coffee either on or off and even
+when the hub does not provide charging power. Opening or closing the lid while
+docked preserves the active session and monitor output.
+
+Without an external monitor, Coffee on makes an observed open-to-closed lid
+transition lock the session and blank the displays while apps and networking
+keep running. Turning Coffee on while the lid is already closed does not
+interrupt the current session, and unlocking after a lid-close lock does not
+cause repeated locking. With Coffee off, closing the lid locks and sleeps,
+including when a charger is connected without a monitor. With the lid open,
+physical AC power continues to keep the Mac awake.
+A temporary macOS headless “Generic Display” placeholder does not count as a
+connected monitor; normal USB/DisplayLink and mirrored monitors remain eligible.
+Disconnecting the monitor while the lid is closed restores the undocked
+Coffee-dependent rule. Power changes, Coffee toggles and controller restarts
+preserve an active docked session.
+
+Attaching a newly online external display makes one native display-wake request;
+display sleep itself never triggers another wake. On the lock screen, Escape
+turns displays off while apps and networking continue. Keyboard or mouse input
+wakes the displays; normal authentication still applies. Escape is not remapped
+inside applications. Unknown hubs may require macOS accessory approval before
+their display, keyboard or mouse can work. Waking from full system sleep also
+requires the hub/connection to generate a native hardware wake; the user agent
+cannot execute while the CPU is asleep.
+
+In **Raycast Settings → Coffee**, leave **Prevent system sleep** on and turn
+**Prevent display sleep** off. macOS owns normal idle display sleep and locking,
+including its handling of activity and apps that need the display to stay on.
+The controller does not run an independent inactivity timer.
+
+Configure **AlDente → Settings → Battery Care** as follows:
+
+- **Charge Limit: 80%** (or the limit you choose later).
+- Keep native macOS charge control enabled on supported macOS versions.
+- **Sleep Behavior: Continue like before.** The power controller owns sleep;
+  AlDente's other sleep modes conflict with this policy.
+- **Sailing Mode: off**, so charging targets the selected limit rather than a
+  lower sailing threshold.
+- **Automatic Discharge: off**, so AlDente does not imitate unplugging.
+- Keep Heat Protection enabled; it can pause charging while the battery is hot.
+
+AlDente owns the charge limit independently of the lid policy. This Mac has
+native charge control enabled and an active macOS 80% charge-limit policy;
+the sleep controller does not change charging settings. The Mac stays
+awake on AC with the lid open, while docked, or with Coffee on; undocked
+Coffee-off lid closure sleeps even on AC. macOS can occasionally force a full
+charge for battery calibration;
+[AlDente cannot prevent that system override](https://apphousekitchen.com/macbook-charges-to-100-despite-charge-limit/).
+
+The installer requires **Lock Screen → Require password … Immediately** and
+the existing narrow administrator permission for these exact commands:
+`sudo -n /usr/bin/pmset disablesleep 0` and `… disablesleep 1`. It reuses the
+permission installed by Vorssaint's closed-lid feature without adding sudo
+access. Keep Vorssaint's own Keep Awake feature off so only one controller
+writes the sleep setting. If either permission is absent, the installer stops
+with instructions; it does not silently weaken permissions or password policy.
+
+To install or refresh just this policy, run:
+
+```sh
+bash macos/setup/tweak/power-policy.sh
+```
+
+The executable is copied outside the repo to
+`~/Library/Application Support/device-power-policy/power-policy` so launchd can
+run it when the repo is under Documents. `--status` prints current sensors and
+the desired power state; `--check` checks prerequisites without changing them;
+`--once --dry-run` previews actions. Logs are in
+`~/Library/Logs/device-power-policy.log`. Starting the agent with the lid
+already closed preserves an active docked session. A physical charger/lid test is still needed
+after setup; a dry run does not prove a real sleep/wake transition.
+
 ## Adding things
 
 - **Package:** create `<tier>/setup/<pkgmgr>/<pkg>.sh` (macOS `brew`; Linux
