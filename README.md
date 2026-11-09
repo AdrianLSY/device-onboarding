@@ -287,10 +287,16 @@ keys the same way, unless they are already there:
 
 - **KeePassXC**, from Vicinae's store, runs `keepassxc-cli` on
   `~/Dropbox/Keychain.kdbx`, set in `base.jsonc`. It asks for the database
-  password on first use and then never locks, by choice. Until it locks it
-  keeps that password **unencrypted** in Vicinae's local storage,
-  `~/.local/share/vicinae/vicinae.db`, which only your user can read. To make
-  it lock, set `lockAfterInactivity` in `base.jsonc` to a number of minutes.
+  password on first use and then never locks, by choice. Until it locks, the
+  database password and the extension's full export of the database (every
+  entry's password, notes and TOTP secret) sit **unencrypted** in Vicinae's
+  local storage, `~/.local/share/vicinae/vicinae.db`, and are never cleared
+  while it never locks. Only processes running as your user can read it (the
+  folder is mode 700). To have them cleared, set `lockAfterInactivity` in
+  `base.jsonc` to a number of minutes. The first open shows "Something went
+  wrong when accessing the database (exit code: 1)" before the unlock form,
+  which is a bug in the extension, and the form submits with Ctrl+Enter. The
+  database needs no key file.
 - **Bitwarden (rbw)**, from Vicinae's store, runs
   [rbw](https://github.com/doy/rbw), a Bitwarden CLI that keeps the unlocked
   vault in an agent. The `rbw.sh` tweak points it at `https://vault.rooftop.my`
