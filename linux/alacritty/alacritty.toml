@@ -1,0 +1,68 @@
+# Carried over from kitty. kitty.conf itself set only the close prompt and the
+# two keys under [keyboard]; everything else kitty drew came from its built-in
+# defaults, which are pinned here so the terminal looks as it did.
+# kitty's confirm_os_window_close 0 needs no line: Alacritty never asks before
+# closing.
+
+[window]
+# kitty's placement_strategy center: spread the spare pixels round the grid
+dynamic_padding = true
+
+[font]
+size = 11.0
+# kitty draws this font in 20 px rows, Alacritty in 21
+offset = { x = 0, y = -1 }
+
+[cursor]
+# kitty's shell integration shows a 2 px beam at the fish prompt; Alacritty
+# can't switch shape per prompt, so the beam is the default (nvim sets its own).
+# kitty blinks every 500 ms on Linux and stops after 15 s without input.
+style = { shape = "Beam", blinking = "On" }
+thickness = 0.22
+blink_interval = 500
+blink_timeout = 15
+
+[mouse]
+# kitty hides the pointer after 3 s idle; Alacritty can only hide it on typing
+hide_when_typing = true
+
+[colors.primary]
+foreground = "#dddddd"
+background = "#000000"
+
+[colors.cursor]
+text = "#111111"
+cursor = "#cccccc"
+
+[colors.selection]
+text = "#000000"
+background = "#fffacd"
+
+[colors.normal]
+black = "#000000"
+red = "#cc0403"
+green = "#19cb00"
+yellow = "#cecb00"
+blue = "#0d73cc"
+magenta = "#cb1ed1"
+cyan = "#0dcdcd"
+white = "#dddddd"
+
+[colors.bright]
+black = "#767676"
+red = "#f2201f"
+green = "#23fd00"
+yellow = "#fffd00"
+blue = "#1a8fff"
+magenta = "#fd28ff"
+cyan = "#14ffff"
+white = "#ffffff"
+
+# Mac-style Cmd+V (keyd sends Cmd+V as Ctrl+V, and physical Ctrl+V as Super+V)
+# kitty's Ctrl+C copy_or_interrupt has no Alacritty form: a binding can't depend
+# on whether text is selected. Ctrl+C stays SIGINT, and Cmd+Shift+C (Ctrl+Shift+C,
+# an Alacritty default) copies.
+[keyboard]
+bindings = [
+    { key = "V", mods = "Control", action = "Paste" },
+]
