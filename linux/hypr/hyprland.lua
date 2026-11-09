@@ -310,7 +310,7 @@ bind(mainMod .. " + Escape", hl.dsp.exec_cmd(powermenu), "Show power menu")
 hl.bind(mainMod .. " + SHIFT + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- Resize the window towards a direction
 hl.bind(mainMod .. " + SHIFT + mouse:272", hl.dsp.window.drag(), { mouse = true })   -- Drag window
 
--- Workspaces 1-10 and 11 (on grave), then the named ones, A-Z without P.
+-- Workspaces 1-10 and 11 (on grave), then the named ones, A-Z.
 local numbered = {
     { key = "grave", ws = 11 },
     { key = "1", ws = 1 }, { key = "2", ws = 2 }, { key = "3", ws = 3 },
@@ -319,7 +319,7 @@ local numbered = {
     { key = "0", ws = 10 },
 }
 local lettered = {}
-for letter in ("ABCDEFGHIJKLMNOQRSTUVWXYZ"):gmatch(".") do
+for letter in ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"):gmatch(".") do
     lettered[#lettered + 1] = letter
 end
 
