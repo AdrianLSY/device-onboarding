@@ -18,7 +18,7 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   `vivaldi/`, `bin/`, `micro/`, `starship.toml`, and its own `setup/` (`brew`,
   `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
-  `kitty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
+  `kitty/`, `mako/`, `vicinae/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
   `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `mimeapps.list`, `bin/` (a
   symlink to `../macos/bin`, so both tiers share `ssh-keypick`), and its own
   `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
@@ -200,6 +200,26 @@ the desired power state; `--check` checks prerequisites without changing them;
 `~/Library/Logs/device-power-policy.log`. Starting the agent with the lid
 already closed preserves an active docked session. A physical charger/lid test is still needed
 after setup; a dry run does not prove a real sleep/wake transition.
+
+### Launcher, clipboard history and power menu (Linux)
+
+[Vicinae](https://docs.vicinae.com), a Raycast-like launcher that runs many
+Raycast extensions, does all three; the Mac keeps Raycast. Hyprland starts
+`vicinae server` at login and binds the keys:
+
+| Keys | Opens |
+| --- | --- |
+| Super+Space | The launcher |
+| Super+V | Clipboard history |
+| Alt+Escape, or a click on the Waybar logo | Power commands, such as lock, suspend, log out, reboot and power off |
+
+The repo's settings are in `linux/vicinae/base.jsonc`. Changes made in Vicinae's
+settings window (Ctrl+,) are written to `linux/vicinae/settings.json` and take
+precedence. The `mac-black` theme, black and white like Waybar, is linked into
+`~/.local/share/vicinae/themes` by the `vicinae.sh` tweak, because Vicinae
+loads themes only from there. Raycast extensions install from Vicinae's
+"Raycast Store" command (simpler ones work best), and Vicinae's own from its
+"Store" command; both land in `~/.local/share/vicinae`, outside the repo.
 
 ## Adding things
 

@@ -1,0 +1,34 @@
+// The repo's Vicinae settings. settings.json imports this file, and Vicinae
+// never writes to it, so these comments stay. A change made in Vicinae's
+// settings window goes to settings.json instead and wins over this file.
+// Every option, with its default: `vicinae config default`.
+{
+	// mac-black (themes/mac-black.toml, linked into ~/.local/share/vicinae/themes
+	// by setup/tweak/vicinae.sh) for both appearances: the desktop is always dark.
+	"theme": {
+		"light": { "name": "mac-black" },
+		"dark": { "name": "mac-black" }
+	},
+
+	"launcher_window": {
+		// Translucent black over the blur that hypr/config/windowrules.conf gives
+		// the vicinae layer, with the 12px corners of the windows.
+		"opacity": 0.85,
+		"rounding": 12
+	},
+
+	"providers": {
+		"power": {
+			"entrypoints": {
+				// Nothing on this desktop answers logind's lock signal, so lock with
+				// swaylock.
+				"lock": { "preferences": { "customProgram": "swaylock -f -c 000000" } },
+				// Mute the speakers before suspending.
+				"suspend": { "preferences": { "customProgram": "amixer -q set Master mute; systemctl suspend" } },
+				// Quit Hyprland instead of calling logind's TerminateSession, which
+				// kills every process in the session.
+				"logout": { "preferences": { "customProgram": "hyprctl dispatch exit" } }
+			}
+		}
+	}
+}
