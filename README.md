@@ -304,6 +304,18 @@ keys the same way, unless they are already there:
 
 The emoji picker is built into Vicinae.
 
+### Mac-style keys (Linux)
+
+keyd (`linux/setup/tweak/keyd/default.conf`) makes Cmd (Super) act as Ctrl, so
+Cmd+C and Cmd+V copy and paste. A terminal would read Cmd+C as an interrupt, so
+in Alacritty only, `keyd-application-mapper` (run by the
+`keyd-application-mapper` user unit, set up by the tweak of the same name) sends
+Cmd+C as Ctrl+Shift+C, which copies. Physical Ctrl+C still interrupts, and
+other apps are unchanged. Its per-app bindings are in
+`linux/setup/tweak/keyd/app.conf`. The tweak adds you to the `keyd` group with
+`sudo`; the group applies at the next login, and until then the unit's `newgrp`
+stands in for it.
+
 ## Adding things
 
 - **Package:** create `<tier>/setup/<pkgmgr>/<pkg>.sh` (macOS `brew`; Linux
