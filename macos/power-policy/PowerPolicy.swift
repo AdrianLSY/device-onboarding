@@ -18,11 +18,13 @@ struct PolicySample: Equatable {
     var displaysAsleep: Bool? = nil
     var externalDisplayConnected: Bool? = false
 
+    // The truth table's Mac state while the screens are on. A monitor or
+    // Coffee keeps the Mac awake, and so does a charger with the lid open or
+    // closed (rows 13 and 14). Only undocked, Coffee off, on battery may sleep.
+    // PolicyEngine.awakeRequired adds rows 7 and 8: docked on battery with
+    // Coffee off sleeps once the monitor turns off, for any reason.
     var awakeRequired: Bool? {
-        // Docked clamshell use always wins. Undocked lid closure with Coffee
-        // off must sleep even when a charger is connected.
         if externalDisplayConnected == true || caffeinate == true { return true }
-        if externalDisplayConnected == false && lidClosed == true && caffeinate == false { return false }
         if externalPower == true { return true }
         if externalPower == false && caffeinate == false && externalDisplayConnected == false { return false }
         return nil
@@ -86,6 +88,31 @@ func canWakeAttachedDisplays(_ addedIDs: [CGDirectDisplayID], currentIDs: [CGDir
     return !Set(addedIDs).intersection(currentIDs).isEmpty
 }
 
+// The hub's charging input reads false for about a second every few seconds.
+// Losing the charger counts only after 30 continuous seconds on battery;
+// regaining it counts at once, because staying awake is the safe side. Time is
+// awake uptime, so a sleep in between neither adds to nor resets the count.
+// Startup has seen no battery yet, so it also waits the full 30 seconds.
+struct PowerSettle {
+    static let window = 30.0
+    private var batterySince: Double?
+
+    mutating func update(_ reading: Bool?, now: Double) -> Bool? {
+        guard let reading else {
+            // An unknown reading is not battery and breaks the run.
+            batterySince = nil
+            return nil
+        }
+        if reading {
+            batterySince = nil
+            return true
+        }
+        let since = batterySince ?? now
+        batterySince = since
+        return now - since < Self.window
+    }
+}
+
 enum PolicyAction: Equatable {
     case lock
     case displaySleep
@@ -110,6 +137,60 @@ struct PolicyEngine {
     private var pendingLidDisplaySleep = false
     private var displaySleepAttempts = 0
     private var nextDisplaySleep = 0.0
+    // A display-off lasts from the first reading with every display off to
+    // the first with any on. A wake keeps it: a dark wake leaves the displays
+    // off, and a user wake brings input and turns them on.
+    private var displayOff = false
+    // False once input arrives during this display-off, or a monitor is
+    // plugged in during it (its wake needs the sleep block).
+    private var displayOffCounts = false
+    private var lastIdleSeconds: Double?
+    private var previousDockedScreenOff = false
+
+    // HID idle time only goes down when keyboard or mouse input arrives.
+    private func inputSince(_ last: Double?, _ idle: Double?) -> Bool {
+        guard let last, let idle else { return false }
+        return idle + 0.1 < last
+    }
+
+    private mutating func trackDisplayOff(_ sample: PolicySample) {
+        switch sample.displaysAsleep {
+        case false?:
+            displayOff = false
+            displayOffCounts = false
+        case true?:
+            if !displayOff {
+                // Input before this reading is what turned the screen off
+                // (Escape, a hot corner); it does not count against it.
+                displayOff = true
+                displayOffCounts = true
+            } else if inputSince(lastIdleSeconds, sample.idleSeconds) {
+                displayOffCounts = false
+            }
+        case nil: break
+        }
+        if sample.externalDisplayConnected == true && previous?.externalDisplayConnected == false && displayOff {
+            displayOffCounts = false
+        }
+        if let idle = sample.idleSeconds { lastIdleSeconds = idle }
+    }
+
+    // Rows 7 and 8: docked, Coffee off, on battery. The Mac stays awake while
+    // the monitor is on and may sleep once every display is off, whatever
+    // turned it off: macOS's idle display sleep, Escape on the lock screen, a
+    // hot corner or `pmset displaysleepnow`. Input after the screen went off
+    // means the user is back, so a key press waking a closed Mac keeps it
+    // awake before the monitor reports itself on. No inactivity is timed
+    // here: the screen-off alone is the trigger.
+    func dockedScreenOff(_ sample: PolicySample) -> Bool {
+        displayOffCounts && sample.idleSeconds != nil && !inputSince(lastIdleSeconds, sample.idleSeconds)
+            && sample.externalDisplayConnected == true && sample.caffeinate == false
+            && sample.externalPower == false && sample.displaysAsleep == true
+    }
+
+    func awakeRequired(_ sample: PolicySample) -> Bool? {
+        dockedScreenOff(sample) ? false : sample.awakeRequired
+    }
 
     private mutating func finishDisplaySleep() {
         pendingLidDisplaySleep = false
@@ -145,7 +226,9 @@ struct PolicyEngine {
 
     mutating func plan(_ sample: PolicySample, now: Double) -> [PolicyAction] {
         var actions: [PolicyAction] = []
-        if sample.externalDisplayConnected == true {
+        trackDisplayOff(sample)
+        let dockedOff = dockedScreenOff(sample)
+        if sample.externalDisplayConnected == true && !dockedOff {
             // Attaching a monitor supersedes any pending undocked lid action,
             // including one queued before the display finished enumerating.
             pendingSleep = false
@@ -157,12 +240,13 @@ struct PolicyEngine {
         // macOS owns idle locking and display idle. HID idle readings are
         // diagnostic only: docks, video, and passive reading must not trigger
         // an autonomous lock or display-off request here.
-        guard let awake = sample.awakeRequired, let closed = sample.lidClosed,
+        let awakeNow = awakeRequired(sample)
+        guard let awake = awakeNow, let closed = sample.lidClosed,
               sample.sleepDisabled != nil,
               sample.externalDisplayConnected != nil, (awake || sample.known) else {
             // Positive keep-awake evidence can prevent sleep during an unknown
             // read; disruptive actions wait for the required sensors.
-            if sample.awakeRequired == true && sample.sleepDisabled == false && now >= nextEnforce {
+            if awakeNow == true && sample.sleepDisabled == false && now >= nextEnforce {
                 actions.append(.setSleepDisabled(true))
                 nextEnforce = now + 2
             }
@@ -181,8 +265,10 @@ struct PolicyEngine {
             && (previous?.lidClosed == false || previous?.externalDisplayConnected == true)
         let externalChanged = sample.externalDisplayConnected.map { previous?.externalDisplayConnected != $0 } ?? false
         let policyChanged = previous?.externalPower != sample.externalPower || previous?.caffeinate != sample.caffeinate
-            || externalChanged
-        let needsSleep = closed && !awake && (initial || newClosure || policyChanged)
+            || externalChanged || (!initial && previousDockedScreenOff != dockedOff)
+        // A docked closure matters only once rows 7 and 8 allow sleep.
+        let closing = closed && previous?.lidClosed == false
+        let needsSleep = closed && !awake && (initial || newClosure || closing || policyChanged)
 
         if !closed {
             closureLocked = false
@@ -213,12 +299,15 @@ struct PolicyEngine {
             lockExhaustedReported = false
         }
         previous = sample
+        previousDockedScreenOff = dockedOff
 
         if closed && !closureLocked && (pendingLidDisplaySleep || pendingSleep) {
             if sample.screenLocked == true {
                 closureLocked = true
                 actions.append(.log("screen lock verified for closed lid"))
-            } else if now >= nextLock {
+            } else if sample.externalDisplayConnected == false && now >= nextLock {
+                // Docked, macOS locks as the monitor turns off; the runtime
+                // refuses an agent lock while a monitor is connected.
                 if !actions.contains(.lock) { actions.append(.lock) }
                 lockAttempts = min(lockAttempts + 1, 4)
                 nextLock = now + [1.0, 2.0, 5.0, 30.0][lockAttempts - 1]
@@ -231,7 +320,9 @@ struct PolicyEngine {
             }
         }
 
-        let secureSleep = closureLocked || (lockAttempts >= 3 && sample.sleepLockImmediate)
+        // Docked screen-off: with an immediate password, sleep locks the session
+        // even if the lock-screen flag has not been read as set yet.
+        let secureSleep = closureLocked || (sample.sleepLockImmediate && (lockAttempts >= 3 || dockedOff))
 
         if sample.sleepDisabled == awake {
             enforceAttempts = 0
@@ -539,6 +630,17 @@ final class PolicyRuntime {
     private var attachmentWakeWaitingLogged = false
     private var userActivityAssertionID: IOPMAssertionID = IOPMAssertionID(kIOPMNullAssertionID)
     private var displayCallbackRegistered = false
+    private var powerSettle = PowerSettle()
+
+    // Every reading the engine or a fresh re-check sees carries the settled
+    // charger state, never a one-second hub flicker.
+    private func read() -> (reading: HardwareReading, chargerReading: Bool?) {
+        let raw = HardwareReading.read(sleepLockImmediate: sleepLockImmediate)
+        var sample = raw.sample
+        sample.externalPower = powerSettle.update(raw.sample.externalPower, now: ProcessInfo.processInfo.systemUptime)
+        return (HardwareReading(sample: sample, battery: raw.battery, caffeinatePIDs: raw.caffeinatePIDs,
+                                displays: raw.displays), raw.sample.externalPower)
+    }
 
     private static let displayCallback: CGDisplayReconfigurationCallBack = { _, flags, context in
         guard !flags.contains(.beginConfigurationFlag), let context else { return }
@@ -553,7 +655,7 @@ final class PolicyRuntime {
     }
 
     func tick() {
-        let reading = HardwareReading.read(sleepLockImmediate: sleepLockImmediate)
+        let (reading, chargerReading) = read()
         let sample = reading.sample
         let newlyAttached = attachmentTracker.newlyAttached(reading.displays.externalIDs)
         if !newlyAttached.isEmpty {
@@ -561,13 +663,13 @@ final class PolicyRuntime {
             attachmentWakeWaitingLogged = false
             logPolicy("queued attachment display wake for up to 5 seconds: \(newlyAttached)")
         }
-        let summary = "charger=\(sample.externalPower.map(String.init) ?? "unknown") lidClosed=\(sample.lidClosed.map(String.init) ?? "unknown") caffeinate=\(sample.caffeinate.map(String.init) ?? "unknown") externalDisplay=\(sample.externalDisplayConnected.map(String.init) ?? "unknown") disablesleep=\(sample.sleepDisabled.map(String.init) ?? "unknown")"
+        let summary = "charger=\(sample.externalPower.map(String.init) ?? "unknown") chargerReading=\(chargerReading.map(String.init) ?? "unknown") lidClosed=\(sample.lidClosed.map(String.init) ?? "unknown") caffeinate=\(sample.caffeinate.map(String.init) ?? "unknown") externalDisplay=\(sample.externalDisplayConnected.map(String.init) ?? "unknown") disablesleep=\(sample.sleepDisabled.map(String.init) ?? "unknown")"
         if summary != lastSummary { logPolicy(summary); lastSummary = summary }
         for action in engine.plan(sample, now: ProcessInfo.processInfo.systemUptime) {
             switch action {
             case .log(let message): logPolicy(message)
             case .lock:
-                let fresh = HardwareReading.read(sleepLockImmediate: sleepLockImmediate).sample
+                let fresh = read().reading.sample
                 guard canRequestLock(sample: fresh) else {
                     logPolicy("aborted stale lock plan; lid opened or no confirmed undocked lock permission remains")
                     continue
@@ -575,7 +677,7 @@ final class PolicyRuntime {
                 if config.dryRun { logPolicy("dry run: request screen lock") }
                 else { logPolicy(locker.request(config: config)) }
             case .displaySleep:
-                let fresh = HardwareReading.read(sleepLockImmediate: sleepLockImmediate).sample
+                let fresh = read().reading.sample
                 guard canDisplaySleep(sample: fresh) else {
                     if fresh.lidClosed == false || fresh.externalDisplayConnected == true { engine.cancelDisplaySleep() }
                     logPolicy("aborted stale lid display-off plan after fresh lock/lid/external-display check")
@@ -588,8 +690,8 @@ final class PolicyRuntime {
                 }
             case .setSleepDisabled(let disabled):
                 if !disabled {
-                    let fresh = HardwareReading.read(sleepLockImmediate: sleepLockImmediate).sample
-                    guard fresh.known && fresh.awakeRequired == false else {
+                    let fresh = read().reading.sample
+                    guard fresh.known && engine.awakeRequired(fresh) == false else {
                         logPolicy("aborted stale inhibition-release plan; current lid/Coffee/dock policy or unknown sensor requires protection")
                         continue
                     }
@@ -605,8 +707,8 @@ final class PolicyRuntime {
                     logPolicy("set disablesleep=\(disabled ? 1 : 0) status=\(result.status) \(result.output)")
                 }
             case .sleep:
-                let fresh = HardwareReading.read(sleepLockImmediate: sleepLockImmediate).sample
-                guard fresh.known && fresh.awakeRequired == false && fresh.lidClosed == true && fresh.sleepDisabled == false else {
+                let fresh = read().reading.sample
+                guard fresh.known && engine.awakeRequired(fresh) == false && fresh.lidClosed == true && fresh.sleepDisabled == false else {
                     logPolicy("aborted stale sleep plan after fresh power/lid/Coffee/external-display check")
                     continue
                 }
@@ -625,7 +727,7 @@ final class PolicyRuntime {
         // ticks. Wait briefly for readiness, but make only one actual IOPM call.
         // Native display/system sleep notifications cancel the pending request.
         if !pendingAttachmentWake.isEmpty {
-            let fresh = HardwareReading.read(sleepLockImmediate: sleepLockImmediate)
+            let fresh = read().reading
             let candidates = pendingAttachmentWake.candidates(currentIDs: fresh.displays.externalIDs,
                 now: ProcessInfo.processInfo.systemUptime)
             guard !candidates.isEmpty else {
