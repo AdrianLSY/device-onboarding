@@ -37,15 +37,24 @@ struct PowerPolicyTests {
         input.screenLocked = true
     }
 
+    // Escape on the lock screen: the key press turns the displays off at once.
+    static func escapeOnLockScreen(_ input: inout PolicySample) {
+        input.displaysAsleep = true
+        input.idleSeconds = 1
+        input.screenLocked = true
+    }
+
     // power-policy-truth-table.md, agreed 9 November 2026, with Coffee's
     // Prevent display sleep on. Each row starts as a Mac in use (lid open,
     // displays on, the block held), reads for almost three minutes with no
-    // input, then closes the lid for a closed row, then lets macOS's idle
-    // display sleep turn the displays off. Screens that "stay on" or "turn off
+    // input, then closes the lid for a closed row, then has its screens
+    // turned off, once by macOS's idle display sleep and once by Escape on the
+    // lock screen. In rows 7 and 8 either sleeps the Mac; in every other row
+    // either only blanks the screens. Screens that "stay on" or "turn off
     // after configured window" are macOS's: the agent must never blank them.
     static func truthTable() throws {
         // number, monitor, Coffee, charger, lid closed | agent locks, agent
-        // blanks, block held, sleeps | block held, sleeps after idle display-off
+        // blanks, block held, sleeps | block held, sleeps after the screen-off
         let rows: [(Int, Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool, Bool)] = [
             (1, true, true, true, false, false, false, true, false, true, false),
             (2, true, true, true, true, false, false, true, false, true, false),
@@ -65,7 +74,11 @@ struct PowerPolicyTests {
             (16, false, false, false, true, true, true, false, true, false, false),
         ]
         expect(rows.count == 16 && Set(rows.map { $0.0 }).count == 16, "every truth-table row has a test")
-        for (row, monitor, coffee, charger, closed, locks, blanks, held, sleeps, heldIdle, sleepsIdle) in rows {
+        let screenOffs: [(String, (inout PolicySample) -> Void)] = [
+            ("the configured window", macOSIdleDisplayOff), ("Escape on the lock screen", escapeOnLockScreen),
+        ]
+        let cases = rows.flatMap { row in screenOffs.map { (row, $0.0, $0.1) } }
+        for ((row, monitor, coffee, charger, closed, locks, blanks, held, sleeps, heldOff, sleepsOff), cause, screenOff) in cases {
             var engine = PolicyEngine()
             var input = sample(ac: charger, coffee: coffee, disabled: true, locked: false, external: monitor)
             input.displaysAsleep = false
@@ -88,12 +101,13 @@ struct PowerPolicyTests {
             expect(actions.contains(.sleep) == sleeps, "row \(row): sleep")
             if row == 16 { continue } // Asleep: nothing runs until a wake.
 
-            macOSIdleDisplayOff(&input)
+            screenOff(&input)
             actions = step(&engine, &input, 200)
+            input.idleSeconds! += 1
             actions += step(&engine, &input, 201)
-            expect(input.sleepDisabled == heldIdle, "row \(row): Mac state after the configured window")
-            expect(actions.contains(.sleep) == sleepsIdle, "row \(row): sleep after the configured window")
-            expect(!actions.contains(.lock) && !actions.contains(.displaySleep), "row \(row): macOS, not the agent, locks and blanks after its window")
+            expect(input.sleepDisabled == heldOff, "row \(row): Mac state after \(cause)")
+            expect(actions.contains(.sleep) == sleepsOff, "row \(row): sleep after \(cause)")
+            expect(!actions.contains(.lock) && !actions.contains(.displaySleep), "row \(row): macOS, not the agent, locks and blanks after \(cause)")
         }
     }
 
@@ -128,28 +142,35 @@ struct PowerPolicyTests {
         input.idleSeconds = 3600
         actions = step(&engine, &input, 603)
         expect(!actions.contains(.setSleepDisabled(true)) && actions.contains(.sleep), "row 8: a dark wake with the monitor still off goes back to sleep")
+        engine.willSleep()
+        engine.didWake()
+        input.idleSeconds = 0.3 // The key press that woke it.
+        actions = step(&engine, &input, 605)
+        expect(actions.contains(.setSleepDisabled(true)) && !actions.contains(.sleep), "row 8: a key press waking the Mac restores the block before the monitor reports itself on")
         input.displaysAsleep = false
-        input.idleSeconds = 0
-        actions = step(&engine, &input, 604)
-        expect(actions.contains(.setSleepDisabled(true)) && !actions.contains(.sleep), "row 8: a user wake turns the monitor on and restores the block")
+        actions = step(&engine, &input, 606)
+        expect(input.sleepDisabled == true && !actions.contains(.sleep), "row 8: a user wake turns the monitor on and keeps the block")
 
+        // Any screen-off in row 8 sleeps the Mac, Escape included.
         (engine, input) = row8()
-        input.screenLocked = true // Locked by hand.
-        input.displaysAsleep = true // Escape on the lock screen.
-        input.idleSeconds = 1
-        actions = step(&engine, &input, 1)
-        for idle in [30.0, 180, 3600, 86400] {
-            input.idleSeconds = idle
-            actions += step(&engine, &input, idle)
-        }
-        expect(!actions.contains(.setSleepDisabled(false)) && !actions.contains(.sleep), "row 8: Escape on the lock screen keeps apps running however long the displays stay off")
+        input.idleSeconds = 30
+        _ = step(&engine, &input, 30)
+        escapeOnLockScreen(&input)
+        actions = step(&engine, &input, 31)
+        input.idleSeconds = 2
+        actions += step(&engine, &input, 32)
+        expect(actions.contains(.setSleepDisabled(false)) && actions.contains(.sleep), "row 8: Escape on the lock screen sleeps the Mac")
+        engine.willSleep()
+        engine.didWake()
         input.displaysAsleep = false
         input.idleSeconds = 0
-        _ = step(&engine, &input, 86401)
-        macOSIdleDisplayOff(&input)
-        actions = step(&engine, &input, 86581)
-        actions += step(&engine, &input, 86582)
-        expect(actions.contains(.sleep), "row 8: after an Escape, the next idle display-off still sleeps")
+        _ = step(&engine, &input, 33)
+        input.displaysAsleep = true // A hot corner or pmset displaysleepnow.
+        input.idleSeconds = 0.5
+        actions = step(&engine, &input, 34)
+        input.idleSeconds = 1.5
+        actions += step(&engine, &input, 35)
+        expect(actions.contains(.setSleepDisabled(false)) && actions.contains(.sleep), "row 8: a hot corner or pmset displaysleepnow sleeps the Mac too")
 
         (engine, input) = row8()
         macOSIdleDisplayOff(&input)
@@ -197,7 +218,7 @@ struct PowerPolicyTests {
         expect(step(&engine, &input, 183).contains(.sleep), "row 7 to 8: closing the lid after the release sleeps")
 
         // A monitor plugged in while the displays are off from idle is woken,
-        // which needs the block, so it never counts as an idle display-off.
+        // which needs the block, so that display-off never sleeps the Mac.
         engine = PolicyEngine()
         input = sample(disabled: true, locked: false)
         input.displaysAsleep = false

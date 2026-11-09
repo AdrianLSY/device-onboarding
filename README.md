@@ -144,6 +144,8 @@ Events:
 
 - Plugging in a monitor turns that monitor on.
 - Pressing Escape on the lock screen turns the screens off; apps keep running.
+  In rows 7 and 8 the Mac then sleeps, as it does when the monitor turns off
+  from idle.
 - Unplugging the monitor while the lid is closed acts like closing the lid
   (rows 10, 12, 14 or 16).
 - Turning Coffee on while the lid is already closed does not lock.
@@ -171,15 +173,16 @@ Coffee-dependent rule. Power changes, Coffee toggles and controller restarts
 preserve an active docked session.
 
 Docked on battery with Coffee off (rows 7 and 8), the controller keeps the Mac
-awake while the monitor is on, so closing the lid never sleeps it. Once macOS's
-own idle display sleep turns the monitor off, which locks the session, the
-controller lets the Mac sleep. With the lid closed it releases the sleep block
-and requests sleep. With the lid open it releases the block and leaves the
-moment to macOS's battery sleep setting, as in row 15. A display-off counts as
-idle only when no keyboard or mouse input arrived in the 10 seconds before it,
-so Escape on the lock screen, a hot corner or `pmset displaysleepnow` keep apps
-running. Input, or the monitor turning back on, restores the block. The
-controller still runs no inactivity timer of its own.
+awake while the monitor is on, so closing the lid never sleeps it. Once the
+monitor turns off, which locks the session, the controller lets the Mac sleep,
+whatever turned it off: macOS's idle display sleep, Escape on the lock screen,
+a hot corner or `pmset displaysleepnow`. With the lid closed it releases the
+sleep block and requests sleep. With the lid open it releases the block and
+leaves the moment to macOS's battery sleep setting, as in row 15. Keyboard or
+mouse input after the screen goes off, or the monitor turning back on,
+restores the block, so a key press that wakes a closed Mac keeps it awake. In
+every other row, Escape only turns the screens off. The controller still runs
+no inactivity timer of its own.
 
 The hub's charging input drops for about a second roughly every 11 seconds, so
 the controller counts the charger as gone only after 30 continuous seconds on
@@ -243,7 +246,7 @@ The executable is copied outside the repo to
 `~/Library/Application Support/device-power-policy/power-policy` so launchd can
 run it when the repo is under Documents. `--status` prints current sensors and
 the desired power state from this instant's readings, without the 30-second
-charger settle or the docked idle display-off; `--check` checks prerequisites without changing them;
+charger settle or the docked screen-off rule; `--check` checks prerequisites without changing them;
 `--once --dry-run` previews actions. Logs are in
 `~/Library/Logs/device-power-policy.log`. Starting the agent with the lid
 already closed preserves an active docked session. A physical charger/lid test is still needed

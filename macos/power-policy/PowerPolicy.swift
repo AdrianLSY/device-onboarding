@@ -18,11 +18,11 @@ struct PolicySample: Equatable {
     var displaysAsleep: Bool? = nil
     var externalDisplayConnected: Bool? = false
 
-    // The truth table's Mac state before any idle display-off. A monitor or
+    // The truth table's Mac state while the screens are on. A monitor or
     // Coffee keeps the Mac awake, and so does a charger with the lid open or
     // closed (rows 13 and 14). Only undocked, Coffee off, on battery may sleep.
     // PolicyEngine.awakeRequired adds rows 7 and 8: docked on battery with
-    // Coffee off sleeps once macOS's idle display sleep turns the monitor off.
+    // Coffee off sleeps once the monitor turns off, for any reason.
     var awakeRequired: Bool? {
         if externalDisplayConnected == true || caffeinate == true { return true }
         if externalPower == true { return true }
@@ -113,13 +113,6 @@ struct PowerSettle {
     }
 }
 
-// A display-off counts as macOS's idle display sleep only when no keyboard or
-// mouse input arrived in the 10 seconds before it began. Escape on the lock
-// screen, a hot corner and `pmset displaysleepnow` all follow input at once,
-// so apps keep running after them. This times no inactivity of its own:
-// macOS alone decides when its idle display sleep starts.
-let idleDisplayOffInputGap = 10.0
-
 enum PolicyAction: Equatable {
     case lock
     case displaySleep
@@ -144,40 +137,59 @@ struct PolicyEngine {
     private var pendingLidDisplaySleep = false
     private var displaySleepAttempts = 0
     private var nextDisplaySleep = 0.0
-    // nil while the displays are on; otherwise whether this display-off began
-    // as macOS's idle display sleep. A wake keeps it: a dark wake leaves the
-    // displays off, and a user wake turns them on, which clears it.
-    private var displayOffWasIdle: Bool?
-    private var previousDockedIdleOff = false
+    // A display-off lasts from the first reading with every display off to
+    // the first with any on. A wake keeps it: a dark wake leaves the displays
+    // off, and a user wake brings input and turns them on.
+    private var displayOff = false
+    // False once input arrives during this display-off, or a monitor is
+    // plugged in during it (its wake needs the sleep block).
+    private var displayOffCounts = false
+    private var lastIdleSeconds: Double?
+    private var previousDockedScreenOff = false
+
+    // HID idle time only goes down when keyboard or mouse input arrives.
+    private func inputSince(_ last: Double?, _ idle: Double?) -> Bool {
+        guard let last, let idle else { return false }
+        return idle + 0.1 < last
+    }
 
     private mutating func trackDisplayOff(_ sample: PolicySample) {
         switch sample.displaysAsleep {
-        case false?: displayOffWasIdle = nil
+        case false?:
+            displayOff = false
+            displayOffCounts = false
         case true?:
-            if displayOffWasIdle == nil {
-                displayOffWasIdle = (sample.idleSeconds ?? 0) >= idleDisplayOffInputGap
+            if !displayOff {
+                // Input before this reading is what turned the screen off
+                // (Escape, a hot corner); it does not count against it.
+                displayOff = true
+                displayOffCounts = true
+            } else if inputSince(lastIdleSeconds, sample.idleSeconds) {
+                displayOffCounts = false
             }
         case nil: break
         }
-        // A monitor plugged in while the displays are off must be woken, and
-        // that wake needs the sleep block, so it never counts as idle.
-        if sample.externalDisplayConnected == true && previous?.externalDisplayConnected == false
-            && displayOffWasIdle != nil {
-            displayOffWasIdle = false
+        if sample.externalDisplayConnected == true && previous?.externalDisplayConnected == false && displayOff {
+            displayOffCounts = false
         }
+        if let idle = sample.idleSeconds { lastIdleSeconds = idle }
     }
 
     // Rows 7 and 8: docked, Coffee off, on battery. The Mac stays awake while
-    // the monitor is on, and may sleep once macOS's idle display sleep has
-    // turned it off and no input has arrived since.
-    func dockedIdleOff(_ sample: PolicySample) -> Bool {
-        displayOffWasIdle == true && sample.externalDisplayConnected == true && sample.caffeinate == false
+    // the monitor is on and may sleep once every display is off, whatever
+    // turned it off: macOS's idle display sleep, Escape on the lock screen, a
+    // hot corner or `pmset displaysleepnow`. Input after the screen went off
+    // means the user is back, so a key press waking a closed Mac keeps it
+    // awake before the monitor reports itself on. No inactivity is timed
+    // here: the screen-off alone is the trigger.
+    func dockedScreenOff(_ sample: PolicySample) -> Bool {
+        displayOffCounts && sample.idleSeconds != nil && !inputSince(lastIdleSeconds, sample.idleSeconds)
+            && sample.externalDisplayConnected == true && sample.caffeinate == false
             && sample.externalPower == false && sample.displaysAsleep == true
-            && (sample.idleSeconds ?? 0) >= idleDisplayOffInputGap
     }
 
     func awakeRequired(_ sample: PolicySample) -> Bool? {
-        dockedIdleOff(sample) ? false : sample.awakeRequired
+        dockedScreenOff(sample) ? false : sample.awakeRequired
     }
 
     private mutating func finishDisplaySleep() {
@@ -215,8 +227,8 @@ struct PolicyEngine {
     mutating func plan(_ sample: PolicySample, now: Double) -> [PolicyAction] {
         var actions: [PolicyAction] = []
         trackDisplayOff(sample)
-        let dockedIdle = dockedIdleOff(sample)
-        if sample.externalDisplayConnected == true && !dockedIdle {
+        let dockedOff = dockedScreenOff(sample)
+        if sample.externalDisplayConnected == true && !dockedOff {
             // Attaching a monitor supersedes any pending undocked lid action,
             // including one queued before the display finished enumerating.
             pendingSleep = false
@@ -253,7 +265,7 @@ struct PolicyEngine {
             && (previous?.lidClosed == false || previous?.externalDisplayConnected == true)
         let externalChanged = sample.externalDisplayConnected.map { previous?.externalDisplayConnected != $0 } ?? false
         let policyChanged = previous?.externalPower != sample.externalPower || previous?.caffeinate != sample.caffeinate
-            || externalChanged || (!initial && previousDockedIdleOff != dockedIdle)
+            || externalChanged || (!initial && previousDockedScreenOff != dockedOff)
         // A docked closure matters only once rows 7 and 8 allow sleep.
         let closing = closed && previous?.lidClosed == false
         let needsSleep = closed && !awake && (initial || newClosure || closing || policyChanged)
@@ -287,7 +299,7 @@ struct PolicyEngine {
             lockExhaustedReported = false
         }
         previous = sample
-        previousDockedIdleOff = dockedIdle
+        previousDockedScreenOff = dockedOff
 
         if closed && !closureLocked && (pendingLidDisplaySleep || pendingSleep) {
             if sample.screenLocked == true {
@@ -308,9 +320,9 @@ struct PolicyEngine {
             }
         }
 
-        // Docked idle-off: with an immediate password, sleep locks the session
+        // Docked screen-off: with an immediate password, sleep locks the session
         // even if the lock-screen flag has not been read as set yet.
-        let secureSleep = closureLocked || (sample.sleepLockImmediate && (lockAttempts >= 3 || dockedIdle))
+        let secureSleep = closureLocked || (sample.sleepLockImmediate && (lockAttempts >= 3 || dockedOff))
 
         if sample.sleepDisabled == awake {
             enforceAttempts = 0
