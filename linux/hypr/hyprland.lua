@@ -417,7 +417,10 @@ hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = -1 })
 rule({ class = [[^(steam)$]] }, { workspace = "name:G" })
 rule({ class = [[^(md.obsidian.Obsidian)$]] }, { workspace = "name:O" })
 rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
-rule({ class = [[^(KeePassXC)$]] }, { workspace = "name:K" })
+-- KeePassXC's Wayland class is org.keepassxc.KeePassXC; the bare KeePassXC
+-- stays for older builds. As on the Mac, its floating windows (dialogs, which
+-- Hyprland floats before reading these rules) open where they are.
+rule({ class = [[^(org\.keepassxc\.KeePassXC|KeePassXC)$]], float = false }, { workspace = "name:K" })
 rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J" })
 rule({ class = [[^(com.anthropic.Claude)$]] }, { workspace = "name:A" })
 -- Codex, the chatgpt-desktop package (package.json openai-codex-electron, productName Codex,
