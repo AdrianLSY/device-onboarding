@@ -314,7 +314,14 @@ Cmd+C as Ctrl+Shift+C, which copies. Physical Ctrl+C still interrupts, and
 other apps are unchanged. Its per-app bindings are in
 `linux/setup/tweak/keyd/app.conf`. The tweak adds you to the `keyd` group with
 `sudo`; the group applies at the next login, and until then the unit's `newgrp`
-stands in for it.
+stands in for it. keyd leaves Vicinae's virtual keyboard alone (an exclusion in
+`[ids]`), so what Vicinae types isn't remapped: its pasted Ctrl+V would otherwise
+arrive as Super+V.
+
+Never open keyd's socket (`/var/run/keyd.socket`) by hand: keyd 2.6.0 hangs,
+with every keyboard dead, when a client connects and closes without sending a
+whole message. Use the `keyd` command, and recover with
+`sudo systemctl restart keyd` (from SSH, or after replugging the keyboard).
 
 ## Adding things
 
