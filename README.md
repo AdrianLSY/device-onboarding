@@ -264,7 +264,15 @@ Hyprland binds the keys:
 | --- | --- |
 | Cmd+Space (Super+Space) | The launcher |
 | Ctrl+V (keyd sends it as Super+V) | Clipboard history |
+| Ctrl+K (keyd sends it as Super+K) | KeePassXC: search the database |
+| Ctrl+J (keyd sends it as Super+J) | Bitwarden: browse the vault, through rbw |
+| Ctrl+T (keyd sends it as Super+T) | Tailscale: devices, connect, exit node and its other commands |
+| Ctrl+E (keyd sends it as Super+E) | Emoji picker |
 | Alt+Escape, or a click on the Waybar logo | Power commands, such as lock, suspend, log out, reboot and power off |
+
+keyd sends only the physical Ctrl key's K, J, T, E and V as Super, so Cmd+K,
+Cmd+T and the rest still reach apps as Ctrl (new tab, address bar, and so on),
+and Ctrl+Alt or Ctrl+Shift with those letters reaches them unchanged.
 
 The repo's settings are in `linux/vicinae/base.jsonc`. Changes made in Vicinae's
 settings window (Ctrl+,) are written to `linux/vicinae/settings.json` and take
@@ -273,6 +281,28 @@ precedence. The `mac-black` theme, black and white like Waybar, is linked into
 only from there. Raycast extensions install from Vicinae's
 "Raycast Store" command (simpler ones work best), and Vicinae's own from its
 "Store" command; both land in `~/.local/share/vicinae`, outside the repo.
+
+The `vicinae-extensions.sh` tweak installs the three extensions behind those
+keys the same way, unless they are already there:
+
+- **KeePassXC**, from Vicinae's store, runs `keepassxc-cli` on
+  `~/Dropbox/Keychain.kdbx`, set in `base.jsonc`. It asks for the database
+  password on first use and then never locks, by choice. Until it locks it
+  keeps that password **unencrypted** in Vicinae's local storage,
+  `~/.local/share/vicinae/vicinae.db`, which only your user can read. To make
+  it lock, set `lockAfterInactivity` in `base.jsonc` to a number of minutes.
+- **Bitwarden (rbw)**, from Vicinae's store, runs
+  [rbw](https://github.com/doy/rbw), a Bitwarden CLI that keeps the unlocked
+  vault in an agent. The `rbw.sh` tweak points it at `https://vault.rooftop.my`
+  as `adrian@rooftop.my`, the account the desktop app uses. Run `rbw login`
+  once in a terminal; after that the extension offers to unlock, and rbw asks
+  for the master password in a pinentry window and locks again after an hour.
+- **Tailscale**, from Raycast's store (Vicinae's has none), runs
+  `/usr/bin/tailscale`, set in `base.jsonc`. Connecting, disconnecting and
+  picking an exit node need no sudo, because `app/tailscale.sh` makes you the
+  operator.
+
+The emoji picker is built into Vicinae.
 
 ### Mac-style keys (Linux)
 
