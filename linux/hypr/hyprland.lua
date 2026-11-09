@@ -417,7 +417,10 @@ rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
 rule({ class = [[^(KeePassXC)$]] }, { workspace = "name:K" })
 rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J" })
 rule({ class = [[^(com.anthropic.Claude)$]] }, { workspace = "name:A" })
-rule({ class = [[^(Chatgpt)$]] }, { workspace = "name:X" })
+-- Codex, the chatgpt-desktop package (package.json openai-codex-electron, productName Codex,
+-- desktopName chatgpt.desktop). Its class was not read from a live window, so match either name
+-- in any case.
+rule({ class = [[^([Cc]hat[Gg][Pp][Tt]|[Cc]odex)$]] }, { workspace = "name:X" })
 rule({ class = [[^(TablePlus)$]] }, { workspace = "name:D" })
 rule({ class = [[^(org.localsend.localsend_app)$]] }, { workspace = "name:L" })
 rule({ class = [[^(BambuStudio)$]] }, { workspace = "name:B" })
