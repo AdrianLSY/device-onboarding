@@ -18,7 +18,7 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   `vivaldi/`, `bin/`, `micro/`, `starship.toml`, and its own `setup/` (`brew`,
   `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
-  `kitty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
+  `alacritty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
   `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `mimeapps.list`, `bin/` (a
   symlink to `../macos/bin`, so both tiers share `ssh-keypick`), and its own
   `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
