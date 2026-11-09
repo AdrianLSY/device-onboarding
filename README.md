@@ -154,9 +154,14 @@ their display, keyboard or mouse can work. Waking from full system sleep also
 requires the hub/connection to generate a native hardware wake; the user agent
 cannot execute while the CPU is asleep.
 
-In **Raycast Settings → Coffee**, leave **Prevent system sleep** on and turn
-**Prevent display sleep** off. macOS owns normal idle display sleep and locking,
-including its handling of activity and apps that need the display to stay on.
+In **Raycast Settings → Coffee**, turn **Prevent display sleep** on, leave
+**Prevent system sleep** on and leave **Prevent system sleep on AC power** off.
+With Coffee on, the displays stay awake when the Mac is docked, or undocked
+with the lid open, and macOS no longer locks or sleeps the display on idle.
+Undocked with Coffee on, closing the lid still locks once and blanks the
+displays, and Escape on the lock screen still blanks them: neither depends on
+Coffee's display setting. With Coffee off, nothing changes: macOS owns idle
+display sleep and locking, and apps keep running.
 The controller does not run an independent inactivity timer.
 
 Configure **AlDente → Settings → Battery Care** as follows:
