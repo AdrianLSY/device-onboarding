@@ -46,9 +46,11 @@ local emoji                = [[vicinae 'vicinae://launch/core/search-emojis?togg
 hl.env("HYPRCURSOR_SIZE", "24", true)
 hl.env("XCURSOR_SIZE", "24", true)
 hl.env("QT_CURSOR_SIZE", "24", true)
--- Kept exactly as before: hyprlang never expanded $HOME here, so the last
--- entry has always been the literal text "$HOME/.local/share".
-hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:$HOME/.local/share", true)
+-- Lua expands $HOME itself; hyprlang never did, so this entry used to be the
+-- literal text "$HOME/.local/share". `or ""` keeps an unset HOME from
+-- stopping the rest of the file.
+local home = os.getenv("HOME") or ""
+hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:" .. home .. "/.local/share", true)
 hl.env("QT_QPA_PLATFORMTHEME", "qt5ct", true)
 hl.env("GTK_THEME", "Adwaita:dark", true)
 
@@ -383,14 +385,15 @@ rule({ title = [[^(QQ|Telegram)$]] }, { opacity = "0.95" })
 rule({ title = [[^(NetEase Cloud Music Gtk4)$]] }, { opacity = "0.95" })
 
 -- General window rules
--- `move 25% 25%` is ported as written. Since Hyprland's rule rewrite, move
--- takes math expressions, which have no % sign, so this move has not been
--- applied since before 0.57 either; `monitor_w*0.25 monitor_h*0.25` would.
+-- Floating players open with their top-left corner a quarter of the way into
+-- the monitor. move takes math expressions with no % sign, so the old
+-- `25% 25%` failed to evaluate and was never applied.
+local quarterIn = { "monitor_w*0.25", "monitor_h*0.25" }
 rule({ title = [[^(Picture-in-Picture)$]] }, { float = true })
 rule({ title = [[^(Picture-in-Picture)$]] }, { size = { 960, 540 } })
-rule({ title = [[^(Picture-in-Picture)$]] }, { move = "25% 25%" })
+rule({ title = [[^(Picture-in-Picture)$]] }, { move = quarterIn })
 rule({ title = [[^(imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$]] }, { float = true })
-rule({ title = [[^(imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$]] }, { move = "25% 25%" })
+rule({ title = [[^(imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$]] }, { move = quarterIn })
 rule({ title = [[^(imv|mpv|danmufloat|termfloat|nemo|ncmpcpp)$]] }, { size = { 960, 540 } })
 rule({ title = [[^(danmufloat)$]] }, { pin = true })
 rule({ title = [[^(danmufloat|termfloat)$]] }, { rounding = 0 })
