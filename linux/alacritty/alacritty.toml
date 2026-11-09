@@ -6,7 +6,7 @@
 
 [window]
 # A bit glassy, like a macOS window: Hyprland blurs what shows through
-# (decoration:blur in hypr/config/decorations.conf).
+# (decoration.blur in hypr/hyprland.lua).
 opacity = 0.80
 # Blank space between the window edge and the text, on all four sides. 6 px:
 # 12 px was too much and none looked worse.

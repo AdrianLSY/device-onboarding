@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 # Round the screen's corners, like DisplayPerture on macOS: a black mask in
-# each corner of every monitor. RADIUS matches decoration:rounding in
-# decorations.conf, so a window that fills the screen lines up with it. The top
+# each corner of every monitor. RADIUS matches decoration.rounding in
+# hyprland.lua, so a window that fills the screen lines up with it. The top
 # masks sit just below Waybar, since the black bar already hides the screen's
 # own top corners, and fill the gap between the bar and a window's rounded top
 # corners. The masks are on the top layer, which fullscreen windows cover, so a

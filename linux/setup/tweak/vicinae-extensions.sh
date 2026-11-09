@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# Installs the Vicinae extensions that hypr/config/keybinds.conf opens, the way
+# Installs the Vicinae extensions that hypr/hyprland.lua's keybinds open, the way
 # Vicinae's own store does: download the extension's zip and unpack it into
 # ~/.local/share/vicinae/extensions/<id>. An extension already there is left
 # alone, so a re-run downloads nothing and the version Vicinae's store updated

@@ -7,7 +7,7 @@
 
 for _ in $(seq 150); do
     if hyprctl clients | grep -q $'^\tclass: vivaldi-stable$'; then
-        hyprctl dispatch movetoworkspacesilent '1,class:^(vivaldi-stable)$'
+        hyprctl dispatch 'hl.dsp.window.move({ workspace = 1, follow = false, window = "class:^(vivaldi-stable)$" })'
         break
     fi
     sleep 0.2
