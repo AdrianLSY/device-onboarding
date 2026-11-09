@@ -1,6 +1,6 @@
 * {
-    font-family: "Noto Sans Mono", monospace;
-    font-size: 12px;
+    font-family: "Inter", "Noto Sans", "Symbols Nerd Font", "FantasqueSansM Nerd Font Propo", sans-serif;
+    font-size: 13px;
     font-weight: 500;
     border: none;
     border-radius: 0;
@@ -14,21 +14,62 @@ window#waybar {
     background-color: rgb(0, 0, 0);
 }
 
-#workspaces {
-    padding: 0;
-}
-
-#workspaces button {
-    padding: 0 12px;
-}
-
-#workspaces button.active {
-    background-color: rgb(65, 65, 65);
-}
-
-.modules-left,
-.modules-center,
-.modules-right,
 .module {
-    padding: 0 12px;
+    padding: 0 9px;
+}
+
+#custom-logo {
+    font-size: 15px;
+    padding: 0 14px 0 18px;
+}
+
+#custom-app {
+    font-weight: 700;
+}
+
+/* CPU, GPU and RAM sit close together, a small label over each value */
+#cpu,
+#custom-gpu,
+#memory {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 0 5px;
+}
+
+/* The active workspace, white on black like AeroSpace's menu bar item */
+#workspaces {
+    padding: 0 9px;
+}
+
+#workspaces button,
+#workspaces button:hover {
+    min-width: 0;
+    padding: 0 5px;
+    margin: 5px 0;
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    box-shadow: none;
+}
+
+#workspaces button label {
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+}
+
+#custom-dropbox,
+#custom-tailscale {
+    font-size: 15px;
+}
+
+#custom-dropbox.off,
+#custom-tailscale.off {
+    opacity: 0.4;
+}
+
+#network {
+    font-weight: 700;
+}
+
+#custom-clock {
+    padding-right: 18px;
 }

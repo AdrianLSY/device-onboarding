@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+
+# Round the screen's corners, like DisplayPerture on macOS: a black mask in
+# each corner of every monitor. RADIUS matches decoration:rounding in
+# decorations.conf, so a window that fills the screen lines up with it. The top
+# masks sit just below Waybar, since the black bar already hides the screen's
+# own top corners, and fill the gap between the bar and a window's rounded top
+# corners. The masks are on the top layer, which fullscreen windows cover, so a
+# fullscreen game keeps square corners and direct scanout. Clicks pass through.
+
+import math
+
+import cairo
+import gi
+
+gi.require_version("Gdk", "3.0")
+gi.require_version("Gtk", "3.0")
+gi.require_version("GtkLayerShell", "0.1")
+from gi.repository import Gdk, Gtk, GtkLayerShell
+
+RADIUS = 12
+Edge = GtkLayerShell.Edge
+
+
+def corner(monitor, vertical, horizontal):
+    window = Gtk.Window()
+    GtkLayerShell.init_for_window(window)
+    GtkLayerShell.set_namespace(window, "screen-corners")
+    GtkLayerShell.set_monitor(window, monitor)
+    GtkLayerShell.set_layer(window, GtkLayerShell.Layer.TOP)
+    GtkLayerShell.set_anchor(window, vertical, True)
+    GtkLayerShell.set_anchor(window, horizontal, True)
+    # Keep out of the space Waybar reserves, which puts the top masks below it.
+    GtkLayerShell.set_exclusive_zone(window, 0)
+    window.set_size_request(RADIUS, RADIUS)
+    window.set_app_paintable(True)
+    window.set_visual(window.get_screen().get_rgba_visual())
+
+    # The circle's centre is the mask's corner that points into the screen.
+    cx = RADIUS if horizontal == Edge.LEFT else 0
+    cy = RADIUS if vertical == Edge.TOP else 0
+
+    def draw(_, cr):
+        cr.set_operator(cairo.OPERATOR_SOURCE)
+        cr.set_source_rgba(0, 0, 0, 1)
+        cr.paint()
+        cr.set_operator(cairo.OPERATOR_CLEAR)
+        cr.arc(cx, cy, RADIUS, 0, 2 * math.pi)
+        cr.fill()
+
+    window.connect("draw", draw)
+    window.show_all()
+    window.input_shape_combine_region(cairo.Region())
+
+
+def round_monitor(monitor):
+    for vertical in (Edge.TOP, Edge.BOTTOM):
+        for horizontal in (Edge.LEFT, Edge.RIGHT):
+            corner(monitor, vertical, horizontal)
+
+
+display = Gdk.Display.get_default()
+for i in range(display.get_n_monitors()):
+    round_monitor(display.get_monitor(i))
+display.connect("monitor-added", lambda _, monitor: round_monitor(monitor))
+Gtk.main()

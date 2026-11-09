@@ -1,88 +1,115 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 24,
+    "height": 28,
     "margin-left": 0,
     "margin-bottom": 0,
     "margin-right": 0,
     "spacing": 0,
     "modules-left": [
-        "custom/power",
-        "custom/search",
-        "hyprland/workspaces"
+        "custom/logo",
+        "custom/app"
     ],
     "modules-center": [],
     "modules-right": [
-        "tray",
+        "group/tray",
         "cpu",
         "custom/gpu",
         "memory",
-        "disk",
-        "custom/sound",
-        "clock"
+        "hyprland/workspaces",
+        "custom/dropbox",
+        "custom/tailscale",
+        "network",
+        "custom/clock"
     ],
-    "custom/power": {
-        "format": "󰐥 ",
+    "custom/logo": {
+        "format": "\uf303",
         "tooltip": false,
         "on-click": "~/.config/rofi/powermenu/powermenu.sh"
     },
-    "custom/search": {
-        "format": "󰍉 ",
-        "tooltip": false,
-        "on-click": "~/.config/rofi/launchers/launcher.sh"
+    "custom/app": {
+        "exec": "~/.config/waybar/scripts/active-app",
+        "restart-interval": 5,
+        "tooltip": false
     },
-    "hyprland/workspaces": {
-        "all-outputs": false,
-        "format": "{name}",
-        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
-        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
-        "sort-by-number": false,
-        "active-only": false,
-        "show-special": false
+    "group/tray": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 200,
+            "transition-left-to-right": false,
+            "click-to-reveal": true
+        },
+        "modules": [
+            "custom/tray-toggle",
+            "tray"
+        ]
+    },
+    "custom/tray-toggle": {
+        "format": "\uf104",
+        "tooltip": false
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 16,
+        "show-passive-items": true,
+        "reverse-direction": false
     },
     "cpu": {
-        "interval": 1,
-        "format": "󰍛 {usage:>3}%",
+        "interval": 2,
+        "format": "<span size='5.5pt'>CPU</span>\n{usage}%",
+        "justify": "center",
         "tooltip-format": "CPU Usage: {usage}%\nFrequency: {max_frequency}GHz",
-        "max-length": 10,
         "on-click": "kitty -e btop"
     },
     "custom/gpu": {
-        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{printf \"󰢮 %3s%%\", $1}'",
-        "format": "{}",
-        "interval": 1,
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null | awk '/^[0-9]+$/ { print $1 \"%\"; ok = 1 } END { if (!ok) print \"–\" }'",
+        "interval": 2,
+        "format": "<span size='5.5pt'>GPU</span>\n{}",
+        "justify": "center",
         "tooltip": false,
         "on-click": "kitty -e btop"
     },
     "memory": {
-        "interval": 1,
-        "format": "󰘚 {percentage:>3}%",
+        "interval": 2,
+        "format": "<span size='5.5pt'>RAM</span>\n{percentage}%",
+        "justify": "center",
         "tooltip-format": "Memory: {used:0.1f}GB / {total:0.1f}GB ({percentage}%)",
-        "max-length": 10,
         "on-click": "kitty -e btop"
     },
-    "disk": {
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "format": "{name}",
+        "active-only": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+        "show-special": false
+    },
+    "custom/dropbox": {
+        "exec": "~/.config/waybar/scripts/dropbox-status",
+        "return-type": "json",
+        "interval": 5,
+        "on-click": "xdg-open ~/Dropbox"
+    },
+    "custom/tailscale": {
+        "exec": "~/.config/waybar/scripts/tailscale-status",
+        "return-type": "json",
+        "interval": 5,
+        "on-click": "flatpak run dev.deedles.Trayscale"
+    },
+    "network": {
+        "interval": 5,
+        "format-ethernet": "‹···›",
+        "format-wifi": "󰖩",
+        "format-linked": "‹···›",
+        "format-disconnected": "󰖪",
+        "tooltip-format-ethernet": "{ifname}  {ipaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)  {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+    "custom/clock": {
+        "exec": "date '+%a %-d %b  %-I:%M %p'",
         "interval": 1,
-        "format": "󰋊 {percentage_used:>3}%",
-        "path": "/",
-        "tooltip-format": "Disk: {used} / {total} ({percentage_used}%)",
-        "max-length": 10,
-        "on-click": "kitty -e btop"
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 24,
-        "show-passive-items": true,
-        "reverse-direction": false
-    },
-    "custom/sound": {
-        "format": "󰕾",
-        "tooltip": "Sound Control",
-        "on-click": "pavucontrol"
-    },
-    "clock": {
-        "format": "{:%a %d %b %I:%M %p}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>"
+        "tooltip": false
     }
 }

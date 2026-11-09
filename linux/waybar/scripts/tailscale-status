@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# Print Waybar JSON for Tailscale: "on", "exit-node" (traffic leaves through an
+# exit node) or "off". The client warns on stderr when its version differs from
+# tailscaled's, so stderr is dropped.
+
+if status=$(tailscale status --json 2>/dev/null) && [ -n "$status" ]; then
+    printf '%s' "$status" | jq -c '
+        if .BackendState == "Running" then {
+            text: "󱗼",
+            class: (if .ExitNodeStatus then "exit-node" else "on" end),
+            tooltip: ("Tailscale: connected as " + (.Self.DNSName | rtrimstr("."))
+                + (if .ExitNodeStatus then "\nUsing an exit node" else "" end))
+        } else {
+            text: "󱗼", class: "off", tooltip: ("Tailscale: " + .BackendState)
+        } end'
+else
+    echo '{"text": "󱗼", "class": "off", "tooltip": "tailscaled isn'"'"'t running"}'
+fi

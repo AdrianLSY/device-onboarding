@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+
+# Print the focused app's name for Waybar, like the bold app name in the macOS
+# menu bar. Hyprland only reports a window class (com.anthropic.Claude,
+# vivaldi-<id>-Default for a web app), so the name comes from the desktop entry
+# whose StartupWMClass or file name matches it, falling back to the class. A
+# line is printed on every focus change, read from Hyprland's event socket.
+
+import glob
+import html
+import json
+import os
+import socket
+import subprocess
+
+
+def read_entry(path):
+    name = wm_class = None
+    group = None
+    with open(path, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("["):
+                group = line
+            elif group == "[Desktop Entry]":
+                key, _, value = line.partition("=")
+                if key == "Name":
+                    name = value
+                elif key == "StartupWMClass":
+                    wm_class = value
+    return name, wm_class
+
+
+def scan():
+    by_wm_class, by_file = {}, {}
+    data_dirs = [os.environ.get("XDG_DATA_HOME") or os.path.expanduser("~/.local/share")]
+    data_dirs += (os.environ.get("XDG_DATA_DIRS") or "/usr/local/share:/usr/share").split(":")
+    # Earlier directories take precedence, so read them last.
+    for data_dir in reversed(data_dirs):
+        for path in glob.glob(os.path.join(data_dir, "applications", "*.desktop")):
+            name, wm_class = read_entry(path)
+            if not name:
+                continue
+            by_file[os.path.basename(path)[: -len(".desktop")].lower()] = name
+            if wm_class:
+                by_wm_class[wm_class.lower()] = name
+    return by_wm_class, by_file
+
+
+names = scan()
+unknown = set()
+
+
+def app_name(window_class):
+    global names
+    key = window_class.lower()
+    if key and key not in unknown and key not in names[0] and key not in names[1]:
+        # Rescan once per new class, in case the app was installed after login.
+        names = scan()
+        if key not in names[0] and key not in names[1]:
+            unknown.add(key)
+    return names[0].get(key) or names[1].get(key) or window_class
+
+
+def show(window_class):
+    print(html.escape(app_name(window_class), quote=False), flush=True)
+
+
+active = json.loads(subprocess.run(["hyprctl", "activewindow", "-j"], capture_output=True, text=True).stdout or "{}")
+show(active.get("class", ""))
+
+events = os.path.join(os.environ["XDG_RUNTIME_DIR"], "hypr", os.environ["HYPRLAND_INSTANCE_SIGNATURE"], ".socket2.sock")
+with socket.socket(socket.AF_UNIX) as sock:
+    sock.connect(events)
+    for line in sock.makefile(encoding="utf-8", errors="replace"):
+        event, _, data = line.rstrip("\n").partition(">>")
+        if event == "activewindow":
+            show(data.split(",", 1)[0])

@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+# Print Waybar JSON for Dropbox's sync state, asked over the daemon's command
+# socket (the same protocol the dropbox CLI uses). The class is "idle" when up
+# to date, "busy" while syncing and "off" when the daemon doesn't answer.
+
+import json
+import os
+import socket
+
+
+def status():
+    try:
+        with socket.socket(socket.AF_UNIX) as sock:
+            sock.settimeout(2)
+            sock.connect(os.path.expanduser("~/.dropbox/command_socket"))
+            sock.sendall(b"get_dropbox_status\ndone\n")
+            reply = b""
+            while not reply.endswith(b"done\n"):
+                chunk = sock.recv(4096)
+                if not chunk:
+                    break
+                reply += chunk
+    except OSError:
+        return None
+    for line in reply.decode(errors="replace").splitlines():
+        key, _, value = line.partition("\t")
+        if key == "status":
+            return value.replace("\t", "\n")
+    return None
+
+
+state = status()
+if state is None:
+    out = {"text": "\uf16b", "class": "off", "tooltip": "Dropbox isn't running"}
+else:
+    out = {"text": "\uf16b", "class": "idle" if state == "Up to date" else "busy", "tooltip": f"Dropbox: {state}"}
+print(json.dumps(out))
