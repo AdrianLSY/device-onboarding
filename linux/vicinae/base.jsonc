@@ -21,13 +21,8 @@
 		"power": {
 			"entrypoints": {
 				// Nothing on this desktop answers logind's lock signal, so lock with
-				// swaylock.
-				"lock": { "preferences": { "customProgram": "swaylock -f -c 000000" } },
-				// Mute the speakers before suspending.
-				"suspend": { "preferences": { "customProgram": "amixer -q set Master mute; systemctl suspend" } },
-				// Quit Hyprland instead of calling logind's TerminateSession, which
-				// kills every process in the session.
-				"logout": { "preferences": { "customProgram": "hyprctl dispatch exit" } }
+				// swaylock, which reads ~/.config/swaylock/config.
+				"lock": { "preferences": { "customProgram": "swaylock -f" } }
 			}
 		}
 	}
