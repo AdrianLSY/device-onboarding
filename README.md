@@ -209,8 +209,8 @@ Raycast extensions, does all three; the Mac keeps Raycast. Hyprland starts
 
 | Keys | Opens |
 | --- | --- |
-| Super+Space | The launcher |
-| Super+V | Clipboard history |
+| Cmd+Space (Super+Space) | The launcher |
+| Ctrl+V (keyd sends it as Super+V) | Clipboard history |
 | Alt+Escape, or a click on the Waybar logo | Power commands, such as lock, suspend, log out, reboot and power off |
 
 The repo's settings are in `linux/vicinae/base.jsonc`. Changes made in Vicinae's

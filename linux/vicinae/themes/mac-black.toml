@@ -61,14 +61,16 @@ hover = { background = "#3A3A3C" }
 focus = { outline = "colors.core.accent" }
 
 [colors.list.item.hover]
+background = "colors.core.secondary_background"
 foreground = "colors.core.foreground"
 secondary_foreground = "#98989D"
 
-# A faint white wash, like the selected row in Raycast
+# Dark gray, like the selected row in Raycast. Opaque, because Vicinae swaps
+# in the window's opacity for these colors' alpha.
 [colors.list.item.selection]
-background = "#24FFFFFF"
+background = "#2C2C2E"
 foreground = "colors.core.foreground"
-secondary_background = "#24FFFFFF"
+secondary_background = "#2C2C2E"
 secondary_foreground = "colors.core.foreground"
 
 [colors.grid.item]
