@@ -310,7 +310,7 @@ bind(mainMod .. " + Escape", hl.dsp.exec_cmd(powermenu), "Show power menu")
 hl.bind(mainMod .. " + SHIFT + mouse:273", hl.dsp.window.resize(), { mouse = true }) -- Resize the window towards a direction
 hl.bind(mainMod .. " + SHIFT + mouse:272", hl.dsp.window.drag(), { mouse = true })   -- Drag window
 
--- Workspaces 1-10 and 11 (on grave), then the named ones, A-Z without P.
+-- Workspaces 1-10 and 11 (on grave), then the named ones, A-Z.
 local numbered = {
     { key = "grave", ws = 11 },
     { key = "1", ws = 1 }, { key = "2", ws = 2 }, { key = "3", ws = 3 },
@@ -319,7 +319,7 @@ local numbered = {
     { key = "0", ws = 10 },
 }
 local lettered = {}
-for letter in ("ABCDEFGHIJKLMNOQRSTUVWXYZ"):gmatch(".") do
+for letter in ("ABCDEFGHIJKLMNOPQRSTUVWXYZ"):gmatch(".") do
     lettered[#lettered + 1] = letter
 end
 
@@ -417,7 +417,10 @@ hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = -1 })
 rule({ class = [[^(steam)$]] }, { workspace = "name:G" })
 rule({ class = [[^(md.obsidian.Obsidian)$]] }, { workspace = "name:O" })
 rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
-rule({ class = [[^(KeePassXC)$]] }, { workspace = "name:K" })
+-- KeePassXC's Wayland class is org.keepassxc.KeePassXC; the bare KeePassXC
+-- stays for older builds. As on the Mac, its floating windows (dialogs, which
+-- Hyprland floats before reading these rules) open where they are.
+rule({ class = [[^(org\.keepassxc\.KeePassXC|KeePassXC)$]], float = false }, { workspace = "name:K" })
 rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J" })
 rule({ class = [[^(com.anthropic.Claude)$]] }, { workspace = "name:A" })
 -- Codex, the chatgpt-desktop package (package.json openai-codex-electron, productName Codex,
