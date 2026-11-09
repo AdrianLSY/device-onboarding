@@ -1,0 +1,14 @@
+/* Drop the 1px frame Vivaldi's unified UI draws around the page: a 1px
+   padding on #webpage-stack, a band of the theme background behind it
+   (::after, masked to the band and rounded corners) and a translucent outline
+   over it (::before). With the UI hidden (Toggle UI, ctrl+F11) the page fills
+   the window, so the band shows as a light border on every edge of it. Vivaldi
+   drops the frame only in fullscreen. With the UI shown, the page now meets
+   the toolbars with square corners instead. */
+#browser #webpage-stack {
+  padding: 0 !important;
+}
+#browser #webpage-stack::before,
+#browser #webpage-stack::after {
+  display: none !important;
+}
