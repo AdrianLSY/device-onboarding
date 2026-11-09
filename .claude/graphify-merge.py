@@ -106,11 +106,16 @@ for n in old["nodes"]:
     G.add_node(n["id"], **{k: v for k, v in n.items() if k != "id"})
     kept_nodes.append(n)
 
-lost = [
-    n for n in old["nodes"]
-    if n["id"] not in G and n.get("source_file") not in gone
-    and not (n.get("source_file") in modified and n["id"] in old_ast_nodes)
-]
+# The AST pass also makes source-less placeholder nodes for the types a file
+# refers to (Swift's Double, say), and renames one to `<file>_<type>` once a
+# second file refers to it too. build_merge drops such a node when the changed
+# file's edges to it go; that is a replacement, like the file's own nodes.
+def replaced(n):
+    sf = n.get("source_file")
+    return n["id"] in old_ast_nodes and (sf in modified or not sf)
+
+
+lost = [n for n in old["nodes"] if n["id"] not in G and n.get("source_file") not in gone and not replaced(n)]
 if lost:
     for n in lost:
         print(f"  would lose {n['id']} ({n.get('source_file')})")
