@@ -67,10 +67,13 @@ magenta = "#fd28ff"
 cyan = "#14ffff"
 white = "#ffffff"
 
-# Mac-style Cmd+V (keyd sends Cmd+V as Ctrl+V, and physical Ctrl+V as Super+V)
-# kitty's Ctrl+C copy_or_interrupt has no Alacritty form: a binding can't depend
-# on whether text is selected. Ctrl+C stays SIGINT, and Cmd+Shift+C (Ctrl+Shift+C,
-# an Alacritty default) copies.
+# Mac-style Cmd+V and Cmd+C. keyd sends Cmd+key as Ctrl+key and physical Ctrl+V
+# as Super+V, so Cmd+V arrives as Ctrl+V, bound below. Cmd+C would arrive as
+# Ctrl+C, SIGINT here, so keyd's per-app mapper (keyd/app.conf, set up by the
+# keyd-application-mapper tweak) sends it to Alacritty as Ctrl+Shift+C, an
+# Alacritty default for Copy. Physical Ctrl+C stays SIGINT. kitty's Ctrl+C
+# copy_or_interrupt has no Alacritty form: a binding can't depend on whether text
+# is selected.
 [keyboard]
 bindings = [
     { key = "V", mods = "Control", action = "Paste" },

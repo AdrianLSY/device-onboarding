@@ -1,0 +1,18 @@
+[Unit]
+Description=keyd per-application key mapper
+Documentation=man:keyd-application-mapper(1)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# keyd's socket belongs to the keyd group. A group added with usermod reaches user
+# services only at the next login, and the sg command isn't installed here, so
+# newgrp takes the group up in the meantime. It runs the shell it reads from stdin
+# (the login shell, whichever it is) with the group added.
+ExecStart=/bin/sh -c 'echo "exec /usr/bin/keyd-application-mapper" | exec /usr/bin/newgrp keyd'
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=graphical-session.target
