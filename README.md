@@ -19,7 +19,8 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `alacritty/`, `mako/`, `rofi/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
-  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `mimeapps.list`, `bin/` (a
+  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `vivaldi-css/`,
+  `vivaldi-stable.conf`, `mimeapps.list`, `bin/` (a
   symlink to `../macos/bin`, so both tiers share `ssh-keypick`), and its own
   `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
 - `windows/` — the native-Windows (Git Bash/MSYS) machine: its `setup/`
