@@ -205,8 +205,9 @@ after setup; a dry run does not prove a real sleep/wake transition.
 ### Launcher, clipboard history and power menu (Linux)
 
 [Vicinae](https://docs.vicinae.com), a Raycast-like launcher that runs many
-Raycast extensions, does all three; the Mac keeps Raycast. Hyprland starts
-`vicinae server` at login and binds the keys:
+Raycast extensions, does all three; the Mac keeps Raycast. Its server runs as
+the `vicinae.service` user unit, which the `vicinae.sh` tweak enables, and
+Hyprland binds the keys:
 
 | Keys | Opens |
 | --- | --- |
@@ -217,8 +218,8 @@ Raycast extensions, does all three; the Mac keeps Raycast. Hyprland starts
 The repo's settings are in `linux/vicinae/base.jsonc`. Changes made in Vicinae's
 settings window (Ctrl+,) are written to `linux/vicinae/settings.json` and take
 precedence. The `mac-black` theme, black and white like Waybar, is linked into
-`~/.local/share/vicinae/themes` by the `vicinae.sh` tweak, because Vicinae
-loads themes only from there. Raycast extensions install from Vicinae's
+`~/.local/share/vicinae/themes` by the same tweak, because Vicinae loads themes
+only from there. Raycast extensions install from Vicinae's
 "Raycast Store" command (simpler ones work best), and Vicinae's own from its
 "Store" command; both land in `~/.local/share/vicinae`, outside the repo.
 

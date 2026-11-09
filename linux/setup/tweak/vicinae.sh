@@ -11,3 +11,8 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../.." && pwd)"
 
 _link_one "$REPO/linux/vicinae/themes/mac-black.toml" \
     "$HOME/.local/share/vicinae/themes/mac-black.toml" "vicinae theme mac-black"
+
+# uwsm runs Hyprland as a systemd service, so Vicinae's docs start the server
+# with the user unit the package ships rather than an exec-once. It is wanted by
+# graphical-session.target and starts at the next login.
+systemctl --user is-enabled --quiet vicinae.service || systemctl --user enable vicinae.service
