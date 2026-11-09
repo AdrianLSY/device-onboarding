@@ -24,6 +24,14 @@
 				// swaylock, which reads ~/.config/swaylock/config.
 				"lock": { "preferences": { "customProgram": "swaylock -f" } }
 			}
+		},
+
+		// Extension preferences, keyed @<author>/<extension's directory>. The
+		// extensions are installed by setup/tweak/vicinae-extensions.sh.
+		// Raycast's Tailscale extension runs the macOS app's binary unless given
+		// the CLI's path.
+		"@samlinville/store.raycast.tailscale": {
+			"preferences": { "tailscalePath": "/usr/bin/tailscale" }
 		}
 	}
 }
