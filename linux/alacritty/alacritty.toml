@@ -8,7 +8,11 @@
 # A bit glassy, like a macOS window: Hyprland blurs what shows through
 # (decoration:blur in hypr/config/decorations.conf).
 opacity = 0.80
-# kitty's placement_strategy center: spread the spare pixels round the grid
+# Blank space between the window edge and the text, on all four sides. 6 px:
+# 12 px was too much and none looked worse.
+padding = { x = 6, y = 6 }
+# kitty's placement_strategy center: spread the spare pixels round the grid,
+# on top of the padding above
 dynamic_padding = true
 
 [font]
