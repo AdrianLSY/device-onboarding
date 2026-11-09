@@ -5,7 +5,13 @@
 # closing.
 
 [window]
-# kitty's placement_strategy center: spread the spare pixels round the grid
+# Blank space between the window edge and the text, on all four sides. 12 px
+# matches the window rounding in hypr/config/decorations.conf, so the text
+# clears the rounded corners. The macOS terminal (ghostty) uses 1 px, which
+# looks cramped here.
+padding = { x = 12, y = 12 }
+# kitty's placement_strategy center: spread the spare pixels round the grid,
+# on top of the padding above
 dynamic_padding = true
 
 [font]
