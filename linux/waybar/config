@@ -25,7 +25,7 @@
     "custom/logo": {
         "format": "\uf303",
         "tooltip": false,
-        "on-click": "~/.config/rofi/powermenu/powermenu.sh"
+        "on-click": "vicinae 'vicinae://launch/power?toggle=true'"
     },
     "custom/app": {
         "exec": "~/.config/waybar/scripts/active-app",

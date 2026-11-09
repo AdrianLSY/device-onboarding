@@ -1,0 +1,86 @@
+# Black and white like Waybar, with macOS's dark system grays and accent colors.
+# Vicinae loads themes only from ~/.local/share/vicinae/themes and the system's
+# data dirs; setup/tweak/vicinae.sh links this file there.
+
+[meta]
+name = "Mac Black"
+description = "Black and white, like the rest of this macOS-style desktop"
+variant = "dark"
+inherits = "vicinae-dark"
+
+[colors.accents]
+blue = "#0A84FF"
+green = "#30D158"
+magenta = "#FF375F"
+orange = "#FF9F0A"
+red = "#FF453A"
+yellow = "#FFD60A"
+cyan = "#64D2FF"
+purple = "#BF5AF2"
+
+# White on black, like the active workspace box in Waybar
+[colors.core]
+accent = "#FFFFFF"
+accent_foreground = "#000000"
+background = "#000000"
+foreground = "#FFFFFF"
+secondary_background = "#1C1C1E"
+border = "#38383A"
+
+[colors.main_window]
+border = "colors.core.border"
+footer = { background = "colors.core.secondary_background" }
+
+[colors.settings_window]
+border = "colors.core.border"
+
+[colors.shortcut]
+border = "colors.core.border"
+
+[colors.text]
+default = "colors.core.foreground"
+muted = "#98989D"
+danger = "colors.accents.red"
+success = "colors.accents.green"
+placeholder = "#636366"
+selection = { background = "colors.core.accent", foreground = "colors.core.accent_foreground" }
+
+[colors.text.links]
+default = "colors.accents.blue"
+visited = "colors.accents.purple"
+
+[colors.input]
+border = "colors.core.border"
+border_focus = { name = "colors.core.accent", opacity = 0.5 }
+border_error = "colors.accents.red"
+
+[colors.button.primary]
+background = "#2C2C2E"
+foreground = "colors.core.foreground"
+hover = { background = "#3A3A3C" }
+focus = { outline = "colors.core.accent" }
+
+[colors.list.item.hover]
+background = "colors.core.secondary_background"
+foreground = "colors.core.foreground"
+secondary_foreground = "#98989D"
+
+# Dark gray, like the selected row in Raycast. Opaque, because Vicinae swaps
+# in the window's opacity for these colors' alpha.
+[colors.list.item.selection]
+background = "#2C2C2E"
+foreground = "colors.core.foreground"
+secondary_background = "#2C2C2E"
+secondary_foreground = "colors.core.foreground"
+
+[colors.grid.item]
+background = "colors.core.secondary_background"
+hover = { outline = "#636366" }
+selection = { outline = "colors.core.accent" }
+
+[colors.scrollbars]
+background = "#48484A"
+
+[colors.loading]
+bar = "colors.core.accent"
+spinner = "colors.core.foreground"
