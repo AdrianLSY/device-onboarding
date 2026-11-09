@@ -11,7 +11,7 @@
 	},
 
 	"launcher_window": {
-		// Translucent black over the blur that hypr/config/windowrules.conf gives
+		// Translucent black over the blur that hypr/hyprland.lua's layer rule gives
 		// the vicinae layer, with the 12px corners of the windows.
 		"opacity": 0.85,
 		"rounding": 12
