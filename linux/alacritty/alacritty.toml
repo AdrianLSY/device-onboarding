@@ -10,10 +10,15 @@ dynamic_padding = true
 
 [font]
 size = 11.0
+# kitty draws this font in 20 px rows, Alacritty in 21
+offset = { x = 0, y = -1 }
 
 [cursor]
-# kitty blinks every 500 ms on Linux and stops after 15 s without input
-style = { shape = "Block", blinking = "On" }
+# kitty's shell integration shows a 2 px beam at the fish prompt; Alacritty
+# can't switch shape per prompt, so the beam is the default (nvim sets its own).
+# kitty blinks every 500 ms on Linux and stops after 15 s without input.
+style = { shape = "Beam", blinking = "On" }
+thickness = 0.22
 blink_interval = 500
 blink_timeout = 15
 
