@@ -32,6 +32,18 @@
 		// the CLI's path.
 		"@samlinville/store.raycast.tailscale": {
 			"preferences": { "tailscalePath": "/usr/bin/tailscale" }
+		},
+
+		// The database the KeePassXC desktop app opens, synced by Dropbox. The
+		// extension passes the path to keepassxc-cli without a shell, so no ~.
+		// It never locks, by choice: until it locks, it keeps the database
+		// password unencrypted in Vicinae's local storage,
+		// ~/.local/share/vicinae/vicinae.db (a directory only this user can read).
+		"@system7/store.vicinae.keepassxc": {
+			"preferences": {
+				"database": "/home/adrian/Dropbox/Keychain.kdbx",
+				"lockAfterInactivity": "-1"
+			}
 		}
 	}
 }
