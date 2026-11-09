@@ -85,7 +85,7 @@ on-window-detected = [
     { if = 'test %{app-bundle-id} = com.apple.Music', run = 'move-node-to-workspace S' },  # Music
     { if = 'test %{app-bundle-id} = com.github.GitHubClient', run = 'move-node-to-workspace V' },  # GitHub Desktop
     { if = 'test %{app-bundle-id} = com.vivaldi.Vivaldi.app.hnpfjngllnobngcgfapefoaidbinmjnm', run = 'move-node-to-workspace W' },  # WhatsApp Web (Vivaldi PWA)
-    { if = 'test %{app-bundle-id} = com.openai.codex', run = 'move-node-to-workspace X' },  # ChatGPT
+    { if = 'test %{app-bundle-id} = com.openai.codex', run = 'move-node-to-workspace X' },  # Codex (OpenAI's desktop app)
 ]
 
 # Possible values: (qwerty|dvorak|colemak)
