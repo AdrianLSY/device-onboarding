@@ -4,6 +4,45 @@ import Foundation
 import IOKit
 import IOKit.pwr_mgt
 
+// REQUIRED BEHAVIOUR
+//
+// The behaviour this agent must have, agreed with Adrian on 9 November 2026, with
+// Raycast Coffee's Prevent display sleep turned on.
+//
+// #   External Monitor(s)  Coffee  Power    Lid     Mac state                      Mac Screen                        Monitors Screen                   Lock
+// --  -------------------  ------  -------  ------  -----------------------------  --------------------------------  --------------------------------  -----------------------------------------
+// 1   connected            on      charger  open    stay awake                     stay on                           stay on                           dont lock
+// 2   connected            on      charger  closed  stay awake                     stay off                          stay on                           dont lock
+// 3   connected            on      battery  open    stay awake                     stay on                           stay on                           dont lock
+// 4   connected            on      battery  closed  stay awake                     stay off                          stay on                           dont lock
+// 5   connected            off     charger  open    stay awake                     turn off after configured window  turn off after configured window  the moment the screen / monitor turns off
+// 6   connected            off     charger  closed  stay awake                     stay off                          turn off after configured window  the moment the screen / monitor turns off
+// 7   connected            off     battery  open    sleep after configured window  turn off after configured window  turn off after configured window  the moment the screen / monitor turns off
+// 8   connected            off     battery  closed  sleep after configured window  stay off                          turn off after configured window  the moment the screen / monitor turns off
+// 9   none                 on      charger  open    stay awake                     stay on                           none                              dont lock
+// 10  none                 on      charger  closed  stay awake                     stay off                          none                              lock
+// 11  none                 on      battery  open    stay awake                     stay on                           none                              dont lock
+// 12  none                 on      battery  closed  stay awake                     stay off                          none                              lock
+// 13  none                 off     charger  open    stay awake                     turn off after configured window  none                              the moment the screen / monitor turns off
+// 14  none                 off     charger  closed  stay awake                     stay off                          none                              lock
+// 15  none                 off     battery  open    sleep after configured window  turn off after configured window  none                              the moment the screen / monitor turns off
+// 16  none                 off     battery  closed  sleep                          stay off                          none                              lock
+//
+// Events
+//
+// - Plugging in a monitor turns that monitor on.
+// - Pressing Escape on the lock screen turns the screens off; apps keep running.
+//   In rows 7 and 8 the Mac then sleeps, as it does when the monitor turns off
+//   from idle.
+// - Unplugging the monitor while the lid is closed acts like closing the lid
+//   (rows 10, 12, 14 or 16).
+// - Turning Coffee on while the lid is already closed does not lock.
+// - Unlocking after a lid-close lock does not lock again.
+//
+// README's "Power, locking and charging (macOS)" section holds the same table and
+// tests.swift has one test per row, so a change to the behaviour updates all three
+// together.
+
 // One owner for the global disablesleep bit. AlDente's sleep prevention must be
 // off; it continues to own the independent charge limit. No state is reset on
 // exit: launchd restarts us, and resetting here could suspend work on AC power.
