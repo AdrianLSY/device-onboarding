@@ -117,13 +117,37 @@ documents how to inspect the available connection modes when troubleshooting.
 
 `macos/setup/tweak/power-policy.sh` installs the `com.adrian.power-policy`
 LaunchAgent. It keeps the Mac running with network access according to this
-policy, including with the lid closed:
+truth table, agreed on 9 November 2026 with Raycast Coffee's **Prevent display
+sleep** on. The configured window is macOS's own display sleep and system sleep
+setting for the current power source.
 
-| External monitor | Physical charger | Raycast Coffee | Lid closed |
-| --- | --- | --- | --- |
-| Connected | Either | Either | Stay awake; preserve the active session and external monitor |
-| None | Either | On | Stay awake; lock and turn displays off on lid close |
-| None | Either | Off | Lock and sleep |
+| # | External monitor(s) | Coffee | Power | Lid | Mac state | Mac screen | Monitor screens | Lock |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | connected | on | charger | open | stay awake | stay on | stay on | don't lock |
+| 2 | connected | on | charger | closed | stay awake | stay off | stay on | don't lock |
+| 3 | connected | on | battery | open | stay awake | stay on | stay on | don't lock |
+| 4 | connected | on | battery | closed | stay awake | stay off | stay on | don't lock |
+| 5 | connected | off | charger | open | stay awake | turn off after configured window | turn off after configured window | the moment the screen / monitor turns off |
+| 6 | connected | off | charger | closed | stay awake | stay off | turn off after configured window | the moment the screen / monitor turns off |
+| 7 | connected | off | battery | open | sleep after configured window | turn off after configured window | turn off after configured window | the moment the screen / monitor turns off |
+| 8 | connected | off | battery | closed | sleep after configured window | stay off | turn off after configured window | the moment the screen / monitor turns off |
+| 9 | none | on | charger | open | stay awake | stay on | none | don't lock |
+| 10 | none | on | charger | closed | stay awake | stay off | none | lock |
+| 11 | none | on | battery | open | stay awake | stay on | none | don't lock |
+| 12 | none | on | battery | closed | stay awake | stay off | none | lock |
+| 13 | none | off | charger | open | stay awake | turn off after configured window | none | the moment the screen / monitor turns off |
+| 14 | none | off | charger | closed | stay awake | stay off | none | lock |
+| 15 | none | off | battery | open | sleep after configured window | turn off after configured window | none | the moment the screen / monitor turns off |
+| 16 | none | off | battery | closed | sleep | stay off | none | lock |
+
+Events:
+
+- Plugging in a monitor turns that monitor on.
+- Pressing Escape on the lock screen turns the screens off; apps keep running.
+- Unplugging the monitor while the lid is closed acts like closing the lid
+  (rows 10, 12, 14 or 16).
+- Turning Coffee on while the lid is already closed does not lock.
+- Unlocking after a lid-close lock does not lock again.
 
 Raycast Coffee remains the manual override. The controller recognizes a live
 `/usr/bin/caffeinate` process belonging to the logged-in user; another app that
@@ -136,14 +160,32 @@ Without an external monitor, Coffee on makes an observed open-to-closed lid
 transition lock the session and blank the displays while apps and networking
 keep running. Turning Coffee on while the lid is already closed does not
 interrupt the current session, and unlocking after a lid-close lock does not
-cause repeated locking. With Coffee off, closing the lid locks and sleeps,
-including when a charger is connected without a monitor. With the lid open,
-physical AC power continues to keep the Mac awake.
+cause repeated locking. With Coffee off, closing the lid on a charger locks the
+session and blanks the displays while apps keep running, as with Coffee on; on
+battery it locks and sleeps. Physical AC power keeps the Mac awake with the lid
+open or closed.
 A temporary macOS headless “Generic Display” placeholder does not count as a
 connected monitor; normal USB/DisplayLink and mirrored monitors remain eligible.
 Disconnecting the monitor while the lid is closed restores the undocked
 Coffee-dependent rule. Power changes, Coffee toggles and controller restarts
 preserve an active docked session.
+
+Docked on battery with Coffee off (rows 7 and 8), the controller keeps the Mac
+awake while the monitor is on, so closing the lid never sleeps it. Once macOS's
+own idle display sleep turns the monitor off, which locks the session, the
+controller lets the Mac sleep. With the lid closed it releases the sleep block
+and requests sleep. With the lid open it releases the block and leaves the
+moment to macOS's battery sleep setting, as in row 15. A display-off counts as
+idle only when no keyboard or mouse input arrived in the 10 seconds before it,
+so Escape on the lock screen, a hot corner or `pmset displaysleepnow` keep apps
+running. Input, or the monitor turning back on, restores the block. The
+controller still runs no inactivity timer of its own.
+
+The hub's charging input drops for about a second roughly every 11 seconds, so
+the controller counts the charger as gone only after 30 continuous seconds on
+battery, and as back at once. A short drop never flips the sleep block or
+sleeps a closed Mac; unplugging does after 30 seconds. The same 30 seconds apply
+when the controller starts on battery.
 
 Attaching a newly online external display makes one native display-wake request;
 display sleep itself never triggers another wake. On the lock screen, Escape
@@ -160,8 +202,8 @@ With Coffee on, the displays stay awake when the Mac is docked, or undocked
 with the lid open, and macOS no longer locks or sleeps the display on idle.
 Undocked with Coffee on, closing the lid still locks once and blanks the
 displays, and Escape on the lock screen still blanks them: neither depends on
-Coffee's display setting. With Coffee off, nothing changes: macOS owns idle
-display sleep and locking, and apps keep running.
+Coffee's display setting. With Coffee off, macOS owns idle display sleep and
+locking, and the table above says when the Mac sleeps.
 The controller does not run an independent inactivity timer.
 
 Configure **AlDente → Settings → Battery Care** as follows:
@@ -178,8 +220,8 @@ Configure **AlDente → Settings → Battery Care** as follows:
 AlDente owns the charge limit independently of the lid policy. This Mac has
 native charge control enabled and an active macOS 80% charge-limit policy;
 the sleep controller does not change charging settings. The Mac stays
-awake on AC with the lid open, while docked, or with Coffee on; undocked
-Coffee-off lid closure sleeps even on AC. macOS can occasionally force a full
+awake on AC with the lid open or closed, or with Coffee on; on battery with
+Coffee off it sleeps as the table above describes. macOS can occasionally force a full
 charge for battery calibration;
 [AlDente cannot prevent that system override](https://apphousekitchen.com/macbook-charges-to-100-despite-charge-limit/).
 
@@ -200,7 +242,8 @@ bash macos/setup/tweak/power-policy.sh
 The executable is copied outside the repo to
 `~/Library/Application Support/device-power-policy/power-policy` so launchd can
 run it when the repo is under Documents. `--status` prints current sensors and
-the desired power state; `--check` checks prerequisites without changing them;
+the desired power state from this instant's readings, without the 30-second
+charger settle or the docked idle display-off; `--check` checks prerequisites without changing them;
 `--once --dry-run` previews actions. Logs are in
 `~/Library/Logs/device-power-policy.log`. Starting the agent with the lid
 already closed preserves an active docked session. A physical charger/lid test is still needed
