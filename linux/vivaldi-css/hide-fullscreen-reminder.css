@@ -1,0 +1,8 @@
+/* Hide the "Press Escape key to exit fullscreen." bubble Vivaldi shows over a
+   page that goes fullscreen (a video, say). Escape still leaves fullscreen.
+   #browser carries "fullscreen inner" only during page fullscreen, so the
+   same bubble keeps showing its other messages outside it; inside it, the
+   pointer-lock notice goes too. */
+#browser.fullscreen.inner .webpageview .overlayinfobubble {
+  display: none !important;
+}
