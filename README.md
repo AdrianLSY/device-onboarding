@@ -333,9 +333,10 @@ whole message. Use the `keyd` command, and recover with
 
 `macos/bin/via-macro` turns text on the clipboard into VIA macro text that the
 FNK X V81PL keyboard plays correctly, and puts the result back on the
-clipboard. Its macro player drops plain punctuation, double-taps a tapped key
-and swallows one character after a key release, so the script writes every
-character other than a letter or digit as an explicit press and release.
+clipboard. Its macro player drops plain punctuation, ignores a second tap of a key
+tapped a moment before, and swallows one character after a key release, so the
+script writes every character other than a letter or digit as an explicit press
+and release.
 It prints only the character and byte counts, saves nothing, and stops, leaving
 the clipboard unchanged, if the text is already VIA macro text (`--force` converts
 it anyway).
