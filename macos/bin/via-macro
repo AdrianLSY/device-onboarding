@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""Turn text on the clipboard into VIA macro text that plays correctly on the FNK X V81PL,
+and put it back on the clipboard. Saves nothing; prints only the character and byte counts.
+
+The board's macro player has three faults, found by testing on 12 November 2026:
+  1. it types plain letters and digits only, and drops every other plain character;
+  2. a tapped key ({KC_DOT}) does not tap again soon after, so taps are never used here;
+  3. one plain character straight after any key release ({-KC_...}) is swallowed.
+So every other character is sent as an explicit press and release, shifted characters inside
+one held Shift, and a plain space (which the board drops anyway) follows a release whenever a
+letter or digit comes next, to be swallowed in its place.
+
+The clipboard is reached with the platform's own tool, so no Python package is needed:
+  macOS    pbpaste, pbcopy
+  Linux    wl-paste, wl-copy (wl-clipboard) on Wayland; xclip or xsel on X11
+  Windows  powershell or pwsh (Get-Clipboard, Set-Clipboard)
+
+usage: via-macro [--force]
+  --force  convert even if the text looks like VIA macro text already
+"""
+import os, re, shutil, subprocess, sys
+
+UNSHIFTED = {'.': 'KC_DOT', ',': 'KC_COMM', '/': 'KC_SLSH', ';': 'KC_SCLN', "'": 'KC_QUOT',
+             '-': 'KC_MINS', '=': 'KC_EQL', '[': 'KC_LBRC', ']': 'KC_RBRC', '\\': 'KC_BSLS',
+             '`': 'KC_GRV', ' ': 'KC_SPC'}
+SHIFTED = {'>': 'KC_DOT', '<': 'KC_COMM', '?': 'KC_SLSH', ':': 'KC_SCLN', '"': 'KC_QUOT',
+           '_': 'KC_MINS', '+': 'KC_EQL', '{': 'KC_LBRC', '}': 'KC_RBRC', '|': 'KC_BSLS',
+           '~': 'KC_GRV', '!': 'KC_1', '@': 'KC_2', '#': 'KC_3', '$': 'KC_4', '%': 'KC_5',
+           '^': 'KC_6', '&': 'KC_7', '*': 'KC_8', '(': 'KC_9', ')': 'KC_0'}
+MACRO_TEXT = re.compile(r'\{[+-]?KC_[^{}]*\}')   # e.g. {KC_DOT}, {+KC_LSFT}, {KC_LSFT,KC_2}
+BUFFER = 512   # bytes the board reports for all 16 macros together, one end byte each
+
+def is_plain(c):
+    return c.isascii() and c.isalnum()
+
+def items(text):
+    """Split text into ('plain', char), ('down', keycode) and ('up', keycode) items."""
+    out, i = [], 0
+    while i < len(text):
+        c = text[i]
+        if c in SHIFTED:
+            # a run of shifted symbols, and capitals that follow them, under one held Shift
+            j = i
+            while j < len(text) and (text[j] in SHIFTED or (text[j].isascii() and text[j].isupper())):
+                j += 1
+            out.append(('down', 'KC_LSFT'))
+            for ch in text[i:j]:
+                if ch.isupper():
+                    out.append(('plain', ch.lower()))
+                elif SHIFTED[ch][3:].isdigit():          # e.g. @ is Shift + 2
+                    out.append(('plain', SHIFTED[ch][3:]))
+                else:
+                    out.append(('down', SHIFTED[ch])); out.append(('up', SHIFTED[ch]))
+            out.append(('up', 'KC_LSFT'))
+            i = j
+        elif is_plain(c):
+            out.append(('plain', c)); i += 1
+        elif c in UNSHIFTED:
+            out.append(('down', UNSHIFTED[c])); out.append(('up', UNSHIFTED[c])); i += 1
+        else:
+            raise ValueError(f'character {i + 1} cannot be typed by a VIA macro')
+    return out
+
+def convert(text):
+    """Return (VIA macro text, bytes the board stores for it, excluding the end byte)."""
+    seq, parts, nbytes = items(text), [], 0
+    for n, it in enumerate(seq):
+        kind = it[0]
+        if kind == 'plain':
+            if n and seq[n - 1][0] == 'up':
+                parts.append(' '); nbytes += 1      # spare, swallowed after a release
+            parts.append(it[1]); nbytes += 1
+        elif kind == 'down':
+            parts.append('{+' + it[1] + '}'); nbytes += 2
+        else:
+            parts.append('{-' + it[1] + '}'); nbytes += 2
+    return ''.join(parts), nbytes
+
+# Each entry is (read command, write command). Only the first pair whose programs are both
+# installed is used.
+PS_READ = '[Console]::OutputEncoding = [Text.Encoding]::UTF8; Get-Clipboard -Raw'
+PS_WRITE = '[Console]::InputEncoding = [Text.Encoding]::UTF8; [Console]::In.ReadToEnd() | Set-Clipboard'
+WAYLAND = (['wl-paste', '--no-newline', '--type', 'text'], ['wl-copy'])
+XCLIP = (['xclip', '-selection', 'clipboard', '-out'], ['xclip', '-selection', 'clipboard', '-in'])
+XSEL = (['xsel', '--clipboard', '--output'], ['xsel', '--clipboard', '--input'])
+
+def clipboard_tools():
+    """Return the (read, write) commands for this platform, or None if no tool is installed."""
+    if sys.platform == 'darwin':
+        pairs = [(['pbpaste'], ['pbcopy'])]
+    elif sys.platform in ('win32', 'cygwin', 'msys'):
+        pairs = [([ps, '-NoProfile', '-Command', PS_READ], [ps, '-NoProfile', '-Command', PS_WRITE])
+                 for ps in ('powershell', 'pwsh')]
+    elif os.environ.get('WAYLAND_DISPLAY'):
+        pairs = [WAYLAND, XCLIP, XSEL]
+    else:
+        pairs = [XCLIP, XSEL, WAYLAND]
+    for read, write in pairs:
+        if shutil.which(read[0]) and shutil.which(write[0]):
+            return read, write
+    return None
+
+def no_clipboard_tool():
+    if sys.platform.startswith('linux'):
+        return 'no clipboard tool found: install wl-clipboard (Wayland) or xclip (X11)'
+    if sys.platform in ('win32', 'cygwin', 'msys'):
+        return 'no clipboard tool found: powershell or pwsh must be on PATH'
+    return 'no clipboard tool found for this platform'
+
+def read_clipboard(read):
+    done = subprocess.run(read, capture_output=True, encoding='utf-8')
+    if done.returncode and not done.stdout:
+        # wl-paste and xclip also exit non-zero when nothing is on the clipboard
+        reason = done.stderr.strip().splitlines()
+        sys.exit(f'clipboard is empty or could not be read ({read[0]} exited {done.returncode}'
+                 + (f': {reason[0]}' if reason else '') + ')')
+    return done.stdout.rstrip('\r\n')
+
+def write_clipboard(write, text):
+    # stdout is not captured: wl-copy and xclip stay running in the background to serve the
+    # clipboard, and would otherwise keep a pipe open for as long as they run
+    subprocess.run(write, input=text, encoding='utf-8', stdout=subprocess.DEVNULL, check=True)
+
+if __name__ == '__main__':
+    args = sys.argv[1:]
+    if args not in ([], ['--force']):
+        sys.exit(__doc__)
+    tools = clipboard_tools()
+    if tools is None:
+        sys.exit(no_clipboard_tool())
+    text = read_clipboard(tools[0])
+    if not text:
+        sys.exit('clipboard is empty')
+    if MACRO_TEXT.search(text) and '--force' not in args:
+        sys.exit('The clipboard already holds VIA macro text. Copy the plain text instead'
+                 ' (or run with --force if the text really contains it). Clipboard unchanged.')
+    try:
+        macro, nbytes = convert(text)
+    except ValueError as e:
+        sys.exit(str(e))
+    write_clipboard(tools[1], macro)
+    print(f'{len(text)} characters, {nbytes} bytes plus 1 end byte, of the {BUFFER} bytes all 16 macros share.'
+          ' VIA macro text is on the clipboard.')

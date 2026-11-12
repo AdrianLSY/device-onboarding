@@ -15,13 +15,13 @@ deploys by an explicit manifest to per-app targets (see below).
 Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
 
 - `macos/` — the macOS machine: `zsh/`, `zed/`, `ghostty/`, `aerospace/`,
-  `vivaldi/`, `bin/`, `micro/`, `starship.toml`, and its own `setup/` (`brew`,
-  `tweak`).
+  `vivaldi/`, `bin/` (`ssh-keypick`, `via-macro`), `micro/`, `starship.toml`, and
+  its own `setup/` (`brew`, `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `alacritty/`, `mako/`, `vicinae/`, `swaylock/`, `nvim/`, `btop/`, `tmux/`, `gtk-*`,
   `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `vivaldi-css/`,
   `vivaldi-stable.conf`, `mimeapps.list`, `bin/` (a
-  symlink to `../macos/bin`, so both tiers share `ssh-keypick`), and its own
+  symlink to `../macos/bin`, so both tiers share `ssh-keypick` and `via-macro`), and its own
   `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
 - `windows/` — the native-Windows (Git Bash/MSYS) machine: its `setup/`
   (`winget`, `tweak`) and a `.links` deploy manifest. Selected when `uname -s`
@@ -328,6 +328,30 @@ Never open keyd's socket (`/var/run/keyd.socket`) by hand: keyd 2.6.0 hangs,
 with every keyboard dead, when a client connects and closes without sending a
 whole message. Use the `keyd` command, and recover with
 `sudo systemctl restart keyd` (from SSH, or after replugging the keyboard).
+
+### VIA macro converter (macOS and Linux)
+
+`macos/bin/via-macro` turns text on the clipboard into VIA macro text that the
+FNK X V81PL keyboard plays correctly, and puts the result back on the
+clipboard. Its macro player drops plain punctuation, double-taps a tapped key
+and swallows one character after a key release, so the script writes every
+character other than a letter or digit as an explicit press and release.
+It prints only the character and byte counts, saves nothing, and stops, leaving
+the clipboard unchanged, if the text is already VIA macro text (`--force` converts
+it anyway).
+
+Both tiers deploy it to `~/.config/bin/via-macro`, which is not on `PATH`. Copy
+the plain text, run it, then paste into a slot in VIA's Macros tab:
+
+```sh
+python3 ~/.config/bin/via-macro
+```
+
+It needs only Python 3 and the platform's clipboard tool: `pbpaste` and `pbcopy`
+on macOS, `wl-paste` and `wl-copy` (wl-clipboard) on Wayland, `xclip` or `xsel`
+on X11. With none installed it says so and exits. Windows does not deploy it (the
+tier ships no app configs), but it also reads the clipboard through `powershell`
+or `pwsh`, so it runs from a clone with `python macos/bin/via-macro`.
 
 ## Adding things
 
