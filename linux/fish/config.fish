@@ -7,6 +7,3 @@ end
 
 # opencode
 fish_add_path /home/adrian/.opencode/bin
-
-# npm global packages
-fish_add_path /home/adrian/.npm-global/bin
