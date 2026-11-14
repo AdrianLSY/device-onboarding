@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-yay -S --noconfirm tableplus
+yay -S --noconfirm aur/tableplus

@@ -6,7 +6,7 @@ set -e
 asdf plugin list | grep -qx "golang" || asdf plugin add golang
 asdf install golang latest
 
-VERSION=$(asdf list golang | tail -1 | tr -d ' *')
+VERSION=$(asdf list golang | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^golang /d" ~/.tool-versions && echo "golang $VERSION" >> ~/.tool-versions
 else

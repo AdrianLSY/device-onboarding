@@ -6,6 +6,9 @@ SELF="$(basename "$0")"
 
 echo "Updating yay"
 yay -Syyu --noconfirm || true
+# -Syyu leaves a package a CachyOS repo also carries on the repo's build, even
+# when the AUR's is newer; this moves those to the AUR's.
+bash "$DIR/.aur-upgrade.sh" || true
 
 echo "Starting yay installs..."
 

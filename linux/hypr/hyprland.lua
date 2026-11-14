@@ -414,6 +414,27 @@ hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = -1 })
 
 -- Application workspace assignments
 rule({ class = [[^(steam)$]] }, { workspace = "name:G" })
+-- Games go to H. Native games keep their own class (Slay the Spire 2's is
+-- "Slay the Spire 2"), so no class list covers them all. Steam sets
+-- SteamGameId in the environment of everything it launches, native or Proton,
+-- and of nothing else (the Steam client has none), so a window whose process
+-- has it is moved to H once it opens. A rule can't do this: no rule matches on
+-- the environment, and a tag set in window.open_early arrives after Hyprland
+-- has picked the workspace. Proton games are also steam_app_<id> by class (for
+-- a window that reports no pid), gamescope's nested window is gamescope, and a
+-- Wayland game outside Steam can declare its content type as game.
+hl.on("window.open", function(w)
+    if not w or not w.pid or w.pid <= 0 then return end
+    local f = io.open("/proc/" .. w.pid .. "/environ", "rb")
+    if not f then return end
+    local env = f:read("a")
+    f:close()
+    if env and ("\0" .. env):find("\0SteamGameId=", 1, true) then
+        hl.dispatch(hl.dsp.window.move({ window = w, workspace = "name:H" }))
+    end
+end)
+rule({ class = [[^(steam_app_.*|gamescope)$]] }, { workspace = "name:H" })
+rule({ content = "game" }, { workspace = "name:H" })
 rule({ class = [[^(md.obsidian.Obsidian)$]] }, { workspace = "name:O" })
 rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
 -- KeePassXC's Wayland class is org.keepassxc.KeePassXC; the bare KeePassXC

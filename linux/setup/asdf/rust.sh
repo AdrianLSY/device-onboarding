@@ -6,7 +6,7 @@ set -e
 asdf plugin list | grep -qx "rust" || asdf plugin add rust
 asdf install rust latest
 
-VERSION=$(asdf list rust | tail -1 | tr -d ' *')
+VERSION=$(asdf list rust | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^rust /d" ~/.tool-versions && echo "rust $VERSION" >> ~/.tool-versions
 else

@@ -19,7 +19,7 @@ Content is split into OS **tiers**; the OS is chosen at runtime via `uname`:
   its own `setup/` (`brew`, `tweak`).
 - `linux/` — the Linux (Arch/CachyOS) machine: `fish/`, `hypr/`, `waybar/`,
   `alacritty/`, `swaync/`, `vicinae/`, `swaylock/`, `btop/`, `tmux/`, `gtk-*`,
-  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `vivaldi-css/`,
+  `qt5ct/`, `qt6ct/`, `zed/`, `micro/`, `pipewire/`, `wireplumber/`, `vivaldi-css/`,
   `vivaldi-stable.conf`, `mimeapps.list`, `bin/` (a
   symlink to `../macos/bin`, so both tiers share `ssh-keypick` and `via-macro`), and its own
   `setup/` (`pacman`, `yay`, `flatpak`, `app`, `asdf`, `tweak`).
@@ -367,7 +367,10 @@ or `pwsh`, so it runs from a clone with `python macos/bin/via-macro`.
   managers **the filename minus `.sh` must equal the skip-check identifier** —
   the package leaf name for brew/pacman/yay (e.g. `aws-cli-v2.sh` to match
   `pacman -Q aws-cli-v2`), the full dotted winget id for winget
-  (e.g. `Mozilla.Firefox.sh`).
+  (e.g. `Mozilla.Firefox.sh`). A `yay` script installs `aur/<pkg>`, so a
+  CachyOS repo's older build of the same name is never picked. An `app` or
+  `asdf` script runs on every bootstrap and every `update`, so it must also
+  upgrade an existing install to the latest release.
 - **System tweak:** create `<tier>/setup/tweak/<name>.sh`. Runs every bootstrap,
   so make it idempotent.
 - **New app config:** create `<app>/` under the relevant tier. On macOS/Linux no

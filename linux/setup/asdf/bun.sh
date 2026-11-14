@@ -6,7 +6,7 @@ set -e
 asdf plugin list | grep -qx "bun" || asdf plugin add bun
 asdf install bun latest
 
-VERSION=$(asdf list bun | tail -1 | tr -d ' *')
+VERSION=$(asdf list bun | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^bun /d" ~/.tool-versions && echo "bun $VERSION" >> ~/.tool-versions
 else

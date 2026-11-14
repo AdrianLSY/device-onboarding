@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e
 
-# Install erlang if not already installed
-if ! asdf plugin list | grep -qx "erlang" || ! asdf list erlang 2>/dev/null | grep -q .; then
-    asdf plugin add erlang
-    asdf install erlang latest
-fi
+# Erlang first, at its latest version too: Elixir builds against the newest
+# installed OTP. Same partial-state guard as elixir below.
+asdf plugin list | grep -qx "erlang" || asdf plugin add erlang
+asdf install erlang latest
 
-VERSION=$(asdf list erlang | tail -1 | tr -d ' *')
+VERSION=$(asdf list erlang | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^erlang /d" ~/.tool-versions && echo "erlang $VERSION" >> ~/.tool-versions
 else
@@ -15,7 +14,7 @@ else
 fi
 
 # Elixir requires a compatible Erlang/OTP installation
-OTP_VERSION=$(asdf list erlang 2>/dev/null | tail -1 | tr -d ' *' | cut -d. -f1)
+OTP_VERSION=$(asdf list erlang 2>/dev/null | tr -d ' *' | sort -V | tail -1 | cut -d. -f1)
 if [[ -z "$OTP_VERSION" ]] || ! [[ "$OTP_VERSION" =~ ^[0-9]+$ ]]; then
     echo "ERROR: no erlang version installed via asdf, cannot install elixir" >&2
     exit 1
@@ -27,7 +26,7 @@ export ELIXIR_OTP_RELEASE="$OTP_VERSION"
 asdf plugin list | grep -qx "elixir" || asdf plugin add elixir
 asdf install elixir latest
 
-VERSION=$(asdf list elixir | tail -1 | tr -d ' *')
+VERSION=$(asdf list elixir | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^elixir /d" ~/.tool-versions && echo "elixir $VERSION" >> ~/.tool-versions
 else

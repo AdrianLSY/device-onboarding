@@ -6,7 +6,7 @@ set -e
 asdf plugin list | grep -qx "ruby" || asdf plugin add ruby
 asdf install ruby latest
 
-VERSION=$(asdf list ruby | tail -1 | tr -d ' *')
+VERSION=$(asdf list ruby | tr -d ' *' | sort -V | tail -1)
 if [[ "$VERSION" =~ ^[0-9] ]]; then
     sed -i "/^ruby /d" ~/.tool-versions && echo "ruby $VERSION" >> ~/.tool-versions
 else

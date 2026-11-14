@@ -6,13 +6,15 @@ set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SELF="$(basename "$0")"
 
-# The installers below drop binaries into user-local dirs (~/.local/bin for
-# zed/claude/zoxide, ~/.pulumi/bin for pulumi) that a non-login bash won't
-# have on PATH — without this the `command -v` skip-check misses them and
-# every bootstrap re-downloads. Matches the interactive-shell PATH fish sets.
-export PATH="$HOME/.local/bin:$HOME/.pulumi/bin:$PATH"
+# Every script below installs its tool or upgrades it to the latest release, so
+# each one runs every time: on a bootstrap, and from fish's `update`. They drop
+# binaries into user-local dirs (~/.local/bin for zed/claude/zoxide/openspec,
+# ~/.pulumi/bin, ~/.opencode/bin) that a non-login bash won't have on PATH;
+# without this a script's `command -v` misses its tool and reinstalls it.
+# Matches the interactive-shell PATH fish sets.
+export PATH="$HOME/.local/bin:$HOME/.pulumi/bin:$HOME/.opencode/bin:$PATH"
 
-echo "Starting generic app installs..."
+echo "Starting generic app installs and upgrades..."
 
 FAILED=()
 SUCCESS=()
@@ -27,34 +29,28 @@ for file in "$DIR"/*.sh; do
 
     PKG="${BASENAME%.sh}"
 
-    # Check if already installed (using command)
-    if command -v "$PKG" >/dev/null 2>&1; then
-        echo "⏭️ $PKG is already installed."
-        continue
-    fi
-
     LOGFILE="$DIR/$BASENAME.log"
     bash "$file" 2>&1 | tee "$LOGFILE"
     STATUS=${PIPESTATUS[0]}
     if [[ $STATUS -eq 0 ]]; then
-        echo "🟢 $PKG installed successfully."
+        echo "🟢 $PKG is installed and up to date."
         rm -f "$LOGFILE"
         SUCCESS+=("$PKG")
     else
-        echo "🔴 $PKG was not installed"
+        echo "🔴 $PKG was not installed or upgraded"
         cat "$LOGFILE"
         FAILED+=("$PKG")
     fi
 done
 
-echo "Installs complete!"
+echo "App installs and upgrades complete!"
 
 # Summary
 if (( ${#FAILED[@]} )); then
     echo "❌ Failed:   ${FAILED[*]}"
 fi
 if (( ${#SUCCESS[@]} )); then
-    echo "✅ Installed: ${SUCCESS[*]}"
+    echo "✅ Up to date: ${SUCCESS[*]}"
 fi
 
 # Exit nonzero if anything failed

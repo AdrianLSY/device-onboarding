@@ -5,4 +5,4 @@ set -e
 # package.json is openai-codex-electron, productName Codex, and it handles codex://).
 # Not on Flathub. This AUR package repackages OpenAI's official .deb
 # (persistent.oaistatic.com).
-yay -S --noconfirm chatgpt-desktop
+yay -S --noconfirm aur/chatgpt-desktop
