@@ -36,6 +36,7 @@ local keepassxc            = [[vicinae 'vicinae://launch/@system7/store.vicinae.
 local bitwarden            = [[vicinae 'vicinae://launch/@bl4zee1g/store.vicinae.bitwarden/browse-vault?toggle=true']]
 local tailscale            = [[vicinae 'vicinae://launch/@samlinville/store.raycast.tailscale?toggle=true']]
 local emoji                = [[vicinae 'vicinae://launch/core/search-emojis?toggle=true']]
+local zed                  = [[vicinae 'vicinae://launch/@pavle99/store.vicinae.zed-recents/open-recents?toggle=true']]
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃                         Environment                         ┃
@@ -293,6 +294,7 @@ bind("SUPER + K", hl.dsp.exec_cmd(keepassxc), "Opens KeePassXC search (Ctrl+K)")
 bind("SUPER + J", hl.dsp.exec_cmd(bitwarden), "Opens Bitwarden vault (Ctrl+J)")
 bind("SUPER + T", hl.dsp.exec_cmd(tailscale), "Opens Tailscale commands (Ctrl+T)")
 bind("SUPER + E", hl.dsp.exec_cmd(emoji), "Opens emoji picker (Ctrl+E)")
+bind("SUPER + Z", hl.dsp.exec_cmd(zed), "Opens Zed's recent projects (Ctrl+Z)")
 bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(terminal), "Opens your preferred terminal emulator")
 
 -- Cmd+Tab → Alt+Tab → cycle windows

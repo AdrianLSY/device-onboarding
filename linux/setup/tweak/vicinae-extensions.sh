@@ -70,6 +70,9 @@ vicinae_ext bl4zee1g bitwarden
 # Tailscale: Vicinae's store has none, and Vicinae lists Raycast's as fully
 # working. base.jsonc points it at /usr/bin/tailscale.
 raycast_ext samlinville tailscale
+# Zed's recent projects, from Vicinae's store. It finds ~/.local/bin/zed and
+# Zed's database (~/.local/share/zed/db) itself, so it needs no preferences.
+vicinae_ext pavle99 zed-recents
 
 # try-restart leaves a stopped server stopped; it loads them when it starts.
 if [ -n "$INSTALLED" ]; then
