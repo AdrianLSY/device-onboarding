@@ -83,7 +83,7 @@ local autostart = {
     [[waybar &]],
     [[~/.config/hypr/scripts/screen-corners &]],
     [[fcitx5 -d &]],
-    [[mako &]],
+    -- Notifications: SwayNC, started by its own user unit (tweak/swaync.sh).
     [[nm-applet --indicator &]],
     [[bash -c "mkfifo /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob && tail -f /tmp/$HYPRLAND_INSTANCE_SIGNATURE.wob | wob & disown" &]],
     [[/usr/lib/polkit-kde-authentication-agent-1 &]],
@@ -169,7 +169,7 @@ hl.config({
         },
 
         groupbar = {
-            font_family = "Fira Sans",
+            font_family = "Inter",
             text_color  = white,
             col = {
                 active          = gray,
@@ -181,8 +181,8 @@ hl.config({
     },
 
     misc = {
-        font_family           = "Fira Sans",
-        splash_font_family    = "Fira Sans",
+        font_family           = "Inter",
+        splash_font_family    = "Inter",
         disable_hyprland_logo = true,
         col = {
             splash = white,
@@ -268,9 +268,6 @@ hl.config({
 hl.animation({ leaf = "workspaces", enabled = false })
 hl.animation({ leaf = "border", enabled = false })
 hl.animation({ leaf = "borderangle", enabled = false })
-
--- Layer animations for notifications
-hl.animation({ leaf = "layers", enabled = true, speed = 3, bezier = "default", style = "slide" })
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃                           Keybinds                          ┃
@@ -364,7 +361,7 @@ local function rule(match, effects)
     return hl.window_rule(effects)
 end
 
--- Disable all animations on windows (keep only for layers/notifications)
+-- Disable all animations on windows
 rule({ class = ".*" }, { no_anim = true })
 
 -- Float Necessary Windows
@@ -446,7 +443,9 @@ rule({ class = [[^(vivaldi-kjbdgfilnfhdoflbpgamdcdgpehopbep-Default)$]] }, { wor
 -- ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 -- https://wiki.hypr.land/configuring/core/rules/layer-rules/
 
-hl.layer_rule({ match = { namespace = "negative:notifications" }, no_anim = true })
-hl.layer_rule({ match = { namespace = "notifications" }, animation = "slide top" })
+-- No layer animates in Hyprland. SwayNC animates its own popups (fade in and
+-- grow down from the bar, config.json's transition-time), and a Hyprland slide
+-- on top of that would move the whole window, shoulders and all.
+hl.layer_rule({ match = { namespace = ".*" }, no_anim = true })
 -- Blur behind Vicinae's translucent window. The no_anim rule above covers it too.
 hl.layer_rule({ match = { namespace = "vicinae" }, blur = true, ignore_alpha = 0 })

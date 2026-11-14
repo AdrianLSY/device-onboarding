@@ -1,0 +1,139 @@
+/* Popups hang from Waybar like a notch: black, Inter as in Waybar, square where
+   they meet the bar, curved shoulders flaring into the bar's bottom edge and
+   rounded bottom corners. The default stylesheet (/etc/xdg/swaync/style.css)
+   still loads first; this file overrides it. */
+
+:root {
+  --island-bg: rgb(0, 0, 0);
+  --island-radius: 12px;
+  /* The shoulder width is the side padding of .notification-background, and
+     config.json's notification-window-width is the toast width (384) plus
+     both shoulders. */
+  --shoulder: 12px;
+  --text-color: rgb(255, 255, 255);
+  --text-color-dim: rgb(160, 160, 160);
+  --font-size-summary: 13px;
+  --font-size-body: 13px;
+  /* The default is 64px; the app-icon badge on it is a third of this. */
+  --notification-icon-size: 32px;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+/* ---------- Popups ---------- */
+
+.floating-notifications .notification-row {
+  background: none;
+  outline: none;
+}
+
+.floating-notifications .notification-row .notification-background {
+  padding: 0 var(--shoulder);
+}
+
+/* The shoulders: a black square at each top corner, with a transparent quarter
+   circle cut out of its outer bottom corner, so the black curves from the bar
+   down into the toast's side. Only the top toast touches the bar. Each toast
+   sits in its own animatedlistitem, so :first-child and :last-child have to be
+   asked of that node, not of .notification-row. */
+.floating-notifications animatedlistitem:first-child .notification-row .notification-background {
+  background-image:
+    radial-gradient(circle at 0% 100%, transparent 11.5px, var(--island-bg) 12px),
+    radial-gradient(circle at 100% 100%, transparent 11.5px, var(--island-bg) 12px);
+  background-size: var(--shoulder) var(--shoulder), var(--shoulder) var(--shoulder);
+  background-position: left top, right top;
+  background-repeat: no-repeat;
+}
+
+.floating-notifications .notification-row .notification-background .notification {
+  background: var(--island-bg);
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Every toast has rounded bottom corners, so the bottom of the island stays
+   round while a toast below fades out (it is still the last child until it is
+   gone). A toast under another one is pulled up by the radius, so its square
+   black top covers the corners of the one above and a stack reads as one
+   island; the extra top padding puts back the gap that the overlap hides. */
+.floating-notifications .notification-row .notification-background .notification {
+  border-radius: 0 0 var(--island-radius) var(--island-radius);
+}
+
+.floating-notifications animatedlistitem + animatedlistitem {
+  margin-top: -12px;
+}
+
+.floating-notifications animatedlistitem + animatedlistitem .notification-row .notification-background .notification .notification-default-action {
+  padding-top: 24px;
+}
+
+.notification-row .notification-background .notification .notification-default-action {
+  padding: 12px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.notification-row .notification-background .notification .notification-default-action:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.floating-notifications .notification-row .notification-background .notification .notification-default-action {
+  border-radius: 0 0 var(--island-radius) var(--island-radius);
+}
+
+/* The image (an app's or the sender's icon) sits left of the text, with the
+   same 12px gap as the toast's padding. */
+.notification-row .notification-background .notification .notification-default-action .notification-content .image {
+  margin: 0 12px 0 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  font-size: var(--font-size-summary);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-color-dim);
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-color);
+  min-width: 20px;
+  min-height: 20px;
+  margin-top: 6px;
+  margin-right: 6px;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Control center (swaync-client -t) ---------- */
+
+.control-center {
+  background: var(--island-bg);
+  border-radius: 0 0 var(--island-radius) var(--island-radius);
+}
+
+.control-center .notification-row .notification-background .notification {
+  background: rgb(22, 22, 22);
+  border: none;
+  border-radius: var(--island-radius);
+}
