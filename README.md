@@ -268,11 +268,14 @@ Hyprland binds the keys:
 | Ctrl+J (keyd sends it as Super+J) | Bitwarden: browse the vault, through rbw |
 | Ctrl+T (keyd sends it as Super+T) | Tailscale: devices, connect, exit node and its other commands |
 | Ctrl+E (keyd sends it as Super+E) | Emoji picker |
+| Ctrl+Z (keyd sends it as Super+Z) | Zed: open a recent project |
 | Alt+Escape, or a click on the Waybar logo | Power commands, such as lock, suspend, log out, reboot and power off |
 
-keyd sends only the physical Ctrl key's K, J, T, E and V as Super, so Cmd+K,
+keyd sends only the physical Ctrl key's K, J, T, E, Z and V as Super, so Cmd+K,
 Cmd+T and the rest still reach apps as Ctrl (new tab, address bar, and so on),
-and Ctrl+Alt or Ctrl+Shift with those letters reaches them unchanged.
+and Ctrl+Alt or Ctrl+Shift with those letters reaches them unchanged. Physical
+Ctrl+Z therefore never reaches an app: Cmd+Z undoes, and suspends a job in a
+terminal; redo stays Ctrl+Shift+Z or Cmd+Shift+Z.
 
 The repo's settings are in `linux/vicinae/base.jsonc`. Changes made in Vicinae's
 settings window (Ctrl+,) are written to `linux/vicinae/settings.json` and take
@@ -282,7 +285,7 @@ only from there. Raycast extensions install from Vicinae's
 "Raycast Store" command (simpler ones work best), and Vicinae's own from its
 "Store" command; both land in `~/.local/share/vicinae`, outside the repo.
 
-The `vicinae-extensions.sh` tweak installs the three extensions behind those
+The `vicinae-extensions.sh` tweak installs the four extensions behind those
 keys the same way, unless they are already there:
 
 - **KeePassXC**, from Vicinae's store, runs `keepassxc-cli` on
@@ -307,6 +310,9 @@ keys the same way, unless they are already there:
   `/usr/bin/tailscale`, set in `base.jsonc`. Connecting, disconnecting and
   picking an exit node need no sudo, because `app/tailscale.sh` makes you the
   operator.
+- **Zed Recent Projects**, from Vicinae's store, lists the folders Zed opened
+  recently and opens one in Zed. It finds `~/.local/bin/zed` and Zed's
+  database itself, so `base.jsonc` sets nothing for it.
 
 The emoji picker is built into Vicinae.
 
