@@ -100,6 +100,22 @@ backups, no package reinstalls, and a clean `git status` in the repo.
   be created without elevation. Then clone to `~/.dotfiles` and run
   `./setup.sh` **from Git Bash**. The preflight verifies these before any change.
 
+### ChatGPT, Codex and OpenCode
+
+The bootstrap installs OpenAI's and OpenCode's apps and terminal clients where
+each ships:
+
+| Tool | macOS (`brew`) | Linux | Windows (`winget`) |
+| --- | --- | --- | --- |
+| ChatGPT desktop | `chatgpt` cask | `yay/chatgpt-desktop` (AUR repackaging of OpenAI's .deb) | `OpenAI.ChatGPT` |
+| Codex CLI (ChatGPT terminal client) | `codex` cask | `pacman/openai-codex` | `OpenAI.Codex` |
+| OpenCode desktop | `opencode-desktop` cask | `yay/opencode-desktop-bin` | `Anomaly.OpenCode.Desktop` |
+| OpenCode terminal client | `opencode` formula | `app/opencode` (upstream's installer) | `Anomaly.OpenCode` |
+
+Two things to know: `update` on macOS (and its hourly LaunchAgent) upgrades the
+`codex` cask with every other package, so its version moves by itself; and
+OpenCode Desktop sends Sentry error reports with no setting to turn them off.
+
 ### BetterDisplay Pro color mode (macOS)
 
 The bootstrap installs BetterDisplay, but its Pro license and display settings
