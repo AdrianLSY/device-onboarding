@@ -112,9 +112,21 @@ each ships:
 | OpenCode desktop | `opencode-desktop` cask | `yay/opencode-desktop-bin` | `Anomaly.OpenCode.Desktop` |
 | OpenCode terminal client | `opencode` formula | `app/opencode` (upstream's installer) | `Anomaly.OpenCode` |
 
-Two things to know: `update` on macOS (and its hourly LaunchAgent) upgrades the
-`codex` cask with every other package, so its version moves by itself; and
-OpenCode Desktop sends Sentry error reports with no setting to turn them off.
+Three things to know:
+
+- `update` on macOS (and its hourly LaunchAgent) upgrades the `codex` cask with
+  every other package, so its version moves by itself.
+- OpenCode Desktop is kept on the latest release by the bootstrap, not by its
+  own updater, which never moved a v1 install to v2. The macOS brew runner and
+  the Windows winget runner upgrade it when it is already installed instead of
+  skipping it, and the hourly LaunchAgent upgrades it by name (it skips every
+  other `auto_updates` cask, so `chatgpt` still follows its own updater). Brew
+  quits the app to swap it, so reopen it afterwards. Linux needs nothing extra:
+  `yay -Sua` and the yay runner's `yay -Syyu` upgrade the AUR package. Windows
+  has no scheduled update, so a newer winget release arrives on the next
+  `./setup.sh`, and winget-pkgs can trail the cask (2.0.29 against 2.3.0 when
+  this was written).
+- OpenCode Desktop sends Sentry error reports with no setting to turn them off.
 
 ### BetterDisplay Pro color mode (macOS)
 
