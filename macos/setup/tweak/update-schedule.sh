@@ -40,6 +40,9 @@ RETRY=600     # last_attempt must be older than 10min to retry after failure
 # it retries every $RETRY seconds, quitting the app (e.g. Docker Desktop -> the
 # Linux VM + daemon) on every run. These casks update themselves; brew should
 # leave them alone. https://docs.brew.sh/Manpage (search NO_UPGRADE_AUTO_UPDATES)
+# One exception: opencode-desktop's own updater never moved a v1 install to v2, so
+# it is upgraded by name below (a named cask upgrades despite the variable). Brew
+# quits the running app to swap the bundle, so it must be reopened afterwards.
 export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1
 
 if [ -f "$LOCK" ] && kill -0 "$(cat "$LOCK" 2>/dev/null)" 2>/dev/null; then
@@ -65,6 +68,7 @@ touch "$STAMP/last_attempt"
 
 "$BREW" update \
   && "$BREW" upgrade \
+  && { ! "$BREW" list --cask opencode-desktop >/dev/null 2>&1 || "$BREW" upgrade --cask opencode-desktop; } \
   && "$BREW" cleanup \
   && "$ZSH" -fc 'source "$1" && zinit update --all' zsh "$ZINIT" \
   && touch "$STAMP/last_success" \

@@ -25,6 +25,11 @@ echo "Starting brew installs..."
 FAILED=()
 SUCCESS=()
 
+# Casks that are `auto_updates` but whose own updater lags Homebrew's release (OpenCode
+# Desktop never moved a v1 install to v2). When one is already installed, the runner
+# upgrades it instead of skipping it. Keep in step with update-schedule.sh.
+UPGRADE_INSTALLED=(opencode-desktop)
+
 for file in "$DIR"/*.sh; do
     BASENAME="$(basename "$file")"
 
@@ -36,6 +41,17 @@ for file in "$DIR"/*.sh; do
     PKG="${BASENAME%.sh}"
 
     if brew list "$PKG" &>/dev/null || brew list --cask "$PKG" &>/dev/null; then
+        if [[ " ${UPGRADE_INSTALLED[*]} " == *" $PKG "* ]]; then
+            # A named cask is upgraded even with auto_updates; a no-op when current.
+            echo "⬆️ $PKG is installed; upgrading to the latest release..."
+            if brew upgrade --cask "$PKG"; then
+                echo "🟢 $PKG is up to date."
+            else
+                echo "🔴 $PKG was not upgraded"
+                FAILED+=("$PKG")
+            fi
+            continue
+        fi
         echo "⏭️ $PKG is already installed."
         continue
     fi
