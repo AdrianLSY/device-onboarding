@@ -19,9 +19,11 @@ SUCCESS=()
 
 # Packages upgraded, not skipped, when already installed: nothing else on Windows moves an
 # existing install to a newer release (no scheduled update), and OpenCode Desktop's own
-# updater did not cross from v1 to v2. `winget upgrade` exits non-zero when no newer
-# version exists, so only the version afterwards says whether it worked.
-UPGRADE_INSTALLED=(Anomaly.OpenCode.Desktop)
+# updater did not cross from v1 to v2. T3 Code is here so a re-run moves an install that
+# is behind winget's version, including a copy installed by hand if winget recognises it.
+# `winget upgrade` exits non-zero when no newer version exists, so only the version
+# afterwards says whether it worked.
+UPGRADE_INSTALLED=(Anomaly.OpenCode.Desktop T3Tools.T3Code)
 
 for file in "$DIR"/*.sh; do
     BASENAME="$(basename "$file")"

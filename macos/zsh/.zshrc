@@ -38,3 +38,7 @@ if [[ ! -f $ZDOTDIR/.zshrc.zwc || $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]]; th
 fi
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+# uv installs its tools (graphify, easyeda2kicad) in ~/.local/bin. Homebrew's uv,
+# which the bootstrap uses, never writes the env file above, so add the folder here.
+[[ ":$PATH:" == *":$HOME/.local/bin:"* ]] || export PATH="$HOME/.local/bin:$PATH"
