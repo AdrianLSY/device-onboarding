@@ -133,9 +133,9 @@ Four things to know:
 - A T3 Code installed by hand from t3.codes (as on Adrian's Mac) is left as it
   is: on macOS the brew runner finds `/Applications/T3 Code (Beta).app` and skips
   the cask (the same check now covers every cask script), so Homebrew never
-  adopts or replaces it. On Windows, `winget list`
-  recognises a copy from the GitHub release and a re-run upgrades it only when it
-  is behind winget's version. On Linux, update the AUR package with `yay`, not
+  adopts or replaces it. On Windows, the runner skips the
+  package when `winget list` finds the id (not checked for a copy installed from
+  the GitHub release), and the app updates itself. On Linux, update the AUR package with `yay`, not
   the in-app updater, as T3 Code's README says; the package is x86_64 only.
 
 ### BetterDisplay Pro color mode (macOS)
