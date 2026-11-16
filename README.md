@@ -100,10 +100,10 @@ backups, no package reinstalls, and a clean `git status` in the repo.
   be created without elevation. Then clone to `~/.dotfiles` and run
   `./setup.sh` **from Git Bash**. The preflight verifies these before any change.
 
-### ChatGPT, Codex and OpenCode
+### ChatGPT, Codex, OpenCode and T3 Code
 
 The bootstrap installs OpenAI's and OpenCode's apps and terminal clients where
-each ships:
+each ships, and T3 Code's desktop app:
 
 | Tool | macOS (`brew`) | Linux | Windows (`winget`) |
 | --- | --- | --- | --- |
@@ -111,8 +111,9 @@ each ships:
 | Codex CLI (ChatGPT terminal client) | `codex` cask | `pacman/openai-codex` | `OpenAI.Codex` |
 | OpenCode desktop | `opencode-desktop` cask | `yay/opencode-desktop-bin` | `Anomaly.OpenCode.Desktop` |
 | OpenCode terminal client | `opencode` formula | `app/opencode` (upstream's installer) | `Anomaly.OpenCode` |
+| T3 Code desktop | `t3-code` cask | `yay/t3code-bin` (AUR repackaging of the official AppImage, the route T3 Code's README names) | `T3Tools.T3Code` |
 
-Three things to know:
+Four things to know:
 
 - `update` on macOS (and its hourly LaunchAgent) upgrades the `codex` cask with
   every other package, so its version moves by itself.
@@ -120,13 +121,22 @@ Three things to know:
   own updater, which never moved a v1 install to v2. The macOS brew runner and
   the Windows winget runner upgrade it when it is already installed instead of
   skipping it, and the hourly LaunchAgent upgrades it by name (it skips every
-  other `auto_updates` cask, so `chatgpt` still follows its own updater). Brew
+  other `auto_updates` cask, so `chatgpt` and `t3-code` still follow their own
+  updaters; T3 Code checks its GitHub releases at launch and every four hours).
+  Brew
   quits the app to swap it, so reopen it afterwards. Linux needs nothing extra:
   `yay -Sua` and the yay runner's `yay -Syyu` upgrade the AUR package. Windows
   has no scheduled update, so a newer winget release arrives on the next
   `./setup.sh`, and winget-pkgs can trail the cask (2.0.29 against 2.3.0 when
   this was written).
 - OpenCode Desktop sends Sentry error reports with no setting to turn them off.
+- A T3 Code installed by hand from t3.codes (as on Adrian's Mac) is left as it
+  is: on macOS the brew runner finds `/Applications/T3 Code (Beta).app` and skips
+  the cask (the same check now covers every cask script), so Homebrew never
+  adopts or replaces it. On Windows, `winget list`
+  recognises a copy from the GitHub release and a re-run upgrades it only when it
+  is behind winget's version. On Linux, update the AUR package with `yay`, not
+  the in-app updater, as T3 Code's README says; the package is x86_64 only.
 
 ### BetterDisplay Pro color mode (macOS)
 
