@@ -17,6 +17,14 @@ echo "Starting winget installs..."
 FAILED=()
 SUCCESS=()
 
+# Packages upgraded, not skipped, when already installed: nothing else on Windows moves an
+# existing install to a newer release (no scheduled update), and OpenCode Desktop's own
+# updater did not cross from v1 to v2. T3 Code is here so a re-run moves an install that
+# is behind winget's version, including a copy installed by hand if winget recognises it.
+# `winget upgrade` exits non-zero when no newer version exists, so only the version
+# afterwards says whether it worked.
+UPGRADE_INSTALLED=(Anomaly.OpenCode.Desktop T3Tools.T3Code)
+
 for file in "$DIR"/*.sh; do
     BASENAME="$(basename "$file")"
 
@@ -32,6 +40,12 @@ for file in "$DIR"/*.sh; do
     PKG="${BASENAME%.sh}"
 
     if winget list --id "$PKG" -e &>/dev/null; then
+        if [[ " ${UPGRADE_INSTALLED[*]} " == *" $PKG "* ]]; then
+            echo "⬆️ $PKG is installed; upgrading to the latest release..."
+            winget upgrade --id "$PKG" -e --accept-package-agreements --accept-source-agreements || \
+                echo "ℹ️ winget reported nothing to upgrade for $PKG (or the upgrade failed); check 'winget list --id $PKG -e'."
+            continue
+        fi
         echo "⏭️ $PKG is already installed."
         continue
     fi

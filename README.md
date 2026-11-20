@@ -100,6 +100,59 @@ backups, no package reinstalls, and a clean `git status` in the repo.
   be created without elevation. Then clone to `~/.dotfiles` and run
   `./setup.sh` **from Git Bash**. The preflight verifies these before any change.
 
+### ChatGPT, Codex, OpenCode and T3 Code
+
+The bootstrap installs OpenAI's and OpenCode's apps and terminal clients where
+each ships, and T3 Code's desktop app:
+
+| Tool | macOS (`brew`) | Linux | Windows (`winget`) |
+| --- | --- | --- | --- |
+| ChatGPT desktop | `chatgpt` cask | `yay/chatgpt-desktop` (AUR repackaging of OpenAI's .deb) | `OpenAI.ChatGPT` |
+| Codex CLI (ChatGPT terminal client) | `codex` cask | `pacman/openai-codex` | `OpenAI.Codex` |
+| OpenCode desktop | `opencode-desktop` cask | `pacman/opencode-desktop` (Arch `extra`) | `Anomaly.OpenCode.Desktop` |
+| OpenCode terminal client | `opencode` formula | `pacman/opencode` (Arch `extra`) | `Anomaly.OpenCode` |
+| T3 Code desktop | `t3-code` cask | `yay/t3code-bin` (AUR repackaging of the official AppImage, the route T3 Code's README names) | `T3Tools.T3Code` |
+
+Four things to know:
+
+- `update` on macOS (and its hourly LaunchAgent) upgrades the `codex` cask with
+  every other package, so its version moves by itself.
+- OpenCode Desktop is kept on the latest release by the bootstrap, not by its
+  own updater, which never moved a v1 install to v2. The macOS brew runner and
+  the Windows winget runner upgrade it when it is already installed instead of
+  skipping it, and the hourly LaunchAgent upgrades it by name (it skips every
+  other `auto_updates` cask, so `chatgpt` and `t3-code` still follow their own
+  updaters; T3 Code checks its GitHub releases at launch and every four hours).
+  Brew
+  quits the app to swap it, so reopen it afterwards. On Linux, `update`'s
+  `pacman -Syyu` upgrades it with the `opencode` CLI it depends on. Windows
+  has no scheduled update, so a newer winget release arrives on the next
+  `./setup.sh`, and winget-pkgs can trail the cask (2.0.29 against 2.3.0 when
+  this was written).
+- OpenCode Desktop sends Sentry error reports with no setting to turn them off.
+- A T3 Code installed by hand from t3.codes (as on Adrian's Mac) is left as it
+  is on macOS: the brew runner finds `/Applications/T3 Code (Beta).app` and skips
+  the cask (the same check now covers every cask script), so Homebrew never
+  adopts or replaces it, and the app updates itself. On Windows, a re-run runs
+  `winget upgrade` on an installed T3 Code, as for OpenCode Desktop, which moves
+  it only when it is behind winget's version (not checked for a copy installed
+  from the GitHub release, which winget may not recognise). On Linux, update the
+  AUR package with `yay`, as T3 Code's README says; the package is x86_64 only.
+
+### easyeda2kicad (LCSC parts for KiCad)
+
+On macOS and Windows, the `easyeda2kicad.sh` tweak installs
+[easyeda2kicad](https://github.com/uPesy/easyeda2kicad.py), pinned to 1.0.1, as a
+uv tool (`brew/uv.sh`, `winget/astral-sh.uv.sh`), the way `graphify.sh` installs
+graphify. Rooftop's `kicad-design` skill runs it to fetch a part's symbol,
+footprint and 3D model from LCSC by its C number. The command goes into
+`~/.local/bin`: the macOS zsh config (`macos/zsh/.zshrc`) puts that folder on
+PATH, the Linux fish config already does, and on Windows the tweak runs
+`uv tool update-shell`. Linux has no tweak, because the KiCad tooling it serves
+supports only macOS and Windows. A re-run with 1.0.1 installed changes nothing,
+and `bash macos/setup/tweak/easyeda2kicad.sh --remove` uninstalls it (the
+libraries it wrote stay).
+
 ### BetterDisplay Pro color mode (macOS)
 
 The bootstrap installs BetterDisplay, but its Pro license and display settings
