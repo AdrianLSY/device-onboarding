@@ -82,6 +82,7 @@ local autostart = {
     [[swaybg -o \* -i ~/.config/hypr/wallpaper/Brisbane_cityscape_6000x4000.jpeg -m fill]],
     [[waybar &]],
     [[~/.config/hypr/scripts/screen-corners &]],
+    [[~/.config/hypr/scripts/game-apps &]],
     [[fcitx5 -d &]],
     -- Notifications: SwayNC, started by its own user unit (tweak/swaync.sh).
     [[nm-applet --indicator &]],
@@ -112,7 +113,7 @@ local autostart = {
     [[steam &]],
     [[keepassxc &]],
     [[bitwarden-desktop &]],
-    [[claude-desktop &]],
+    [[t3code &]],
     [[chatgpt &]],
     [[cider &]],
     [[nm-applet &]],
@@ -442,7 +443,7 @@ rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
 -- Hyprland floats before reading these rules) open where they are.
 rule({ class = [[^(org\.keepassxc\.KeePassXC|KeePassXC)$]], float = false }, { workspace = "name:K" })
 rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J" })
-rule({ class = [[^(com.anthropic.Claude)$]] }, { workspace = "name:A" })
+rule({ class = [[^(com\.t3tools\.T3Code)$]] }, { workspace = "name:A" })
 -- Codex, the chatgpt-desktop package (package.json openai-codex-electron, productName Codex,
 -- desktopName chatgpt.desktop). Its class was not read from a live window, so match either name
 -- in any case.

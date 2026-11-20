@@ -1,0 +1,48 @@
+#!/usr/bin/python3
+"""Choose Quit LocalSend from its tray menu, even when its window is hidden."""
+
+import sys
+
+from gi.repository import Gio, GLib
+
+
+def find_quit(bus):
+    watcher = "org.kde.StatusNotifierWatcher"
+    item = "org.kde.StatusNotifierItem"
+
+    def read_property(service, path, interface, name):
+        args = GLib.Variant("(ss)", (interface, name))
+        return call(bus, service, path, "org.freedesktop.DBus.Properties", "Get", args)[0]
+
+    entries = read_property(watcher, "/StatusNotifierWatcher", watcher, "RegisteredStatusNotifierItems")
+    for entry in entries:
+        service, _, path = entry.partition("/")
+        path = "/" + (path or "StatusNotifierItem")
+        try:
+            if read_property(service, path, item, "Title") != "org.localsend.localsend_app":
+                continue
+            menu = read_property(service, path, item, "Menu")
+            args = GLib.Variant("(iias)", (0, 1, ["label"]))
+            _, (_, _, actions) = call(bus, service, menu, "com.canonical.dbusmenu", "GetLayout", args)
+            for action_id, properties, _ in actions:
+                if properties.get("label") == "Quit LocalSend":
+                    return service, menu, action_id
+        except GLib.Error:
+            # A tray item can disappear between discovery and lookup.
+            continue
+    raise RuntimeError("Quit LocalSend action unavailable in the system tray")
+
+
+def call(bus, service, path, interface, method, args):
+    return bus.call_sync(service, path, interface, method, args, None,
+                         Gio.DBusCallFlags.NO_AUTO_START, 1500, None).unpack()
+
+
+if __name__ == "__main__":
+    try:
+        bus = Gio.bus_get_sync(Gio.BusType.SESSION)
+        service, menu, action_id = find_quit(bus)
+        args = GLib.Variant("(isvu)", (action_id, "clicked", GLib.Variant("i", 0), 0))
+        call(bus, service, menu, "com.canonical.dbusmenu", "Event", args)
+    except (GLib.Error, RuntimeError) as error:
+        sys.exit(f"quit-localsend: {error}")

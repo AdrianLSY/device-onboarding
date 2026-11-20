@@ -18,8 +18,10 @@ x-scheme-handler/itms=cider.desktop
 x-scheme-handler/itmss=cider.desktop
 x-scheme-handler/music=cider.desktop
 x-scheme-handler/itunes=cider.desktop
+x-scheme-handler/t3code=com.t3tools.T3Code.desktop
 
 [Added Associations]
 x-scheme-handler/http=vivaldi-stable.desktop;
 x-scheme-handler/https=vivaldi-stable.desktop;
 x-scheme-handler/chrome=vivaldi-stable.desktop;
+x-scheme-handler/t3code=com.t3tools.T3Code.desktop;

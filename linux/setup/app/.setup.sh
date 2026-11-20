@@ -9,10 +9,10 @@ SELF="$(basename "$0")"
 # Every script below installs its tool or upgrades it to the latest release, so
 # each one runs every time: on a bootstrap, and from fish's `update`. They drop
 # binaries into user-local dirs (~/.local/bin for zed/claude/zoxide/openspec,
-# ~/.pulumi/bin, ~/.opencode/bin) that a non-login bash won't have on PATH;
-# without this a script's `command -v` misses its tool and reinstalls it.
-# Matches the interactive-shell PATH fish sets.
-export PATH="$HOME/.local/bin:$HOME/.pulumi/bin:$HOME/.opencode/bin:$PATH"
+# ~/.pulumi/bin) that a non-login bash won't have on PATH; without this a
+# script's `command -v` misses its tool and reinstalls it. Matches the
+# interactive-shell PATH fish sets.
+export PATH="$HOME/.local/bin:$HOME/.pulumi/bin:$PATH"
 
 echo "Starting generic app installs and upgrades..."
 

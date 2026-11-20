@@ -1,0 +1,142 @@
+#!/usr/bin/python3
+"""Give games the VRAM held by desktop apps, then reopen the apps we closed."""
+
+import fcntl
+import json
+import os
+from pathlib import Path
+import re
+import select
+import socket
+import subprocess
+import sys
+import time
+
+# Hyprland class -> Flatpak application ID. A normal window-close request
+# lets each app show its own unsaved-project or draft dialog.
+WINDOW_APPS = {
+    "BambuStudio": "com.bambulab.BambuStudio",
+    "UltiMaker-Cura": "com.ultimaker.cura",
+    "org.mozilla.thunderbird": "org.mozilla.thunderbird",
+}
+LOCALSEND = "org.localsend.localsend_app"
+CIDER_BUS = "org.mpris.MediaPlayer2.cider"
+TRAY_QUIT = Path(__file__).with_name("quit-localsend")
+EXIT_GRACE = 5  # bridge the gap between a launcher window and the game
+
+
+def output(*args):
+    return subprocess.check_output(args, text=True, timeout=5)
+
+
+def request(*args):
+    try:
+        output(*args)
+        return True
+    except (OSError, subprocess.SubprocessError) as error:
+        print(error, file=sys.stderr, flush=True)
+        return False
+
+
+def is_game(window):
+    if not window["mapped"]:
+        return False
+    if window["contentType"] == "game" or any(
+        name == "gamescope" or name.startswith("steam_app_")
+        for name in (window["class"], window["initialClass"])
+    ):
+        return True
+    try:
+        env = Path(f"/proc/{window['pid']}/environ").read_bytes()
+    except OSError:
+        return False
+    return any(re.fullmatch(rb"SteamGameId=[1-9][0-9]*", item) for item in env.split(b"\0"))
+
+
+def flatpaks():
+    return set(output("flatpak", "ps", "--columns=application").splitlines())
+
+
+def cider_running():
+    return output("busctl", "--user", "call", "org.freedesktop.DBus",
+                  "/org/freedesktop/DBus", "org.freedesktop.DBus", "NameHasOwner",
+                  "s", CIDER_BUS).strip() == "b true"
+
+
+def close_apps(windows, running, restore):
+    for window in windows:
+        app = WINDOW_APPS.get(window["initialClass"]) or WINDOW_APPS.get(window["class"])
+        address = window["address"]
+        if app in running and window["mapped"] and re.fullmatch(r"0x[0-9a-fA-F]+", address):
+            if request("hyprctl", "dispatch", f'hl.dsp.window.close({{window="address:{address}"}})'):
+                restore.add(app)
+
+    # Closing the window can leave these two running in the tray.
+    if LOCALSEND in running and request(TRAY_QUIT):
+        restore.add(LOCALSEND)
+    if cider_running() and request("busctl", "--user", "--auto-start=no", "call", CIDER_BUS,
+                                   "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2", "Quit"):
+        restore.add("cider")
+
+
+def reopen_apps(restore):
+    running = flatpaks()
+    for app in sorted(restore):
+        if app == "cider":
+            alive, command = cider_running(), ["cider"]
+        else:
+            alive, command = app in running, ["flatpak", "run", app]
+        if not alive:
+            subprocess.Popen(command, start_new_session=True)
+        restore.remove(app)
+
+
+def watch(events):
+    restore = set()
+    gaming = False
+    restore_after = None
+    pending = b""
+    while True:
+        try:
+            windows = json.loads(output("hyprctl", "-j", "clients"))
+            if any(is_game(window) for window in windows):
+                restore_after = None
+                if not gaming:
+                    running = flatpaks()
+                    gaming = True
+                    close_apps(windows, running, restore)
+            elif gaming:
+                if restore_after is None:
+                    restore_after = time.monotonic() + EXIT_GRACE
+                elif time.monotonic() >= restore_after:
+                    reopen_apps(restore)
+                    gaming = False
+                    restore_after = None
+        except (OSError, subprocess.SubprocessError, ValueError) as error:
+            print(error, file=sys.stderr, flush=True)
+
+        # Wake on window lifecycle events. Periodic checks also catch a late
+        # Wayland game content type and finish the grace period after exit.
+        now = time.monotonic()
+        deadline = restore_after if restore_after and restore_after > now else now + 15
+        while select.select([events], [], [], max(0, deadline - time.monotonic()))[0]:
+            chunk = events.recv(65536)
+            if not chunk:
+                return  # compositor logged out
+            lines = (pending + chunk).split(b"\n")
+            pending = lines.pop()
+            if any(line.startswith((b"openwindow>>", b"closewindow>>")) for line in lines):
+                break
+            if time.monotonic() >= deadline:
+                break
+
+
+if __name__ == "__main__":
+    instance = Path(os.environ["XDG_RUNTIME_DIR"]) / "hypr" / os.environ["HYPRLAND_INSTANCE_SIGNATURE"]
+    with (instance / "game-apps.lock").open("a") as lock, socket.socket(socket.AF_UNIX) as events:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            sys.exit(0)
+        events.connect(str(instance / ".socket2.sock"))
+        watch(events)
