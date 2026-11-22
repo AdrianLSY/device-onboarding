@@ -61,7 +61,8 @@ hl.env("GTK_THEME", "Adwaita:dark", true)
 -- https://wiki.hypr.land/configuring/core/monitors/
 
 -- ASUS VG27A on HDMI-A-1 — 1440p @ 144Hz
-hl.monitor({ output = "HDMI-A-1", mode = "2560x1440@144", position = "0x0", scale = 1 })
+-- At this timing HDMI has bandwidth for 8-bit RGB. Keep fullscreen video in SDR.
+hl.monitor({ output = "HDMI-A-1", mode = "2560x1440@144", position = "0x0", scale = 1, supports_hdr = -1 })
 
 -- Catch-all: any connected monitor uses its preferred mode, auto-positioned
 hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
