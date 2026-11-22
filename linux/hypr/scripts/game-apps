@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Give games the VRAM held by desktop apps, then reopen the apps we closed."""
+"""Give games the VRAM held by desktop apps, then reopen the five desktop apps."""
 
 import fcntl
 import json
@@ -32,10 +32,8 @@ def output(*args):
 def request(*args):
     try:
         output(*args)
-        return True
     except (OSError, subprocess.SubprocessError) as error:
         print(error, file=sys.stderr, flush=True)
-        return False
 
 
 def is_game(window):
@@ -63,20 +61,19 @@ def cider_running():
                   "s", CIDER_BUS).strip() == "b true"
 
 
-def close_apps(windows, running, restore):
+def close_apps(windows, running):
     for window in windows:
         app = WINDOW_APPS.get(window["initialClass"]) or WINDOW_APPS.get(window["class"])
         address = window["address"]
         if app in running and window["mapped"] and re.fullmatch(r"0x[0-9a-fA-F]+", address):
-            if request("hyprctl", "dispatch", f'hl.dsp.window.close({{window="address:{address}"}})'):
-                restore.add(app)
+            request("hyprctl", "dispatch", f'hl.dsp.window.close({{window="address:{address}"}})')
 
     # Closing the window can leave these two running in the tray.
-    if LOCALSEND in running and request(TRAY_QUIT):
-        restore.add(LOCALSEND)
-    if cider_running() and request("busctl", "--user", "--auto-start=no", "call", CIDER_BUS,
-                                   "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2", "Quit"):
-        restore.add("cider")
+    if LOCALSEND in running:
+        request(TRAY_QUIT)
+    if cider_running():
+        request("busctl", "--user", "--auto-start=no", "call", CIDER_BUS,
+                "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2", "Quit")
 
 
 def reopen_apps(restore):
@@ -104,7 +101,8 @@ def watch(events):
                 if not gaming:
                     running = flatpaks()
                     gaming = True
-                    close_apps(windows, running, restore)
+                    restore = {*WINDOW_APPS.values(), LOCALSEND, "cider"}
+                    close_apps(windows, running)
             elif gaming:
                 if restore_after is None:
                     restore_after = time.monotonic() + EXIT_GRACE

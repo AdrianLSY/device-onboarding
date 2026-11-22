@@ -413,8 +413,9 @@ rule({ class = [[^(org.mozilla.firefox)$]] }, { no_blur = true })
 hl.workspace_rule({ workspace = "w[tv1-10]", gaps_out = 0, gaps_in = -1 })
 hl.workspace_rule({ workspace = "f[1]", gaps_out = 0, gaps_in = -1 })
 
--- Application workspace assignments
-rule({ class = [[^(steam)$]] }, { workspace = "name:G" })
+-- Open desktop apps on their assigned workspaces without following them at
+-- login or after a game. A launched game still takes focus on H.
+rule({ class = [[^(steam)$]] }, { workspace = "name:G silent" })
 -- Games go to H. Native games keep their own class (Slay the Spire 2's is
 -- "Slay the Spire 2"), so no class list covers them all. Steam sets
 -- SteamGameId in the environment of everything it launches, native or Proton,
@@ -436,29 +437,29 @@ hl.on("window.open", function(w)
 end)
 rule({ class = [[^(steam_app_.*|gamescope)$]] }, { workspace = "name:H" })
 rule({ content = "game" }, { workspace = "name:H" })
-rule({ class = [[^(md.obsidian.Obsidian)$]] }, { workspace = "name:O" })
-rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S" })
+rule({ class = [[^(md.obsidian.Obsidian)$]] }, { workspace = "name:O silent" })
+rule({ class = [[^([Cc]ider)$]] }, { workspace = "name:S silent" })
 -- KeePassXC's Wayland class is org.keepassxc.KeePassXC; the bare KeePassXC
 -- stays for older builds. As on the Mac, its floating windows (dialogs, which
 -- Hyprland floats before reading these rules) open where they are.
-rule({ class = [[^(org\.keepassxc\.KeePassXC|KeePassXC)$]], float = false }, { workspace = "name:K" })
-rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J" })
-rule({ class = [[^(com\.t3tools\.T3Code)$]] }, { workspace = "name:A" })
+rule({ class = [[^(org\.keepassxc\.KeePassXC|KeePassXC)$]], float = false }, { workspace = "name:K silent" })
+rule({ class = [[^(Bitwarden)$]] }, { workspace = "name:J silent" })
+rule({ class = [[^(com\.t3tools\.T3Code)$]] }, { workspace = "name:A silent" })
 -- Codex, the chatgpt-desktop package (package.json openai-codex-electron, productName Codex,
 -- desktopName chatgpt.desktop). Its class was not read from a live window, so match either name
 -- in any case.
-rule({ class = [[^([Cc]hat[Gg][Pp][Tt]|[Cc]odex)$]] }, { workspace = "name:X" })
-rule({ class = [[^(TablePlus)$]] }, { workspace = "name:D" })
-rule({ class = [[^(org.localsend.localsend_app)$]] }, { workspace = "name:L" })
-rule({ class = [[^(BambuStudio)$]] }, { workspace = "name:B" })
-rule({ class = [[^(UltiMaker-Cura)$]] }, { workspace = "name:U" })
-rule({ class = [[^(dev.deedles.Trayscale)$]] }, { workspace = "name:T" })
-rule({ class = [[^(org.mozilla.thunderbird)$]] }, { workspace = "name:M" })
-rule({ class = [[^(org.cryptomator.launcher.Cryptomator\$MainApp)$]] }, { workspace = "name:F" })
-rule({ class = [[^(vivaldi-magkoliahgffibhgfkmoealggombgknl-Default)$]] }, { workspace = "name:Q" })
-rule({ class = [[^(vivaldi-hnpfjngllnobngcgfapefoaidbinmjnm-Default)$]] }, { workspace = "name:W" })
-rule({ class = [[^(vivaldi-pommaclcbfghclhalboakcipcmmndhcj-Default)$]] }, { workspace = "name:E" })
-rule({ class = [[^(vivaldi-kjbdgfilnfhdoflbpgamdcdgpehopbep-Default)$]] }, { workspace = "name:R" })
+rule({ class = [[^([Cc]hat[Gg][Pp][Tt]|[Cc]odex)$]] }, { workspace = "name:X silent" })
+rule({ class = [[^(TablePlus)$]] }, { workspace = "name:D silent" })
+rule({ class = [[^(org.localsend.localsend_app)$]] }, { workspace = "name:L silent" })
+rule({ class = [[^(BambuStudio)$]] }, { workspace = "name:B silent" })
+rule({ class = [[^(UltiMaker-Cura)$]] }, { workspace = "name:U silent" })
+rule({ class = [[^(dev.deedles.Trayscale)$]] }, { workspace = "name:T silent" })
+rule({ class = [[^(org.mozilla.thunderbird)$]] }, { workspace = "name:M silent" })
+rule({ class = [[^(org.cryptomator.launcher.Cryptomator\$MainApp)$]] }, { workspace = "name:F silent" })
+rule({ class = [[^(vivaldi-magkoliahgffibhgfkmoealggombgknl-Default)$]] }, { workspace = "name:Q silent" })
+rule({ class = [[^(vivaldi-hnpfjngllnobngcgfapefoaidbinmjnm-Default)$]] }, { workspace = "name:W silent" })
+rule({ class = [[^(vivaldi-pommaclcbfghclhalboakcipcmmndhcj-Default)$]] }, { workspace = "name:E silent" })
+rule({ class = [[^(vivaldi-kjbdgfilnfhdoflbpgamdcdgpehopbep-Default)$]] }, { workspace = "name:R silent" })
 
 -- ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 -- ┃                         Layer rules                         ┃
